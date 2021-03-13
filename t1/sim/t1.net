@@ -68,13 +68,3 @@ quit
 .endc
 
 .end
-print @R6[i]
-
-echo  "op_TAB"
-print all
-echo  "op_END"
-
-quit
-.endc
-
-.end
