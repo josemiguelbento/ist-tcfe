@@ -57,8 +57,8 @@ op
 echo "********************************************"
 echo  "Operating point"
 echo "********************************************"
-*print v-sweep
-*print @R6[i]
+print v-sweep
+print @R6[i]
 
 echo  "op_TAB"
 print all
