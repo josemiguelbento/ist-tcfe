@@ -37,6 +37,8 @@ I_SD = double(sm.I_SD)
 I_IE = double(sm.I_IE)
 I_ID = double(sm.I_ID)
 
+diary "mesh_tab.tex"
+diary on
 V1m = double(Va)
 V2m = V1m - double(R1) * I_SE
 V3m = V2m + double(R2) * I_SD
@@ -45,6 +47,7 @@ V5m = V4m + double(R5) * (I_ID-I_SD)
 V6m = V4m - double(Kc) * I_IE
 V7m = - double(R6) * I_IE
 V8m = V7m
+diary off
 
 
 %Nodal method
@@ -66,6 +69,8 @@ sn = solve(Eq_a,Eq_b,Eq_0,Eq_2,Eq_3,Eq_5,Eq_7,Eq_Va,Eq_Vc);
 
 %Nodal method COMPUTATION
 
+diary "node_tab.tex"
+diary on
 V0n = double(sn.V0n)
 V1n = double(sn.V1n)
 V2n = double(sn.V2n)
@@ -75,3 +80,5 @@ V5n = double(sn.V5n)
 V6n = double(sn.V6n)
 V7n = double(sn.V7n)
 V8n = V7n
+diary off
+
