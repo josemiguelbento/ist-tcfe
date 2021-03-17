@@ -16,11 +16,7 @@ $(FILE).pdf: $(wildcard *.tex) $(LODFIGS) octave.log ngspice
 
 octave.log:
 	octave ../mat/rc.m > octave.log
-	sed -i 's/\=/\&/g' mesh_tab.tex
-	sed -i 's/$$/\\\\ \\hline/g' mesh_tab.tex
-	
-	sed -i 's/\=/\&/g' node_tab.tex
-	sed -i 's/$$/\\\\ \\hline/g' node_tab.tex
+	sed -i 's/z/\\\\ \\hline/g' total_tab.tex
 
 
 ngspice: ngspice.log

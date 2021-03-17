@@ -37,8 +37,15 @@ I_SD = double(sm.I_SD)
 I_IE = double(sm.I_IE)
 I_ID = double(sm.I_ID)
 
-diary "mesh_tab.tex"
-diary on
+Gb = I_SD
+I_d = double(Id)
+I_r1 = -I_SE
+I_r2 = I_SD
+I_r3 = I_SE+I_SD
+I_r4 = I_SE + I_IE
+I_r5 = I_ID-I_SD
+I_r6 = -I_IE
+I_r7 = -I_IE
 V1m = double(Va)
 V2m = V1m - double(R1) * I_SE
 V3m = V2m + double(R2) * I_SD
@@ -47,10 +54,10 @@ V5m = V4m + double(R5) * (I_ID-I_SD)
 V6m = V4m - double(Kc) * I_IE
 V7m = - double(R6) * I_IE
 V8m = V7m
-diary off
 
 
-%Nodal method
+
+%Nodal method ----------------------------------
 
 syms V0n V1n V2n V3n V4n V5n V6n V7n V8n
 
@@ -67,18 +74,50 @@ Eq_Vc = V4n - V6n == Kc * (V0n - V7n)/R6;
 sn = solve(Eq_a,Eq_b,Eq_0,Eq_2,Eq_3,Eq_5,Eq_7,Eq_Va,Eq_Vc);
 
 
-%Nodal method COMPUTATION
+%Nodal method COMPUTATION --------------------------------------
 
-diary "node_tab.tex"
+V0n = double(sn.V0n);
+V1n = double(sn.V1n);
+V2n = double(sn.V2n);
+V3n = double(sn.V3n);
+V4n = double(sn.V4n);
+V5n = double(sn.V5n);
+V6n = double(sn.V6n);
+V7n = double(sn.V7n);
+V8n = V7n;
+
+I_r1n = -(V1n -V2n)/double(R1);
+I_r2n = -(V2n -V3n)/double(R2);
+I_r3n = (V2n -V4n)/double(R3);
+I_r4n = (V4n -V0n)/double(R4);
+I_r5n = (V5n -V4n)/double(R5);
+I_r6n = -(V0n -V8n)/double(R6);
+I_r7n = -(V7n -V6n)/double(R7);
+Gbn= I_r2;
+
+
+%Printing the values in a table ---------------
+
+diary "total_tab.tex"
 diary on
-V0n = double(sn.V0n)
-V1n = double(sn.V1n)
-V2n = double(sn.V2n)
-V3n = double(sn.V3n)
-V4n = double(sn.V4n)
-V5n = double(sn.V5n)
-V6n = double(sn.V6n)
-V7n = double(sn.V7n)
-V8n = V7n
+printf("@Gb & %f & %f z\n", Gb, Gbn);
+printf("@id & %f & %f z\n", I_d, I_d);
+printf("@r1 & %f & %f z\n", I_r1, I_r1n);
+printf("@r2 & %f & %f z\n", I_r2, I_r2n);
+printf("@r3 & %f & %f z\n", I_r3, I_r3n);
+printf("@r4 & %f & %f z\n", I_r4, I_r4n);
+printf("@r5 & %f & %f z\n", I_r5, I_r5n);
+printf("@r6 & %f & %f z\n", I_r6, I_r6n);
+printf("@r7 & %f & %f z\n", I_r7, I_r7n);
+printf("V1 & %f & %f z\n", V1m, V1n);
+printf("V2 & %f & %f z\n", V2m, V2n);
+printf("V3 & %f & %f z\n", V3m, V3n);
+printf("V4 & %f & %f z\n", V4m, V4n);
+printf("V5 & %f & %f z\n", V5m, V5n);
+printf("V6 & %f & %f z\n", V6m, V6n);
+printf("V7 & %f & %f z\n", V7m, V7n);
+printf("V8 & %f & %f z\n", V8m, V8n);
+
 diary off
+
 
