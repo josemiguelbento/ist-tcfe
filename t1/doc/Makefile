@@ -17,8 +17,26 @@ $(FILE).pdf: $(wildcard *.tex) $(LODFIGS) octave.log ngspice
 octave.log:
 	octave ../mat/rc.m > octave.log
 	sed -i 's/z/\\\\ \\hline/g' total_tab.tex
-
-
+	
+	sed -i 's/z/\ \\/g' mesh_eq_tab.tex
+	sed -i 's/\==/\=/g' mesh_eq_tab.tex
+	sed -i 's/I_SE/I_{SE}/g' mesh_eq_tab.tex
+	sed -i 's/I_SD/I_{SD}/g' mesh_eq_tab.tex
+	sed -i 's/I_IE/I_{IE}/g' mesh_eq_tab.tex
+	sed -i 's/I_ID/I_{ID}/g' mesh_eq_tab.tex
+	sed -i 's/R/R_/g' mesh_eq_tab.tex
+	sed -i 's/K/K_/g' mesh_eq_tab.tex
+	sed -i 's/\*//g' mesh_eq_tab.tex
+	
+	sed -i 's/z/\ \\/g' nodal_eq_tab.tex
+	sed -i 's/\==/\=/g' nodal_eq_tab.tex
+	sed -i 's/V/V_/g' nodal_eq_tab.tex
+	sed -i 's/R/R_/g' nodal_eq_tab.tex
+	sed -i 's/K/K_/g' nodal_eq_tab.tex
+	sed -i 's/\*//g' nodal_eq_tab.tex
+	sed -i 's/n//g' nodal_eq_tab.tex
+	
+	
 ngspice: ngspice.log
 	$(eval NGSFIGS=$(shell grep _FIG $< | sed 's/_FIG//g' | sed ':a;N;$!ba;s/\n/ /g'))
 	$(eval NGSFIGPS=$(addsuffix .ps, $(NGSFIGS)))
