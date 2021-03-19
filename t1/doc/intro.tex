@@ -1,26 +1,55 @@
 \section{Introduction}
 \label{sec:introduction}
+% state the learning objective
 
-% state the learning objective 
-The objective of this laboratory assignment is to study a circuit containing both independent and 
-linearly dependent voltage and current sources. The circuit also contains 7 resistors, totaling 11 components conected both in series and in paralel.
-The circuit has 7 nodes and 4 meshes. 
-The circuit can be seen in Figure~\ref{fig:circuit_t1}.
-The values of the resistors, the independent sources and the and the constants for the dependent 
-sources are presented in figure .......********************. These values were obtained using the
+\par The objective of this laboratory assignment is to study a circuit containing independent and 
+linearly dependent voltage and current sources. The circuit also contains 7 resistors, totaling 11 components that are conected both in series and in paralel.\par
+The circuit has 7 nodes and 4 meshes. The nodes of the circuit were numbered arbitrarily (from {\it V0}  to  {\it V7} ), and it was considered that {\it node 0} was the ground node. The voltage-controlled current source {\it Ib} has a linear dependence on Voltage {\it Vb} of constant {\it Kb}. The voltage {\it Vb} is the voltage drop at the ends of resistor {\it R3}. The current-controlled voltage source {\it Vc} has a linear dependece on current {\it Ic} of constant {\it Kc}. The control current {\it Ic} is the current that passes through the resistor {\it R6}.
+The circuit can be seen in Figure~\ref{fig:circuit_t1}.\par
+The values for the resistors, the independent sources and the  constants for the dependent 
+sources are presented in Table~\ref{tab:python_values}. These values were obtained using the
 Python script provided by the professor responsable for the laboratory assigment
-and using 95815 as the seed 
-%in series. The circuit can be seen if Figure~\ref{fig:circuit_t1}.
+and using the number 95815 as the seed.\par
 
 In Section~\ref{sec:analysis}, a theoretical analysis of the circuit is
-presented. In Section~\ref{sec:simulation}, the circuit is analysed by
-simulation, and the results are compared to the theoretical results obtained in
+presented using two methodes: the mesh analisys and the nodal analysis. In Section~\ref{sec:simulation}, the circuit is analysed by
+simulation using the program Ngspice, and the results are compared to the theoretical results obtained in
 Section~\ref{sec:analysis}. The conclusions of this study are outlined in
 Section~\ref{sec:conclusion}.
 
 \begin{figure}[h] \centering
-\includegraphics[width=0.4\linewidth]{circuit_t1.pdf}
+\includegraphics[width=0.9\linewidth]{circuit_t1.pdf}
 \caption{Circuit in study}
 \label{fig:circuit_t1}
 \end{figure}
+
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Python values} \\ \hline
+	R1 &  1.04606282456 \\ 
+	R2 &  2.00732621328 \\ 
+	R3 &  3.06060705885 \\ 
+	R4 &  4.07055531265 \\ 
+	R5 &  3.1225213804 \\ 
+	R6 &  2.06927045958 \\ 
+	R7 &  1.01531018068 \\ 
+	Va &  5.24359648479 \\ 
+	Id &  1.01891541651 \\ 
+	Kb &  7.0473187437 \\ 
+	Kc &  8.3479788681 \\ 
+	\hline
+  \end{tabular}
+  \caption{The variables that starts with an {\it R} are the values of the resistors 
+    and are expressed in  kiloohm  (kOhm).The variable {\it Va}  is a {\it voltage} and expressed in
+    Volt (V) and the variable {\it Id}  is a {\it current} and expressed in
+   milliampere (mA).The constants {\it Kc} and {\it Kb} are  expressed in
+   kiloohm  (kOhm) and millisiemens (mS) respectively. }
+  \label{tab:python_values}
+\end{table}
+
+\pagebreak
+
 
