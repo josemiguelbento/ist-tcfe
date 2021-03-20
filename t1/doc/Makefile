@@ -18,23 +18,9 @@ octave.log:
 	octave ../mat/rc.m > octave.log
 	sed -i 's/z/\\\\ \\hline/g' total_tab.tex
 	
-	sed -i 's/z/\ \\/g' mesh_eq_tab.tex
-	sed -i 's/\==/\=/g' mesh_eq_tab.tex
-	sed -i 's/I_SE/I_{SE}/g' mesh_eq_tab.tex
-	sed -i 's/I_SD/I_{SD}/g' mesh_eq_tab.tex
-	sed -i 's/I_IE/I_{IE}/g' mesh_eq_tab.tex
-	sed -i 's/I_ID/I_{ID}/g' mesh_eq_tab.tex
-	sed -i 's/R/R_/g' mesh_eq_tab.tex
-	sed -i 's/K/K_/g' mesh_eq_tab.tex
-	sed -i 's/\*//g' mesh_eq_tab.tex
-	
-	sed -i 's/z/\ \\/g' nodal_eq_tab.tex
-	sed -i 's/\==/\=/g' nodal_eq_tab.tex
-	sed -i 's/V/V_/g' nodal_eq_tab.tex
-	sed -i 's/R/R_/g' nodal_eq_tab.tex
-	sed -i 's/K/K_/g' nodal_eq_tab.tex
-	sed -i 's/\*//g' nodal_eq_tab.tex
-	sed -i 's/n//g' nodal_eq_tab.tex
+	sed -i 's/\=/\&/g' curr_tab.tex
+	sed -i 's/$$/\\\\ \\hline/g' curr_tab.tex
+	sed -i 's/I_/\I/g' curr_tab.tex
 	
 	
 ngspice: ngspice.log

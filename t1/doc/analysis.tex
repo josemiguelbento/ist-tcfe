@@ -6,19 +6,80 @@ theoretically using two methods: the mesh analysis and the nodal anaylis.\par
 For the mesh analysis 4 variables were created - the 4 mesh currents.{\it$I_{SE}$ } is the mesh current of the mesh on the top left corner of our circuit (clockwise). {\it$I_{SD}$}is the mesh current of the mesh on the top right corner of our circuit (counter clockwise).{\it$I_{IE}$ } is the mesh current of the mesh on the lower left corner of our circuit(counter clockwise). {\it$I_{ID}$} is the mesh current of the mesh on the lower right corner of our circuit(counter clockwise).Knowing the mesh currents, and using Ohm's law we can determine any node voltage or branch current. To determine the 4 unknown mesh currents we used the following 4 equations.
 
 
-\input{mesh_eq_tab}
+%\input{mesh_eq_tab}
+\begin {equation}
+	R_1I_{SE} + R_3(I_{SE}+I_{SD}) + R_4(I_{SE}+I_{IE}) = Va
+	\label{eq:m1}
+\end{equation}
 
-With the help of Octave, the equations yielded the following values for the mesh currents.(********************adicionar tabela?**************************)\par
+\begin {equation}
+	R_6I_{IE} + R_7I_{IE} + R_4(I_{IE}+I_{SE}) = K_cI_{IE}
+	\label{eq:m2}
+\end{equation}
+
+\begin {equation}
+	I_{SD} = K_bR_3(I_{SE}+I_{SD})
+	\label{eq:m3}
+\end{equation}
+
+\begin {equation}
+	I_{ID} = Id
+	\label{eq:m4}
+\end{equation}
+
+With the help of Octave, the equations yielded the following values for the mesh currents.\par
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Current (mA)}\\ \hline
+    \input{curr_tab}
+  \end{tabular}
+  \label{tab:theoretical_curr}
+\end{table}
 
 For the nodal analysis we apply the Kirchhoff Current Law (KCL) to the nodes that are not conected to voltage sources (equations 7 to 11). We obtain 2 more equations from the potencial difference at the terminals of the voltage sources (equations 12 and 13).As it was stated before, node 0 is the ground node and therefore the voltage at this node is 0V (equation 1). For the simulation analysis it was necessesary to add an other "fictional" voltage source that provides 0 volts to the circuit, between node 7 and resistor 6. This "fictional" voltage source was also considered in the Theoretical Analysis, as it has no real effect on the circuit. This yiels equation number 6. Now we have 9 equations for 9 unkown variables- voltage ({\it$V_{0}$}  to {\it$V_{8}$}.Using Octave we determine the values of every node voltage of the circuit. \par
 
-\input{nodal_eq_tab}
+%\input{nodal_eq_tab}
+\begin {equation}
+	V_0 = 0
+	\label{eq:n1}
+\end{equation}
+\begin {equation}
+	V_8 = V_7
+	\label{eq:n2}
+\end{equation}
+\begin {equation}
+	(V_1-V_2)/R_1 +(V_0 - V_8)/R_6 + (V_0 - V_4)/R_4 = 0
+	\label{eq:n3}
+\end{equation}
+\begin {equation}
+	(V_2-V_4)/R_3 + (V_2-V_3)/R_2 + (V_2-V_1)/R_1 = 0
+	\label{eq:n4}
+\end{equation}
+\begin {equation}
+	- K_b(V_2-V_4) + (V_3-V_2)/R_2 = 0
+	\label{eq:n5}
+\end{equation}
+\begin {equation}
+	(V_5-V_4)/R_5 + K_b(V_2-V_4) - Id = 0
+	\label{eq:n6}
+\end{equation}
+\begin {equation}
+	(V_7-V_6)/R_7 + (V_7 - V_0)/R_6 = 0
+	\label{eq:n7}
+\end{equation}
+\begin {equation}
+	V_1 - V_0 = V_a
+	\label{eq:n8}
+\end{equation}
+\begin {equation}
+	V_4 - V_6 = K_c  (V_0 - V_7)/R_6
+	\label{eq:n9}
+\end{equation}
 
-%\begin{figure}[h] \centering
-%\includegraphics[width=0.8\linewidth]{forced.eps}
-%\caption{Forced sinusoidal response.}
-%\label{fig:forced}
-%\end{figure}
+
 
 
 In Table~\ref{tab:theoretical} the values for the branch currents and the node voltages obtained from the ocatve script for both methods are presented.\par 

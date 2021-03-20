@@ -17,20 +17,9 @@ Id = sym ('1.01891541651');
 Kb = sym ('7.0473187437');
 Kc = sym ('8.3479788681');
 
-
 %Mesh Method---------------------------------------------
 
 syms I_SE I_SD I_IE I_ID;
-
-diary "mesh_eq_tab.tex"
-diary on
-
-printf("z[ R1*I_SE + R3*(I_SE+I_SD) + R4*(I_SE+I_IE) == Va z] \n");
-printf("z[ R6*I_IE + R7*I_IE + R4*(I_IE+I_SE) == Kc*I_IE z] \n");
-printf("z[ I_SD == Kb*R3*(I_SE+I_SD) z] \n");
-printf("z[ I_ID == Id z] \n");
-
-diary off
 
 Eq_A = R1*I_SE + R3*(I_SE+I_SD) + R4*(I_SE+I_IE) == Va;
 Eq_C = R6*I_IE + R7*I_IE + R4*(I_IE+I_SE)== Kc*I_IE;
@@ -42,10 +31,13 @@ sm = solve(Eq_A,Eq_B,Eq_C,Eq_D);
 
 %Mesh Method COMPUTATION----------------------------------
 
+diary "curr_tab.tex"
+diary on
 I_SE = double(sm.I_SE) %we have to put double otherwise sm.I_SE will come out symbolic
 I_SD = double(sm.I_SD)
 I_IE = double(sm.I_IE)
 I_ID = double(sm.I_ID)
+diary off
 
 Gb = I_SD
 I_d = double(Id)
@@ -70,20 +62,6 @@ V8m = V7m
 %Nodal method ----------------------------------
 
 syms V0n V1n V2n V3n V4n V5n V6n V7n V8n
-
-diary "nodal_eq_tab.tex"
-diary on
-printf("z[ V0n == 0 z] \n");
-printf("z[ V8n == V7n z] \n");
-printf("z[ (V1n-V2n)/R1 +(V0n - V8n)/R6 + (V0n - V4n)/R4 == 0 z] \n");
-printf("z[ (V2n-V4n)/R3 + (V2n-V3n)/R2 + (V2n-V1n)/R1 == 0 z] \n");
-printf("z[ - Kb*(V2n-V4n) + (V3n-V2n)/R2 == 0 z] \n");
-printf("z[ (V5n-V4n)/R5 + Kb*(V2n-V4n) - Id == 0 z] \n");
-printf("z[ (V7n-V6n)/R7 + (V7n - V0n)/R6 == 0 z] \n");
-printf("z[ V1n - V0n == Va z] \n");
-printf("z[ V4n - V6n == Kc * (V0n - V7n)/R6 z] \n");
-
-diary off
 
 Eq_a = V0n == 0;
 Eq_b = V8n == V7n;
