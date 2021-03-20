@@ -110,13 +110,13 @@ V6n = double(sn.V6n);
 V7n = double(sn.V7n);
 V8n = V7n;
 
-I_r1n = -(V1n -V2n)/double(R1);
-I_r2n = -(V2n -V3n)/double(R2);
+I_r1n = (V2n -V1n)/double(R1);
+I_r2n = (V3n -V2n)/double(R2);
 I_r3n = (V2n -V4n)/double(R3);
 I_r4n = (V4n -V0n)/double(R4);
 I_r5n = (V5n -V4n)/double(R5);
-I_r6n = -(V0n -V8n)/double(R6);
-I_r7n = -(V7n -V6n)/double(R7);
+I_r6n = (V8n -V0n)/double(R6);
+I_r7n = (V6n -V7n)/double(R7);
 Gbn= I_r2;
 
 
