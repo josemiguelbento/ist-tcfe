@@ -2,21 +2,16 @@
 \label{sec:analysis}
 
 In this section, the circuit shown in Figure~\ref{fig:circuit_t1} is analysed
-theoretically, using two methods: the mesh analysis and the nodal anaylis.
+theoretically using two methods: the mesh analysis and the nodal anaylis.\par
+For the mesh analysis 4 variables were created - the 4 mesh currents.{\it$I_{SE}$ } is the mesh current of the mesh on the top left corner of our circuit (clockwise). {\it$I_{SD}$}is the mesh current of the mesh on the top right corner of our circuit (counter clockwise).{\it$I_{IE}$ } is the mesh current of the mesh on the lower left corner of our circuit(counter clockwise). {\it$I_{ID}$} is the mesh current of the mesh on the lower right corner of our circuit(counter clockwise).Knowing the mesh currents, and using Ohm's law we can determine any node voltage or branch current. To determine the 4 unknown mesh currents we used the following 4 equations.
 
-%\section{Time response}
 
-The circuit consists of a 6 resistors 
-
-%single V-R-C loop where a current $i(t)$ circulates. The
-%voltage source $v_I(t)$ drives its input, and the output voltage $v_O(t)$ is taken from
-%the capacitor terminals. Applying the Kirchhoff Voltage Law (KVL), a single
-%equation for the single loop in the circuit can be written as
-
-MESH EQUATIONS
 \input{mesh_eq_tab}
 
-NODAL EQUATIONS
+With the help of Octave, the equations yielded the following values for the mesh currents.(********************adicionar tabela?**************************)\par
+
+For the nodal analysis we apply the Kirchhoff Current Law (KCL) to the nodes that are not conected to voltage sources (equations 7 to 11). We obtain 2 more equations from the potencial difference at the terminals of the voltage sources (equations 12 and 13).As it was stated before, node 0 is the ground node and therefore the voltage at this node is 0V (equation 1). For the simulation analysis it was necessesary to add an other "fictional" voltage source that provides 0 volts to the circuit, between node 7 and resistor 6. This "fictional" voltage source was also considered in the Theoretical Analysis, as it has no real effect on the circuit. This yiels equation number 6. Now we have 9 equations for 9 unkown variables- voltage ({\it$V_{0}$}  to {\it$V_{8}$}.Using Octave we determine the values of every node voltage of the circuit. \par
+
 \input{nodal_eq_tab}
 
 %\begin{figure}[h] \centering
@@ -25,7 +20,8 @@ NODAL EQUATIONS
 %\label{fig:forced}
 %\end{figure}
 
-%\section{Frequency response}
+
+In Table~\ref{tab:theoretical} the values for the branch currents and the node voltages obtained from the ocatve script for both methods are presented.\par 
 \begin{table}[h]
   \centering
   \begin{tabular}{|l|r|r|}
@@ -39,4 +35,4 @@ NODAL EQUATIONS
   \label{tab:theoretical}
 \end{table}
 
-
+As it can be seen this values are the same, which suggests that for these simple circuit, the methods are equally precise. 
