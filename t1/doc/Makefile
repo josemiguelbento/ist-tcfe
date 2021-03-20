@@ -20,8 +20,9 @@ octave.log:
 	
 	sed -i 's/\=/\&/g' curr_tab.tex
 	sed -i 's/$$/\\\\ \\hline/g' curr_tab.tex
-	sed -i 's/I_/\I/g' curr_tab.tex
-	
+	sed -i 's/I_/\I\\ztextsubscript{/g' curr_tab.tex
+	sed -i 's/\ &/\} &/g' curr_tab.tex
+	sed -i 's/z//g' curr_tab.tex
 	
 ngspice: ngspice.log
 	$(eval NGSFIGS=$(shell grep _FIG $< | sed 's/_FIG//g' | sed ':a;N;$!ba;s/\n/ /g'))
