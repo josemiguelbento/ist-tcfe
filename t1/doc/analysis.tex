@@ -1,12 +1,13 @@
 \section{Theoretical Analysis}
 \label{sec:analysis}
 
-In this section, the circuit shown in Figure~\ref{fig:circuit_t1} is analysed
-theoretically using two methods: the mesh analysis and the nodal anaylis.\par
-For the mesh analysis 4 variables were created - the 4 mesh currents.{\it$I_{SE}$ } is the mesh current of the mesh on the top left corner of our circuit (clockwise). {\it$I_{SD}$}is the mesh current of the mesh on the top right corner of our circuit (counter clockwise).{\it$I_{IE}$ } is the mesh current of the mesh on the lower left corner of our circuit(counter clockwise). {\it$I_{ID}$} is the mesh current of the mesh on the lower right corner of our circuit(counter clockwise).Knowing the mesh currents, and using Ohm's law we can determine any node voltage or branch current. To determine the 4 unknown mesh currents we used the following 4 equations.
+In this section, the circuit shown in \textbf{Figure~\ref{fig:circuit_t1}} is analysed
+theoretically using two methods: the mesh analysis and the nodal analysis.\par
+
+\subsection{Mesh Analysis} 
+For the mesh analysis 4 variables were created - the 4 mesh currents. {\it$I_{SE}$ } is the mesh current of the mesh on the top left corner of our circuit (clockwise). {\it$I_{SD}$} is the mesh current of the mesh on the top right corner of our circuit (counter clockwise). {\it$I_{IE}$ } is the mesh current of the mesh on the lower left corner of our circuit (counter clockwise). {\it$I_{ID}$} is the mesh current of the mesh on the lower right corner of our circuit (counter clockwise). Knowing the mesh currents, and using Ohm's law we can determine any node voltage or branch current. To determine the 4 unknown mesh currents we used the following 4 equations:
 
 
-%\input{mesh_eq_tab}
 \begin {equation}
 	R_1I_{SE} + R_3(I_{SE}+I_{SD}) + R_4(I_{SE}+I_{IE}) = Va
 	\label{eq:m1}
@@ -27,7 +28,7 @@ For the mesh analysis 4 variables were created - the 4 mesh currents.{\it$I_{SE}
 	\label{eq:m4}
 \end{equation}
 
-With the help of Octave, the equations yielded the following values for the mesh currents.\par
+With the help of Octave, these equations yielded the following values for the mesh currents:\par
 
 \begin{table}[h]
   \centering
@@ -39,9 +40,10 @@ With the help of Octave, the equations yielded the following values for the mesh
   \label{tab:theoretical_curr}
 \end{table}
 
-For the nodal analysis we apply the Kirchhoff Current Law (KCL) to the nodes that are not conected to voltage sources (equations 7 to 11). We obtain 2 more equations from the potencial difference at the terminals of the voltage sources (equations 12 and 13).As it was stated before, node 0 is the ground node and therefore the voltage at this node is 0V (equation 1). For the simulation analysis it was necessesary to add an other "fictional" voltage source that provides 0 volts to the circuit, between node 7 and resistor 6. This "fictional" voltage source was also considered in the Theoretical Analysis, as it has no real effect on the circuit. This yiels equation number 6. Now we have 9 equations for 9 unkown variables- voltage ({\it$V_{0}$}  to {\it$V_{8}$}.Using Octave we determine the values of every node voltage of the circuit. \par
+\subsection{Nodal Analysis} 
+For the nodal analysis we apply the Kirchhoff Current Law (KCL) to the nodes that are not conected to voltage sources (equations 7 to 11). We obtain 2 more equations from the potencial difference at the terminals of the voltage sources (equations 12 and 13). As was stated before, {\it node 0} is the ground node and therefore the voltage at this node is 0V (equation 1). For the simulation analysis it was necessesary to add another "fictional" voltage source that provides 0 volts to the circuit, between node 7 and resistor 6. This "fictional" voltage source was also considered in the Theoretical Analysis, as it has no real effect on the circuit. This yields equation number 6. Now we have 9 equations (equation 1) for 9 unkown variables - voltage ({\it$V_{0}$}  to {\it$V_{8}$}. Using Octave we determine the values of every node voltage of the circuit. \par
 
-%\input{nodal_eq_tab}
+
 \begin {equation}
 	V_0 = 0
 	\label{eq:n1}
@@ -82,7 +84,7 @@ For the nodal analysis we apply the Kirchhoff Current Law (KCL) to the nodes tha
 
 
 
-In Table~\ref{tab:theoretical} the values for the branch currents and the node voltages obtained from the ocatve script for both methods are presented.\par 
+In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the ocatve script for both methods are presented. Here the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
 \begin{table}[h]
   \centering
   \begin{tabular}{|l|r|r|}
@@ -96,4 +98,4 @@ In Table~\ref{tab:theoretical} the values for the branch currents and the node v
   \label{tab:theoretical}
 \end{table}
 
-As it can be seen this values are the same, which suggests that for this simple circuit, the methods are equally precise. 
+As can be seen, the values obtained via the mesh and the node analysis are the same, which suggests that for this simple circuit, the methods are equally precise, as expected.
