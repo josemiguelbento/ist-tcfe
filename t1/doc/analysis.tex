@@ -53,23 +53,23 @@ For the nodal analysis we apply the Kirchhoff Current Law (KCL) to the nodes tha
 	\label{eq:n2}
 \end{equation}
 \begin {equation}
-	(V_1-V_2)/R_1 +(V_0 - V_8)/R_6 + (V_0 - V_4)/R_4 = 0
+	\frac{V_1-V_2}{R_1} + \frac{V_0 - V_8}{R_6} + \frac{V_0 - V_4}{R_4} = 0
 	\label{eq:n3}
 \end{equation}
 \begin {equation}
-	(V_2-V_4)/R_3 + (V_2-V_3)/R_2 + (V_2-V_1)/R_1 = 0
+	\frac{V_2-V_4}{R_3} + \frac{V_2-V_3}{R_2} + \frac{V_2-V_1}{R_1} = 0
 	\label{eq:n4}
 \end{equation}
 \begin {equation}
-	- K_b(V_2-V_4) + (V_3-V_2)/R_2 = 0
+	- K_b(V_2-V_4) + \frac{V_3-V_2}{R_2} = 0
 	\label{eq:n5}
 \end{equation}
 \begin {equation}
-	(V_5-V_4)/R_5 + K_b(V_2-V_4) - Id = 0
+	\frac{V_5-V_4}{R_5} + K_b(V_2-V_4) - Id = 0
 	\label{eq:n6}
 \end{equation}
 \begin {equation}
-	(V_7-V_6)/R_7 + (V_7 - V_0)/R_6 = 0
+	\frac{V_7-V_6}{R_7} + \frac{V_7 - V_0}{R_6} = 0
 	\label{eq:n7}
 \end{equation}
 \begin {equation}
@@ -77,14 +77,13 @@ For the nodal analysis we apply the Kirchhoff Current Law (KCL) to the nodes tha
 	\label{eq:n8}
 \end{equation}
 \begin {equation}
-	V_4 - V_6 = K_c  (V_0 - V_7)/R_6
+	V_4 - V_6 = K_c  \frac{V_0 - V_7}{R_6}
 	\label{eq:n9}
 \end{equation}
 
 
-
-
-In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the ocatve script for both methods are presented. Here, the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
+In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the Octave script for both methods are presented. Here, the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
+ \pagebreak 
 \begin{table}[h]
   \centering
   \begin{tabular}{|l|r|r|}
@@ -98,4 +97,7 @@ In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and t
   \label{tab:theoretical}
 \end{table}
 
+
 As can be seen, the values obtained via the mesh and the node analysis are the same, which suggests that for this simple circuit, the methods are equally precise, as expected.
+
+

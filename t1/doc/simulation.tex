@@ -1,9 +1,10 @@
 \section{Simulation Analysis}
 \label{sec:simulation}
+In this section we will describe the steps needed to simulate this circuit using the software Ngspice.
 \subsection{Operating Point Analysis}
 \textbf{Table~\ref{tab:op}} shows the simulated operating point results for the circuit
 under analysis. The current flows considered in the theoretical section were coherent with the polarity implicitly declared when defining the circuit to be simulated in the Ngspice script.\par
-As mentioned previously, in Section~\ref{sec:analysis}, we had to create a "fictional" voltage source, between node 7 and resistor 6 (providing 0V to the circuit in order not to alter the behaviour of the rest of the circuit) so as to be able to define the dependecy for the current-controlled voltage source {\it $V_c$}. This has no specific reason to be, other than the particularities of the Ngspice software. The consequences of adding this additional voltage have already been described (namely the creation of a new node) and dealt with in the previous section - see, for example, equation 6.\par
+As mentioned previously, in Section~\ref{sec:analysis}, we had to create a "fictional" voltage source, between node 7 and resistor 6 (providing 0V to the circuit in order not to alter the behaviour of the rest of the circuit) so as to be able to define the dependecy for the current-controlled voltage source {\it $V_c$}. This has no specific reason to be, other than the particularities of the Ngspice software. The consequences of adding this additional voltage have already been described (namely the creation of a new node) and dealt with in the previous section - see, for example, equation \ref{eq:n2}.\par
 
 \begin{table}[h]
   \centering

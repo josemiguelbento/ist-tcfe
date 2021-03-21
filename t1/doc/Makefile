@@ -15,7 +15,7 @@ $(FILE).pdf: $(wildcard *.tex) $(LODFIGS) octave.log ngspice
 	pdflatex  $(FILE).tex
 
 octave.log:
-	octave ../mat/rc.m > octave.log
+	octave ../mat/circuito.m > octave.log
 	sed -i 's/z/\\\\ \\hline/g' total_tab.tex
 	
 	sed -i 's/\=/\&/g' curr_tab.tex
