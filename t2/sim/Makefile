@@ -10,5 +10,5 @@ ngspice.log: ../sim/t0.net
 
 clean:
 	@rm -f ngspice.log *.tex *.pdf *.ps *~
-
+	@rm -f data_sim.txt
 .PHONY: all clean

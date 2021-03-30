@@ -1,3 +1,4 @@
+#!/bin/bash
 # ------------------------------------------------------------
 # type "make" command in the Linux terminal create report.pdf
 #
@@ -5,16 +6,20 @@
 # ------------------------------------------------------------
 
 all:
+	echo 95815 | python2.7 t2_datagen.py > data.txt
+	sed -i -e '1,8d;20,22d' data.txt
+	sed -i 's/Values:  //g' data.txt
+	cp data.txt ~/ist-tcfe/t2/mat
 	make -C mat
 	make -C sim
 	make -C doc
 	cp doc/report.pdf .
 
 clean:
+	@rm -f data.txt
 	make -C mat clean
 	make -C sim clean
 	make -C doc clean
 
 .PHONY: all clean
-
 
