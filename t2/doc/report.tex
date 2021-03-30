@@ -17,10 +17,10 @@
 \usepackage[all]{nowidow}
 
 %blind text
-\usepackage{lipsum}
+%\usepackage{lipsum}
 
 \usepackage{graphicx}
-\graphicspath{{./}{../../figlib/}{../mat/}{../sim/}}
+\graphicspath{ {./} {../../figlib/} }
 \def\FontLn{% 16 pt normal
   \usefont{T1}{phv}{m}{n}\fontsize{16pt}{16pt}\selectfont}
 \def\FontLb{% 16 pt bold
@@ -91,6 +91,7 @@
 % ----------------------------------------------------------------------
 \input{frontcover}
 
+
 % ----------------------------------------------------------------------
 % Dedication page (optional)
 % ----------------------------------------------------------------------
@@ -116,9 +117,10 @@
 % ----------------------------------------------------------------------
 
 % Table of contents
-%
+\pagebreak
 \tableofcontents
-
+\vspace{18cm}
+\pagebreak
 % List of tables
 %\addcontentsline{toc}{section}{\listtablename}
 %\listoftables
@@ -137,13 +139,12 @@
 % ----------------------------------------------------------------------
 %  Body
 % ----------------------------------------------------------------------
-
+\pagebreak
 \input{intro}
 
 \input{analysis}
-
 \input{simulation}
-
+\pagebreak
 \input{conclusion}
 %\cleardoublepage
 
@@ -157,3 +158,4 @@
 % ----------------------------------------------------------------------
 \end{document}
 % ----------------------------------------------------------------------
+

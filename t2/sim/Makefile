@@ -7,7 +7,7 @@ all: ngspice.log
 
 ngspice.log: ../sim/t0.net
 	ngspice -b $< -o $@
-
+	
 clean:
 	@rm -f ngspice.log *.tex *.pdf *.ps *~
 	@rm -f data_sim.txt

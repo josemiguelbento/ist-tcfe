@@ -1,67 +1,68 @@
 \section{Theoretical Analysis}
 \label{sec:analysis}
 
-In this section, the circuit shown in Figure~\ref{fig:rc} is analysed
-theoretically, in terms of its time and frequency responses.
+In this section, the circuit shown in \textbf{Figure~\ref{fig:circuit_t1}} is analysed
+theoretically using two methods: the mesh analysis and the nodal analysis.\par
 
-\section{Time response}
 
-The circuit consists of a single V-R-C loop where a current $i(t)$ circulates. The
-voltage source $v_I(t)$ drives its input, and the output voltage $v_O(t)$ is taken from
-the capacitor terminals. Applying the Kirchhoff Voltage Law (KVL), a single
-equation for the single loop in the circuit can be written as
+\subsection{Nodal Analysis} 
+For the nodal analysis we apply the Kirchhoff Current Law (KCL) to the nodes that are not conected to voltage sources (equations \ref{eq:n3} to \ref{eq:n7}). We obtain 2 more equations from the potencial difference at the terminals of the voltage sources (equations \ref{eq:n8} and \ref{eq:n9}). As was stated before, {\it node 0} is the ground node and therefore the voltage at this node is 0V (equation \ref{eq:n1}). For the simulation analysis it was necessesary to add another "fictional" voltage source that provides 0 volts to the circuit, between node 7 and resistor 6. This "fictional" voltage source was also considered in the Theoretical Analysis, as it has no real effect on the circuit. It was needed to define in the ngspice code the current on which the current-controlled voltage source depends on. This yields equation number \ref{eq:n2}. Now we have 9 equations for 9 unkown variables - voltage {\it$V_{0}$}  to {\it$V_{8}$}. Using Octave, we determine the values of every node voltage of the circuit. \par
 
-\begin{equation}
-  Ri(t) + v_O(t) = v_I(t).
-  \label{eq:kvl}
+
+\begin {equation}
+	V_0 = 0
+	\label{eq:n1}
 \end{equation}
-
-Because $v_O$ is the voltage between capacitor C's plates, it is related to the
-current $i$ by
-\begin{equation}
-  i(t) = C\frac{dv_O}{dt}.
+\begin {equation}
+	V_8 = V_7
+	\label{eq:n2}
 \end{equation}
-
-Hence, Equation~(\ref{eq:kvl}) can be rewritten as
-\begin{equation}
-  RC\frac{dv_O}{dt} + v_O(t) = v_I.
-  \label{eq:kvl2}
+\begin {equation}
+	\frac{V_1-V_2}{R_1} + \frac{V_0 - V_8}{R_6} + \frac{V_0 - V_4}{R_4} = 0
+	\label{eq:n3}
 \end{equation}
-
-Equation~(\ref{eq:kvl2}) is a linear differencial equation whose solution is a
-superposition of a natural solution $v_{On}$ and a forced solution $v_{Of}$:
-
-\begin{equation}
-  v_O(t) = v_{On}(t) + v_{Of}(t).
-  \label{eq:vo_sol}
+\begin {equation}
+	\frac{V_2-V_4}{R_3} + \frac{V_2-V_3}{R_2} + \frac{V_2-V_1}{R_1} = 0
+	\label{eq:n4}
 \end{equation}
-
-As learned in the theory classes the natural solution is of the form
-\begin{equation}
-  v_{On}(t) = Ae^{-\frac{t}{RC}},
-  \label{eq:vo_nat}
+\begin {equation}
+	- K_b(V_2-V_4) + \frac{V_3-V_2}{R_2} = 0
+	\label{eq:n5}
 \end{equation}
-where $A$ is an integration constant.
-
-The forced solution is of the form given in Equation~(\ref{eq:vo_for}) and is
-illustrated in Figure~\ref{fig:forced}.
-
-\begin{equation}
-  V_{Of}(t) = |\bar{V}_{Of}| cos(\omega t + \angle \bar{V}_{Of}),
-  \label{eq:vo_for}
+\begin {equation}
+	\frac{V_5-V_4}{R_5} + K_b(V_2-V_4) - Id = 0
+	\label{eq:n6}
+\end{equation}
+\begin {equation}
+	\frac{V_7-V_6}{R_7} + \frac{V_7 - V_0}{R_6} = 0
+	\label{eq:n7}
+\end{equation}
+\begin {equation}
+	V_1 - V_0 = V_a
+	\label{eq:n8}
+\end{equation}
+\begin {equation}
+	V_4 - V_6 = K_c  \frac{V_0 - V_7}{R_6}
+	\label{eq:n9}
 \end{equation}
 
 
+In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the Octave script for both methods are presented. Here, the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
+ \pagebreak 
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Node method}\\ \hline
+    \input{nodal_tab}
+  \end{tabular}
+  \caption{A variable preceded by @ is of type {\em current}
+    and expressed in milliampere (mA); other variables are of type {\it voltage} and expressed in
+    Volt (V).}
+  \label{tab:theoretical}
+\end{table}
 
 
-\begin{figure}[h] \centering
-\includegraphics[width=0.8\linewidth]{forced.eps}
-\caption{Forced sinusoidal response.}
-\label{fig:forced}
-\end{figure}
-
-\section{Frequency response}
-
-
+As can be seen, the values obtained via the mesh and the node analysis are the same, which suggests that for this simple circuit, the methods are equally precise, as expected.
 
 
