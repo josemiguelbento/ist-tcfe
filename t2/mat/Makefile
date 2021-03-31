@@ -18,7 +18,6 @@ octave.log: rc.m
 clean:
 	@rm -f octave.log octave-workspace *.eps *~
 	@rm -f data.txt
-	@rm -f nodal_tab.tex
-	@rm -f req_tab.tex
+	@rm -f *_tab.tex
 	
 .PHONY: clean
