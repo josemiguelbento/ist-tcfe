@@ -28,6 +28,8 @@ echo "********************************************"
 echo  "Operating point"
 echo "********************************************"
 
+print V(6)-V(8) > datav6v8.txt 
+
 echo  "op_TAB"
 print all
 echo  "op_END"

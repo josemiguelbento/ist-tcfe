@@ -14,7 +14,6 @@
 
 *-------------------------------------------------------
 * NGSPICE simulation script
-* BJT amp with feedback
 *
 
 * forces current values to be saved
@@ -22,7 +21,7 @@
 
 *resistors
 .INCLUDE data_simeq.txt
-
+.INCLUDE datav6v8.txt
 .control
 
 *makes plots in color
@@ -40,14 +39,10 @@ op
 echo "********************************************"
 echo  "Operating point"
 echo "********************************************"
-*print v-sweep
-*print @R6[i]
 
 echo  "opeq_TAB"
 print all
 echo  "opeq_END"
-
-
 
 
 quit

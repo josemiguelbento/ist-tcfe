@@ -27,10 +27,22 @@ The following steps in the simulations are to be conducted:
     {\bf Name} & {\bf Value [mA or V]} \\ \hline
     \input{op_tab}
   \end{tabular}
-  \caption{Operating point. A variable preceded by @ is of type {\em current}
+  \caption{Step 1: Operating point for t<0. A variable preceded by @ is of type {\em current}
     and expressed in miliAmpere; other variables are of type {\it voltage} and expressed in
     Volt.}
   \label{tab:op}
 \end{table}
 
-As can already be observed, the results of the simulation coincide up to the last digit with the results of the theoretical analysis.
+%tabela correspondente ao ponto 2) do simulation analysis
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value [mA or V]} \\ \hline
+    \input{opeq_tab}
+  \end{tabular}
+  \caption{Step 2: Operating point for {\it $v_s(0)=0$}, with the capacitor replaced by a voltage source {\it $V_x=V(6)-V(8)$} with these as obtained in the last step. A variable preceded by @ is of type {\em current}
+    and expressed in miliAmpere; other variables are of type {\it voltage} and expressed in
+    Volt.}
+  \label{tab:opeq}
+\end{table}

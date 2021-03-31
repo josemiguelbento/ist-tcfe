@@ -95,7 +95,7 @@ fprintf(simf, 'R6 0 4 %fk\n', data(6,3));
 fprintf(simf, 'R7 7 8 %fk\n', data(7,3));
 fprintf(simf, 'Vs 1 0 DC 0\n');
 fprintf(simf, 'Vf 4 7 DC 0\n');
-fprintf(simf, 'Vx 6 8 DC %f\n', double(V6-V8));
+%fprintf(simf, 'Vx 6 8 DC %f\n', double(V6-V8));
 fprintf(simf, 'Gb 6 3 2 5 %fm\n', data(10,3));
 fprintf(simf, 'Hd 5 8 Vf %fk\n', data(11,3));
 
