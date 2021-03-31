@@ -6,8 +6,13 @@ theoretically using two methods: the mesh analysis and the nodal analysis.\par
 
 
 \subsection{Nodal Analysis} 
-For the nodal analysis we apply the Kirchhoff Current Law (KCL) to the nodes that are not conected to voltage sources (equations \ref{eq:n3} to \ref{eq:n7}). We obtain 2 more equations from the potencial difference at the terminals of the voltage sources (equations \ref{eq:n8} and \ref{eq:n9}). As was stated before, {\it node 0} is the ground node and therefore the voltage at this node is 0V (equation \ref{eq:n1}). For the simulation analysis it was necessesary to add another "fictional" voltage source that provides 0 volts to the circuit, between node 7 and resistor 6. This "fictional" voltage source was also considered in the Theoretical Analysis, as it has no real effect on the circuit. It was needed to define in the ngspice code the current on which the current-controlled voltage source depends on. This yields equation number \ref{eq:n2}. Now we have 9 equations for 9 unkown variables - voltage {\it$V_{0}$}  to {\it$V_{8}$}. Using Octave, we determine the values of every node voltage of the circuit. \par
+For the nodal analysis we apply the Kirchhoff Current Law (KCL) to the nodes that are not conected to voltage sources (equations \ref{eq:n3} to \ref{eq:n7}). We obtain 2 more equations from the potencial difference at the terminals of the voltage sources (equations \ref{eq:n8} and \ref{eq:n9}). As was stated before, {\it node 0} is the ground node and therefore the voltage at this node is 0V (equation \ref{eq:n1}). For the simulation analysis it was necessesary to add another "fictional" voltage source that provides 0 volts to the circuit, between node 7 and resistor 6. This "fictional" voltage source was also considered in the Theoretical Analysis, as it has no real effect on the circuit. It was needed to define in the ngspice code the current on which the current-controlled voltage source depends on. This yields equation number \ref{eq:n2}. Now we have 9 equations for 9 unkown variables - voltage {\it$V_{0}$}  to {\it$V_{8}$}. The schematics correponding to this approach can be seen in \textbf{Figure~\ref{fig:circuit_t2}} Using Octave, we determine the values of every node voltage of the circuit. \par
 
+\begin{figure}[h] \centering
+\includegraphics[width=0.9\linewidth]{diagram_t2.pdf}
+\caption{Diagram of the circuit considered for the computations}
+\label{fig:diagram_t2}
+\end{figure}
 
 \begin {equation}
 	V_0 = 0
