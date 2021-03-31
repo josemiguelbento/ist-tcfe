@@ -14,14 +14,18 @@
 
 *-------------------------------------------------------
 * NGSPICE simulation script
-*
+* natural repsonse of circuit with boundary conditions v(6) and v(8) as computed in sim_t2_2.net
 
 * forces current values to be saved
 .options savecurrents
 
 *resistors
-.INCLUDE data_simeq.txt
-.INCLUDE datav6v8.txt
+.INCLUDE data_sim3.txt
+.ic v(6) = 8.573530 v(8) = 0 
+*alterar para automatizar depois
+
+.end 
+
 .control
 
 *makes plots in color
@@ -37,15 +41,12 @@ set color6=rgb:4/0/0
 op
 
 echo "********************************************"
-echo  "Operating point"
+echo  "Transient analysis"
 echo "********************************************"
+tran 1e-6 20e-3
 
-echo  "opeq_TAB"
-print all
-echo  "opeq_END"
-
+hardcopy trans.ps v(6) 
+echo trans_FIG
 
 quit
 .endc
-
-.end

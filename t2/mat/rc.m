@@ -149,6 +149,21 @@ syms C
 syms vc_n(t) %natural solution
 syms i_n(t)
 
+sim3f=fopen('data_sim3.txt','w');
+fprintf(simf, 'R1 1 2 %fk\n', data(1,3));
+fprintf(simf, 'R2 2 3 %fk\n', data(2,3));
+fprintf(simf, 'R3 2 5 %fk\n', data(3,3));
+fprintf(simf, 'R4 0 5 %fk\n', data(4,3));
+fprintf(simf, 'R5 5 6 %fk\n', data(5,3));
+fprintf(simf, 'R6 0 4 %fk\n', data(6,3));
+fprintf(simf, 'R7 7 8 %fk\n', data(7,3));
+fprintf(simf, 'Vs 1 0 DC %f\n', 0);
+fprintf(simf, 'Vf 4 7 DC 0\n');
+fprintf(simf, 'C 6 8 %fu\n', data(9,3));
+fprintf(simf, 'Gb 6 3 2 5 %fm\n', data(10,3));
+fprintf(simf, 'Hd 5 8 Vf %fk\n', data(11,3));
+
+fclose(sim3f);
 C = sym(sprintf('%.11f', data(9,3)));
 R = sym(sprintf('%.11f', abs(Req)));
 

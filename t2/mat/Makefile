@@ -3,6 +3,7 @@ octave.log: rc.m
 	octave $< > $@
 	mv data_sim.txt ~/ist-tcfe/t2/sim
 	mv data_simeq.txt ~/ist-tcfe/t2/sim
+	mv data_sim3.txt ~/ist-tcfe/t2/sim
 	
 	sed -i 's/\=/\&/g' nodal_tab.tex
 	sed -i 's/$$/\\\\ \\hline/g' nodal_tab.tex
