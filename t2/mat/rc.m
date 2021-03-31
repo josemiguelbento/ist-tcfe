@@ -141,5 +141,36 @@ printf('$tau$ = %e', tau)
 diary off
 
 
+%NATUAL SOLUTION ANALYSIS
+
+syms t
+syms R
+syms C
+syms vc_n(t) %natural solution
+syms i_n(t)
+
+C = sym(sprintf('%.11f', data(9,3)));
+R = sym(sprintf('%.11f', abs(Req)));
+
+syms A
+syms wn
+vc_n(t) == A*exp(wn*t)
+
+wn = -1/abs(tau)
+A = double(Vx)
+
+printf("\n\nNatural solution:\n");
+
+t=0:1e-6:20e-3;
+v6_n = A*exp(wn*t);
+
+hf=figure(1)
+
+plot(t*1000, v6_n, "g")
+
+xlabel ("t[ms]");
+ylabel ("v6_n[V]");
+legend('v6_n(t)', 'Location', 'Northeast');
+print (hf, "natural.eps", "-depsc");
 
 
