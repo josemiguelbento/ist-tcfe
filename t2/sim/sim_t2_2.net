@@ -42,6 +42,8 @@ echo "********************************************"
 
 echo  "opeq_TAB"
 print all
+print v(6)-v(8)
+print (v(6)-v(8))/vx#branch
 echo  "opeq_END"
 
 
