@@ -21,7 +21,7 @@
 .options savecurrents
 
 *resistors
-.INCLUDE data_sim.txt
+.INCLUDE data_simeq.txt
 
 .control
 
@@ -43,9 +43,9 @@ echo "********************************************"
 *print v-sweep
 *print @R6[i]
 
-echo  "op_TAB"
+echo  "opeq_TAB"
 print all
-echo  "op_END"
+echo  "opeq_END"
 
 
 

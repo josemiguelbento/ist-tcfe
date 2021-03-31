@@ -70,4 +70,26 @@ In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and t
 
 As can be seen, the values obtained via the mesh and the node analysis are the same, which suggests that for this simple circuit, the methods are equally precise, as expected.
 
+\subsection{Equeivalent resistor form capacitor's prespective} 
+
+
+
+
+In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the Octave script for both methods are presented. Here, the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
+ \pagebreak 
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Values for aux circuit}\\ \hline
+    \input{req_tab}
+  \end{tabular}
+  \caption{A variable preceded by @ is of type {\em current}
+    and expressed in milliampere (mA); other variables are of type {\it voltage} and expressed in
+    Volt (V).}
+  \label{tab:equivalent resistor}
+\end{table}
+
+
+As can be seen, the values obtained via the mesh and the node analysis are the same, which suggests that for this simple circuit, the methods are equally precise, as expected.
 
