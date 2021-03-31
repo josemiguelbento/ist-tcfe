@@ -7,7 +7,7 @@ all: ngspice.log
 
 
 	
-ngspice.log: ../sim/t0.net
+ngspice.log: ../sim/sim_t2_1.net
 	ngspice -b $< -o $@
 	
 

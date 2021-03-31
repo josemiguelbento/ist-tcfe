@@ -27,12 +27,12 @@ op
 echo "********************************************"
 echo  "Operating point"
 echo "********************************************"
-print Vcc
-print @Q1[ic]
-print @Rf[i]
 
-echo  "op_TAB_1"
+echo  "op_TAB"
 print all
 echo  "op_END"
 
+quit
+.endc
 
+.end
