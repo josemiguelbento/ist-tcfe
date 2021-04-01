@@ -226,6 +226,21 @@ V8p = double(abs(sn_p.V8p))
 
 diary off
 
+sim4f=fopen('data_sim4.txt','w');
+fprintf(sim4f, 'R1 1 2 %fk\n', data(1,3));
+fprintf(sim4f, 'R2 2 3 %fk\n', data(2,3));
+fprintf(sim4f, 'R3 2 5 %fk\n', data(3,3));
+fprintf(sim4f, 'R4 0 5 %fk\n', data(4,3));
+fprintf(sim4f, 'R5 5 6 %fk\n', data(5,3));
+fprintf(sim4f, 'R6 0 4 %fk\n', data(6,3));
+fprintf(sim4f, 'R7 7 8 %fk\n', data(7,3));
+fprintf(sim4f, 'Vs 1 0 sin(0 1 1k)\n');
+fprintf(sim4f, 'Vf 4 7 DC 0\n');
+fprintf(sim4f, 'C 6 8 %fu\n', data(9,3));
+fprintf(sim4f, 'Gb 6 3 2 5 %fm\n', data(10,3));
+fprintf(sim4f, 'Hd 5 8 Vf %fk\n', data(11,3));
+
+fclose(sim4f);
 
 M_V6p = double(abs(sn_p.V6p))
 A_V6p = double(angle(sn_p.V6p))
@@ -266,7 +281,7 @@ vst=cat(2,vsi,vs_p);
 
 hft = figure (3);
 title('point 5 - graph from -5 to 20 ms')
-plot (tt*1000, v6t_t, ";v6(t);", tt*1000, vst,";vs(t);");
+plot (tt*1000, vst,";vs(t);", tt*1000, v6t_t, ";v6(t);");
 xlabel ("t [ms]");
 ylabel ("v [V]");
 legend('Location','northeast');
