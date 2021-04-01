@@ -229,16 +229,19 @@ diary off
 
 M_V6p = double(abs(sn_p.V6p))
 A_V6p = double(angle(sn_p.V6p))
+M_V8p = double(abs(sn_p.V8p))
+A_V8p = double(angle(sn_p.V8p))
 M_Vsp = double(abs(Vsp))
 A_Vsp = double(angle(Vsp))
 
 t=0:1e-6:20e-3;
 v6_f = M_V6p*cos(double(w)*t-A_V6p);
+v8_f = M_V8p*cos(double(w)*t-A_V8p);
 vs_p = M_Vsp*cos(double(w)*t-A_Vsp);
 
 hf = figure (2);
 title('graph of forced from 0 to 20 ms')
-plot (t*1000, v6_f, ";v6_f(t);", t*1000, vs_p,";vs_p(t);");
+plot (t*1000, v6_f, ";v6_f(t);");
 
 xlabel ("t [ms]");
 ylabel ("v [V]");
@@ -250,11 +253,15 @@ print (hf, "vs_v6_f_tab.odg", "-depsc");
 
 
 v6_t = v6_n + v6_f;
+v8_t = v8_f;
 ti=-5e-3:1e-6:0;
 tt=cat(2,ti,t);
 
 v6i=V6*ones(1,size(ti,2));
 v6t_t=cat(2,v6i,v6_t);
+
+v8i=V8*ones(1,size(ti,2));
+v8t_t=cat(2,v8i,v8_t);
 
 vsi=data(8,3)*ones(1,size(ti,2));
 vst=cat(2,vsi,vs_p);
@@ -268,4 +275,11 @@ legend('Location','northeast');
 print (hft, "theo5_tab.odg", "-depsc");
 
 
+hfc = figure (4);
+title('capacitor voltage from -5 to 20 ms')
+plot (tt*1000, v6t_t-v8t_t, ";vc(t);");
+xlabel ("t [ms]");
+ylabel ("v [V]");
+legend('Location','northeast');
+print (hfc, "capacitor_voltage_tab.odg", "-depsc");
 
