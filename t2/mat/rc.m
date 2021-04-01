@@ -231,13 +231,11 @@ M_V6p = double(abs(sn_p.V6p))
 A_V6p = double(angle(sn_p.V6p))
 M_V8p = double(abs(sn_p.V8p))
 A_V8p = double(angle(sn_p.V8p))
-M_Vsp = double(abs(Vsp))
-A_Vsp = double(angle(Vsp))
 
 t=0:1e-6:20e-3;
 v6_f = M_V6p*cos(double(w)*t-A_V6p);
 v8_f = M_V8p*cos(double(w)*t-A_V8p);
-vs_p = M_Vsp*cos(double(w)*t-A_Vsp);
+vs_p = sin(double(w)*t);
 
 hf = figure (2);
 title('graph of forced from 0 to 20 ms')
