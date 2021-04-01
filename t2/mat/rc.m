@@ -189,3 +189,83 @@ legend('v6_n(t)', 'Location', 'Northeast');
 print (hf, "natural.eps", "-depsc");
 
 
+%NODAL THEO 4 forced solution
+f=1000
+w=sym(sprintf('2*pi*%.11f', f))
+C = sym(sprintf('%.11f', data(9,3)))
+Vsp = sym (0-j)
+Z = sym (0-1/(w*C)*j*10^6)
+
+syms V0p V1p V2p V3p V4p V5p V6p V7p V8p Vxp
+
+Eq3_v0 = V0p == 0;
+Eq3_f = V4p == V7p;
+Eq3_d = V5p-V8p == Kd*(V0p-V4p)/R6;
+Eq3_s = V1p-V0p == Vsp;
+Eq3_2 = (V2p-V1p)/R1 + (V2p-V5p)/R3 + (V2p-V3p)/R2 == 0;
+Eq3_3 = (V3p-V2p)/R2 - Kb*(V2p-V5p) == 0;
+Eq3_0 = (V1p-V2p)/R1 + (V0p-V4p)/R6 + (V0p-V5p)/R4 == 0;
+Eq3_6 = Kb*(V2p-V5p) + (V6p-V5p)/R5 + (V6p-V8p)/Z == 0;
+Eq3_7 = (V4p-V0p)/R6 + (V7p-V8p)/R7 == 0;
+Eq3_x = Vxp == V6p-V8p;
+
+sn_p = solve(Eq3_v0,Eq3_f,Eq3_d,Eq3_s,Eq3_2,Eq3_3,Eq3_0,Eq3_6,Eq3_7,Eq3_x);
+
+diary "phaser_tab.tex"
+diary on
+
+V0p = double(abs(sn_p.V0p))
+V1p = double(abs(sn_p.V1p))
+V2p = double(abs(sn_p.V2p))
+V3p = double(abs(sn_p.V3p))
+V4p = double(abs(sn_p.V4p))
+V5p = double(abs(sn_p.V5p))
+V6p = double(abs(sn_p.V6p))
+V7p = double(abs(sn_p.V7p))
+V8p = double(abs(sn_p.V8p))
+
+diary off
+
+
+M_V6p = double(abs(sn_p.V6p))
+A_V6p = double(angle(sn_p.V6p))
+M_Vsp = double(abs(Vsp))
+A_Vsp = double(angle(Vsp))
+
+t=0:1e-6:20e-3;
+v6_f = M_V6p*cos(double(w)*t-A_V6p);
+vs_p = M_Vsp*cos(double(w)*t-A_Vsp);
+
+hf = figure (2);
+title('graph of forced from 0 to 20 ms')
+plot (t*1000, v6_f, ";v6_f(t);", t*1000, vs_p,";vs_p(t);");
+
+xlabel ("t [ms]");
+ylabel ("v [V]");
+legend('Location','northeast');
+print (hf, "vs_v6_f.eps", "-depsc");
+
+
+%NODAL THEO 4 total solution
+
+
+v6_t = v6_n + v6_f;
+ti=-5e-3:1e-6:0;
+tt=cat(2,ti,t);
+
+v6i=V6*ones(1,size(ti,2));
+v6t_t=cat(2,v6i,v6_t);
+
+vsi=data(8,3)*ones(1,size(ti,2));
+vst=cat(2,vsi,vs_p);
+
+hft = figure (3);
+title('point 5 - graph from -5 to 20 ms')
+plot (tt*1000, v6t_t, ";v6(t);", tt*1000, vst,";vs(t);");
+xlabel ("t [ms]");
+ylabel ("v [V]");
+legend('Location','northeast');
+print (hft, "theo5.eps", "-depsc");
+
+
+

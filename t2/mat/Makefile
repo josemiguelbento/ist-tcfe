@@ -10,6 +10,10 @@ octave.log: rc.m
 	sed -i 's/\_//g' nodal_tab.tex
 	mv nodal_tab.tex ~/ist-tcfe/t2/doc
 	
+	sed -i 's/\=/\&/g' phaser_tab.tex
+	sed -i 's/$$/\\\\ \\hline/g' phaser_tab.tex
+	mv phaser_tab.tex ~/ist-tcfe/t2/doc
+	
 	sed -i 's/\=/\&/g' req_tab.tex
 	sed -i 's/$$/\\\\ \\hline/g' req_tab.tex
 	sed -i 's/eq//g' req_tab.tex
@@ -18,7 +22,7 @@ octave.log: rc.m
 	mv req_tab.tex ~/ist-tcfe/t2/doc
 clean:
 	@rm -f octave.log octave-workspace *.eps *~
-	@rm -f data.txt
+	@rm -f data*
 	@rm -f *_tab.tex
 	
 .PHONY: clean
