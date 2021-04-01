@@ -186,7 +186,7 @@ plot(t*1000, v6_n, "g")
 xlabel ("t[ms]");
 ylabel ("v6_n[V]");
 legend('v6_n(t)', 'Location', 'Northeast');
-print (hf, "natural.eps", "-depsc");
+print (hf, "natural_tab.odg", "-depsc");
 
 
 %NODAL THEO 4 forced solution
@@ -243,7 +243,7 @@ plot (t*1000, v6_f, ";v6_f(t);", t*1000, vs_p,";vs_p(t);");
 xlabel ("t [ms]");
 ylabel ("v [V]");
 legend('Location','northeast');
-print (hf, "vs_v6_f.eps", "-depsc");
+print (hf, "vs_v6_f_tab.odg", "-depsc");
 
 
 %NODAL THEO 4 total solution
@@ -265,7 +265,7 @@ plot (tt*1000, v6t_t, ";v6(t);", tt*1000, vst,";vs(t);");
 xlabel ("t [ms]");
 ylabel ("v [V]");
 legend('Location','northeast');
-print (hft, "theo5.eps", "-depsc");
+print (hft, "theo5_tab.odg", "-depsc");
 
 
 

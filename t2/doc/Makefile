@@ -26,6 +26,7 @@ clean:
 	@rm -rf *.aux *.bbl *.blg *.glg *.glo *.gls *.ilg *.ist *.lof
 	@rm -rf *.log *.lot *.nlo *.nls *.out *.toc *~ *.*% ./*.pdf ./*.eps
 	@rm -f *_tab.tex
+	@rm -f *_tab.odg
 
 .PHONY: all clean
 

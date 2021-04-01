@@ -11,6 +11,7 @@ octave.log: rc.m
 	mv nodal_tab.tex ~/ist-tcfe/t2/doc
 	
 	sed -i 's/\=/\&/g' phaser_tab.tex
+	sed -i 's/p//g' phaser_tab.tex
 	sed -i 's/$$/\\\\ \\hline/g' phaser_tab.tex
 	mv phaser_tab.tex ~/ist-tcfe/t2/doc
 	
@@ -20,6 +21,9 @@ octave.log: rc.m
 	sed -i 's/R/Req/g' req_tab.tex
 	sed -i 's/tau/\\tau/g' req_tab.tex
 	mv req_tab.tex ~/ist-tcfe/t2/doc
+	
+	mv *.odg ~/ist-tcfe/t2/doc
+
 clean:
 	@rm -f octave.log octave-workspace *.eps *~
 	@rm -f data*
