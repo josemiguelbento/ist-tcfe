@@ -300,7 +300,7 @@ print (hfc, "capacitor_voltage_tab.odg", "-depsc");
 
 syms f
 
-Z = sym (0-1/(2*f*C)*j*10^6)
+Z = sym (0-1/(2*sym(pi)*f*C)*j*10^6)
 
 syms V0p V1p V2p V3p V4p V5p V6p V7p V8p Vxp
 
@@ -322,22 +322,34 @@ sn_p.Vxp
 sn_p.V8p
 Vsp
 
-freq=logspace(-1,6,50);
-resp=zeros(1,length(freq));
+freq=logspace(-1,6,200)
 
-for i=1:length(freq)
-  f=sym(sprintf('%.11f', freq(i)));
-  respx(1,i) = double(abs(subs(sn_p.Vxp)));
-  resp8(1,i) = double(abs(subs(sn_p.V8p)));
-  resps(1,i) = double(abs(Vsp));
-endfor
-hfr=figure (5);
-title('frequency response from v6-v8 (capacitor voltage')
-semilogx(freq, respx, ";vc(f);",freq, resp8, ";v8(f);",freq, resps, ";vs(f);");
-xlabel ("f [Hz]");
-ylabel ("v [V]");
-legend('Location','northeast');
+fhx = function_handle(sn_p.Vxp);
+ax = fhx(freq);
+
+fh6 = function_handle(sn_p.V6p);
+a6 = fh6(freq);
+
+fhs = function_handle(Vsp);
+as = fhs(freq);
+
+aux1= double(abs(Vsp));
+aux2= double(angle(Vsp));
+vsf = aux1*ones(1,size(freq,2));
+vsfa = aux1*ones(1,size(freq,2));
+
+hfr = figure(5);
+semilogx(freq, 20*log10(abs(ax)),";vc(f);", freq, 20*log10(abs(a6)),";v8(f);");
+hold on
+semilogx(freq, 20*log10(vsf),";vs(f);")
+hold off
+
 print (hfr, "freq_resp_tab.odg", "-depsc");
 
 
-
+hfa = figure (6);
+semilogx(freq,180/pi*angle(a6), "r",freq,vsfa,"g",freq,180/pi*angle(ax), "b");
+xlabel ("f [Hz]");
+ylabel ("phase [degrees]");
+legend('phase.v6(f)','phase.vs(f)','phase.vc(f)','Location','northwest');
+print (hfa, "angle_tab.odg", "-depsc");
