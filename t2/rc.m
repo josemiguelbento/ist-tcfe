@@ -254,7 +254,7 @@ vs_p = sin(double(w)*t);
 
 hf = figure (2);
 title('graph of forced from 0 to 20 ms')
-plot (t*1000, v6_f, ";v6_f(t);");
+plot (t*1000, ones(1, size(t,1)), ";v6_f(t);");
 
 xlabel ("t [ms]");
 ylabel ("v [V]");
