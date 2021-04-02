@@ -1,0 +1,64 @@
+*Values
+*Number:95787
+*Units for the values: V, mA, kOhm, mS and uF
+*R1 = 1.02943118797 
+*R2 = 2.01395929215 
+*R3 = 3.04865352258 
+*R4 = 4.00813564187 
+*R5 = 3.14877356154 
+*R6 = 2.0324721756 
+*R7 = 1.02032682556 
+*Vs = 5.05481864136 
+*C = 1.02872173547 
+*Kb = 7.12052712169 
+*Kd = 8.12923323408
+
+* NGSPICE simulation script
+*
+* forces current values to be saved
+.options savecurrents
+
+R1 1 2 1.029431k
+R2 2 3 2.013959k
+R3 2 5 3.048654k
+R4 0 5 4.008136k
+R5 5 6 3.148774k
+R6 0 4 2.032472k
+R7 7 8 1.020327k
+Vs 1 0 0 ac 1
+Vf 4 7 DC 0
+C 6 8 1.028722u
+Gb 6 3 2 5 7.120527m
+Hd 5 8 Vf 8.129233k
+
+*.INCLUDE data_sim5.txt
+.ic v(6)=8.573530 v(8)=0
+.end
+.control
+
+*makes plots in color
+set hcopypscolor=0
+set color0=white
+set color1=black
+set color2=red
+set color3=blue
+set color4=violet
+set color5=rgb:3/8/0
+set color6=rgb:4/0/0
+
+echo "********************************************"
+echo  "Frequency analysis"
+echo "********************************************"
+
+ac dec 0.1 10 100MEG
+
+hardcopy acm.ps db(v(coll)) v(base)
+echo acm_FIG
+hardcopy acp.ps v(base)
+echo acp_FIG
+
+
+quit
+.endc
+.end
+
