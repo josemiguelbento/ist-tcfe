@@ -248,8 +248,8 @@ M_V8p = double(abs(sn_p.V8p))
 A_V8p = double(angle(sn_p.V8p))
 
 t=0:1e-6:20e-3;
-v6_f = M_V6p*cos(double(w)*t-A_V6p);
-v8_f = M_V8p*cos(double(w)*t-A_V8p);
+v6_f = M_V6p*cos(double(w)*t+A_V6p);
+v8_f = M_V8p*cos(double(w)*t+A_V8p);
 vs_p = sin(double(w)*t);
 
 hf = figure (2);
