@@ -29,18 +29,18 @@ fprintf(simf, 'Hd 5 8 Vf %fk\n', data(11,3));
 fclose(simf);
 
 
-R1 = sym(sprintf('%.11f', data(1,3)));
-R2 = sym(sprintf('%.11f', data(2,3)));
-R3 = sym(sprintf('%.11f', data(3,3)));
-R4 = sym(sprintf('%.11f', data(4,3)));
-R5 = sym(sprintf('%.11f', data(5,3)));
-R6 = sym(sprintf('%.11f', data(6,3)));
-R7 = sym(sprintf('%.11f', data(7,3)));
+R1 = sym(sprintf('%.11f', data(1,3)*1000));
+R2 = sym(sprintf('%.11f', data(2,3)*1000));
+R3 = sym(sprintf('%.11f', data(3,3)*1000));
+R4 = sym(sprintf('%.11f', data(4,3)*1000));
+R5 = sym(sprintf('%.11f', data(5,3)*1000));
+R6 = sym(sprintf('%.11f', data(6,3)*1000));
+R7 = sym(sprintf('%.11f', data(7,3)*1000));
 Vs = sym(sprintf('%.11f', data(8,3)));
 Vf = sym('0');
-C = sym(sprintf('%.11f', data(9,3)));
-Kb = sym(sprintf('%.11f', data(10,3)));
-Kd = sym(sprintf('%.11f', data(11,3)));
+C = sym(sprintf('%.11f', data(9,3)*10^-6));
+Kb = sym(sprintf('%.11f', data(10,3)/1000));
+Kd = sym(sprintf('%.11f', data(11,3)*1000));
 
 %%NODAL THEO 1
 syms V0 V1 V2 V3 V4 V5 V6 V7 V8
@@ -136,7 +136,7 @@ V6eq = double(sn_eq.V6eq)
 V7eq = double(sn_eq.V7eq)
 V8eq = double(sn_eq.V8eq)
 Req = double(Vx)/double(sn_eq.Ix)
-tau = Req*1000*double(C)*10^(-6);
+tau = Req*double(C);
 printf('$tau$ = %e', tau)
 diary off
 
@@ -192,9 +192,9 @@ print (hf, "natural_tab.odg", "-depsc");
 %NODAL THEO 4 forced solution
 f=1000
 w=sym(sprintf('2*pi*%.11f', f))
-C = sym(sprintf('%.11f', data(9,3)))
+C = sym(sprintf('%.11f', data(9,3)*10^-6))
 Vsp = sym (0-j)
-Z = sym (0-1/(w*C)*j*10^6)
+Z = sym (0-1/(w*C)*j)
 
 syms V0p V1p V2p V3p V4p V5p V6p V7p V8p Vxp
 
@@ -300,7 +300,7 @@ print (hfc, "capacitor_voltage_tab.odg", "-depsc");
 
 syms f
 
-Z = sym (0-1/(2*sym(pi)*f*C)*j*10^6)
+Z = sym (0-1/(2*sym(pi)*f*C)*j)
 
 syms V0p V1p V2p V3p V4p V5p V6p V7p V8p Vxp
 
