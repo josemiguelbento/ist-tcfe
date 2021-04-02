@@ -298,6 +298,22 @@ print (hfc, "capacitor_voltage_tab.odg", "-depsc");
 
 %FREQUENCY RESPONSE
 
+sim5f=fopen('data_sim5.txt','w');
+fprintf(sim5f, 'R1 1 2 %fk\n', data(1,3));
+fprintf(sim5f, 'R2 2 3 %fk\n', data(2,3));
+fprintf(sim5f, 'R3 2 5 %fk\n', data(3,3));
+fprintf(sim5f, 'R4 0 5 %fk\n', data(4,3));
+fprintf(sim5f, 'R5 5 6 %fk\n', data(5,3));
+fprintf(sim5f, 'R6 0 4 %fk\n', data(6,3));
+fprintf(sim5f, 'R7 7 8 %fk\n', data(7,3));
+fprintf(sim5f, 'Vs 1 0 0 ac 1 -90\n');
+fprintf(sim5f, 'Vf 4 7 DC 0\n');
+fprintf(sim5f, 'C 6 8 %fu\n', data(9,3));
+fprintf(sim5f, 'Gb 6 3 2 5 %fm\n', data(10,3));
+fprintf(sim5f, 'Hd 5 8 Vf %fk\n', data(11,3));
+
+fclose(sim5f);
+
 syms f
 
 Z = sym (0-1/(2*sym(pi)*f*C)*j)
