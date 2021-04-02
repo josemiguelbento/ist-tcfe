@@ -296,3 +296,48 @@ ylabel ("v [V]");
 legend('Location','northeast');
 print (hfc, "capacitor_voltage_tab.odg", "-depsc");
 
+%FREQUENCY RESPONSE
+
+syms f
+
+Z = sym (0-1/(2*f*C)*j*10^6)
+
+syms V0p V1p V2p V3p V4p V5p V6p V7p V8p Vxp
+
+Eq3_v0 = V0p == 0;
+Eq3_f = V4p == V7p;
+Eq3_d = V5p-V8p == Kd*(V0p-V4p)/R6;
+Eq3_s = V1p-V0p == Vsp;
+Eq3_2 = (V2p-V1p)/R1 + (V2p-V5p)/R3 + (V2p-V3p)/R2 == 0;
+Eq3_3 = (V3p-V2p)/R2 - Kb*(V2p-V5p) == 0;
+Eq3_0 = (V1p-V2p)/R1 + (V0p-V4p)/R6 + (V0p-V5p)/R4 == 0;
+Eq3_6 = Kb*(V2p-V5p) + (V6p-V5p)/R5 + (V6p-V8p)/Z == 0;
+Eq3_7 = (V4p-V0p)/R6 + (V7p-V8p)/R7 == 0;
+Eq3_x = Vxp == V6p-V8p;
+
+sn_p = solve(Eq3_v0,Eq3_f,Eq3_d,Eq3_s,Eq3_2,Eq3_3,Eq3_0,Eq3_6,Eq3_7,Eq3_x);
+
+printf("\n\nfrequency response\n");
+sn_p.Vxp
+sn_p.V8p
+Vsp
+
+freq=logspace(-1,6,50);
+resp=zeros(1,length(freq));
+
+for i=1:length(freq)
+  f=sym(sprintf('%.11f', freq(i)));
+  respx(1,i) = double(abs(subs(sn_p.Vxp)));
+  resp8(1,i) = double(abs(subs(sn_p.V8p)));
+  resps(1,i) = double(abs(Vsp));
+endfor
+hfr=figure (5);
+title('frequency response from v6-v8 (capacitor voltage')
+semilogx(freq, respx, ";vc(f);",freq, resp8, ";v8(f);",freq, resps, ";vs(f);");
+xlabel ("f [Hz]");
+ylabel ("v [V]");
+legend('Location','northeast');
+print (hfr, "freq_resp_tab.odg", "-depsc");
+
+
+
