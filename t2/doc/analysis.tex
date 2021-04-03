@@ -48,7 +48,7 @@ The nodal method is aplied to the circuit in order to determine the voltage in a
 %point 2
 \subsection{Equivalent resistor as seen from the capacitor terminals}
 
-To compute the equivalent resistance as seen by C the independent source $V_c$ needs to be switched off. We do this by replacing it with a short circuit ($V_s=0$). We also replace the capacitor with a voltage source $V_x=V_6-V_8$.We use the $V_6$ and $V_8$ from the previous section beacause the voltage drop at the ends of the capacitor needs to be a continuous function (there can not be an energy spike in the capacitor). With this in mind a nodal analysis is performed in order to determine the current $I_x$ that is supplied by $V_x$.With this values we can determine $R_{eq}$ ($R_{eq}=V_x/I_x$). All this procedures were required in order to determine the time constant $\tau$ ($\tau=R_{eq}*C$). The time constant in crucial to determine the natural and forced solutions for $V_6$, which will be done in the next subsections. 
+To compute the equivalent resistance as seen by C the independent source $V_c$ needs to be switched off. We do this by replacing it with a short circuit ($V_s=0$). We also replace the capacitor with a voltage source $V_x=V_6-V_8$.We use the $V_6$ and $V_8$ from the previous section beacause the voltage drop at the ends of the capacitor needs to be a continuous function (there can not be an energy discontinuity in the capacitor). With this in mind a nodal analysis is performed in order to determine the current $I_x$ that is supplied by $V_x$.With this values we can determine $R_{eq}$ ($R_{eq}=V_x/I_x$). All this procedures were required in order to determine the time constant $\tau$ ($\tau=R_{eq}*C$). The time constant in crucial to determine the natural and forced solutions for $V_6$, which will be done in the next subsections. 
 
 %In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the Octave script for both methods are presented. Here, the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
 \begin{table}[H]
@@ -124,6 +124,22 @@ In this section the final total solution $V_6$ for a frequency of 1KHz is determ
 
 \pagebreak
 \subsection{Frequency responses $v_c(f)$, $v_s(f)$ and $v_6(f)$ for frequency range 0.1 Hz to 1 MHz}
+\label{ref}
+This circuit can serve the purpouse of a low-pass filter.
+In other words, when the frequencies are low, there is plenty of time for the capacitor 
+to charge up to practically the same voltage as the input, which means
+it will act aproximately as an open circuit, thus allowing a considerable potential drop 
+from nodes 6 to 8.This means that for low frequencies the voltage in the capacitor
+is in phase with the voltage source. However when the frequencies are high, 
+the capacitor only has a small time to charge up before the input changes direction, which 
+means it will act aproximately as a short-circuit. Therefore, there will be close to none 
+potential drop between nodes 6 and 8 and the capacitor and source will start to fall 
+out of phase, for frequencies greater that the cutoff frequecy ($f_c$). 
+This frequency can be calculated with the following formula. $f_c = \frac{1}{2.pi.\tau}$ 
+For the values provided this cutoff frequency is around 500Hz. This explains the steep drop 
+in potential difference that we can see in the graph around the first and third decades.
+The phase difference between the capacitor voltage and the voltage source also begins to 
+show at around this frequency as can be seen in \textbf{Figure: ~\ref{fig:angle_resp}}.
 \begin{figure}[H] \centering
 \includegraphics[width=0.9\linewidth]{freq_resp_tab.pdf}
 \caption{point 6: Graph for amplitude frequency response of Vc, V6 and Vs for frequencies ranging from 0.1Hz to 1MHz}
