@@ -184,7 +184,7 @@ hf=figure(1)
 plot(t*1000, v6_n, "g")
 
 xlabel ("t[ms]");
-ylabel ("v6_n[V]");
+ylabel ("Potencial in node 6 in Volts");
 legend('v6_n(t)', 'Location', 'Northeast');
 print (hf, "natural_tab.odg", "-depsc");
 
@@ -355,7 +355,7 @@ vsf = aux1*ones(1,size(freq,2));
 vsfa = aux2*ones(1,size(freq,2));
 
 hfr = figure(5);
-semilogx(freq, 20*log10(abs(ax)),";vc(f);", freq, 20*log10(abs(a6)),";v8(f);");
+semilogx(freq, 20*log10(abs(ax)),";vc(f);", freq, 20*log10(abs(a6)),";v6(f);");
 hold on
 semilogx(freq, 20*log10(vsf),";vs(f);")
 hold off

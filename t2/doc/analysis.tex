@@ -1,140 +1,111 @@
 \section{Theoretical Analysis}
 \label{sec:analysis}
 
-In this section, the circuit shown in \textbf{Figure~\ref{fig:circuit_t1}} is analysed
-theoretically using two methods: the mesh analysis and the nodal analysis.\par
+In this section, the circuit shown in \textbf{Figure~\ref{fig:diagram_t2}} is analysed
+theoretically.\par
 
-
-\subsection{Nodal Analysis} 
-For the nodal analysis we apply the Kirchhoff Current Law (KCL) to the nodes that are not conected to voltage sources (equations \ref{eq:n3} to \ref{eq:n7}). We obtain 2 more equations from the potencial difference at the terminals of the voltage sources (equations \ref{eq:n8} and \ref{eq:n9}). As was stated before, {\it node 0} is the ground node and therefore the voltage at this node is 0V (equation \ref{eq:n1}). For the simulation analysis it was necessesary to add another "fictional" voltage source that provides 0 volts to the circuit, between node 7 and resistor 6. This "fictional" voltage source was also considered in the Theoretical Analysis, as it has no real effect on the circuit. It was needed to define in the ngspice code the current on which the current-controlled voltage source depends on. This yields equation number \ref{eq:n2}. Now we have 9 equations for 9 unkown variables - voltage {\it$V_{0}$}  to {\it$V_{8}$}. The schematics correponding to this approach can be seen in \textbf{Figure~\ref{fig:circuit_t2}} Using Octave, we determine the values of every node voltage of the circuit. \par
-
-\begin{figure}[h] \centering
-\includegraphics[width=0.9\linewidth]{diagram_t2.pdf}
-\caption{Diagram of the circuit considered for the computations}
+\begin{figure}[h!] \centering
+\includegraphics[width=0.6\linewidth]{diagram_t2.pdf}
+\caption{Diagram of the circuit considered for the computations and simulations}
 \label{fig:diagram_t2}
 \end{figure}
 
-\begin {equation}
-	V_0 = 0
-	\label{eq:n1}
-\end{equation}
-\begin {equation}
-	V_8 = V_7
-	\label{eq:n2}
-\end{equation}
-\begin {equation}
-	\frac{V_1-V_2}{R_1} + \frac{V_0 - V_8}{R_6} + \frac{V_0 - V_4}{R_4} = 0
-	\label{eq:n3}
-\end{equation}
-\begin {equation}
-	\frac{V_2-V_4}{R_3} + \frac{V_2-V_3}{R_2} + \frac{V_2-V_1}{R_1} = 0
-	\label{eq:n4}
-\end{equation}
-\begin {equation}
-	- K_b(V_2-V_4) + \frac{V_3-V_2}{R_2} = 0
-	\label{eq:n5}
-\end{equation}
-\begin {equation}
-	\frac{V_5-V_4}{R_5} + K_b(V_2-V_4) - Id = 0
-	\label{eq:n6}
-\end{equation}
-\begin {equation}
-	\frac{V_7-V_6}{R_7} + \frac{V_7 - V_0}{R_6} = 0
-	\label{eq:n7}
-\end{equation}
-\begin {equation}
-	V_1 - V_0 = V_a
-	\label{eq:n8}
-\end{equation}
-\begin {equation}
-	V_4 - V_6 = K_c  \frac{V_0 - V_7}{R_6}
-	\label{eq:n9}
-\end{equation}
-
-
-In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the Octave script for both methods are presented. Here, the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
- \pagebreak 
-\begin{table}[h]
-  \centering
+%point 1
+\subsection{Analysis for $t<0$} 
+The nodal method is aplied to the circuit in order to determine the voltage in all nodes and the current on all branches . The nodal method aplies KVL and for $t<0$ no current passes through the capacitor, and therefore this component behaves like an open circuit.
+%In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the Octave script for both methods are presented. Here, the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
+ 
+\begin{table}[h!]
+  \centering 
   \begin{tabular}{|l|r|}
     \hline    
     {\bf Name} & {\bf Node method}\\ \hline
     \input{nodal_tab}
   \end{tabular}
-  \caption{A variable preceded by @ is of type {\em current}
-    and expressed in milliampere (mA); other variables are of type {\it voltage} and expressed in
+  \caption{A variable that starts with "Ir" and the variable "Gb" are of type {\em current}
+    and expressed in milliampere (mA); all the other variables that start with a "V" are of the type {\it voltage} and expressed in
     Volt (V).}
   \label{tab:theoretical}
 \end{table}
 
+%point 2
+\subsection{Equivalent resistor as seen from the capacitor terminals}
 
-As can be seen, the values obtained via the mesh and the node analysis are the same, which suggests that for this simple circuit, the methods are equally precise, as expected.
+To compute the equivalent resistance as seen by C the independent source $V_c$ needs to be switched off. We do this by replacing it with a short circuit ($V_s=0$). We also replace the capacitor with a voltage source $V_x=V_6-V_8$.We use the $V_6$ and $V_8$ from the previous section beacause the voltage drop at the ends of the capacitor needs to be a continuous function (there can not be an energy spike in the capacitor). With this in mind a nodal analysis is performed in order to determine the current $I_x$ that is supplied by $V_x$.With this values we can determine $R_{eq}$ ($R_{eq}=V_x/I_x$). All this procedures were required in order to determine the time constant $\tau$ ($\tau=R_{eq}*C$). The time constant in crucial to determine the natural and forced solutions for $V_6$, which will be done in the next subsections. 
 
-\subsection{Equeivalent resistor form capacitor's prespective} 
-
-
-
-
-In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the Octave script for both methods are presented. Here, the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
- \pagebreak 
-\begin{table}[h]
+%In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the Octave script for both methods are presented. Here, the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
+\begin{table}[h!]
   \centering
   \begin{tabular}{|l|r|}
     \hline    
     {\bf Name} & {\bf Values for aux circuit}\\ \hline
     \input{req_tab}
   \end{tabular}
-  \caption{A variable preceded by @ is of type {\em current}
-    and expressed in milliampere (mA); other variables are of type {\it voltage} and expressed in
-    Volt (V).}
+  \caption{A variable that stars with a "V" is of type {\it voltage} and expressed in
+    Volt (V).The variable $R_{eq}$ is expresses in Ohm and the variable $\tau$ is expressed in seconds }
   \label{tab:equivalent resistor}
 \end{table}
+\vspace{10cm}
+\pagebreak
 
+%point 3
+\subsection{Natural solution for $V_6$}
 
+The natural solution depends on initial charge (voltage) and on $R_{eq}$ and C and it is computed by removing all independent sources and applying KVL.In Octave to compute the Natural solution the general formula derived in the theoretical classes was used: $V_{6n}(t)=Ae^{\frac{-t}{\tau}}$. In this formula $\tau$ is the time constant determined in the previous section and  A is a constant that can be determined through the boundry conditions (when $t=0$, $A=V_x$)
 
- \pagebreak 
-\begin{table}[h]
+\begin{figure}[H] \centering
+\includegraphics[width=0.9\linewidth]{natural_tab.pdf}
+\caption{Natural response of $V_6$ as a function os time in the interval from [0,20] ms}
+\label{fig:natural}
+\end{figure} 
+
+\pagebreak
+
+%point 4
+\subsection{Forced solution for $V_6$ with $f=1000Hz$}
+
+In this section the forced solution $V_{6f}$ is determined for the same time interval and for a frequency of 1KHz. To do this a nodal analysis was used but insted of resistences and capacitances, impedences were used. It was also  considered that the magnitude of the phaser of the voltage sorce $V_s$  was 1 ($V_s=1$). By taking all these steps the phaser voltages in all nodes were determined. The complex amplitudes of the phasers are presented in  \textbf{Table ~\ref{tab:equivalent resistor}}
+\begin{table}[h!]
   \centering
   \begin{tabular}{|l|r|}
     \hline    
     {\bf Name} & {\bf Complex amplitude voltage}\\ \hline
     \input{phaser_tab}
   \end{tabular}
-  \caption{The table for the complex amplitudes in point 4:}
+  \caption{Complex amplitudes in all nodes ***********quais são as unidades da amplitude V ou m?********}
   \label{tab:equivalent resistor}
 \end{table}
+\vspace{10cm}
+\pagebreak
 
-\begin{figure}[h] \centering
-\includegraphics[width=0.9\linewidth]{natural_tab.pdf}
-\caption{Graph for natural response point 3}
-\label{fig:natural}
-\end{figure}
-
-\begin{figure}[h] \centering
-\includegraphics[width=0.9\linewidth]{vs_v6_f_tab.pdf}
-\caption{Graph for forced response point 4}
-\label{fig:vs_v6_f}
-\end{figure}
-
-\begin{figure}[h] \centering
+%point 5
+\subsection{Final total solution $v_6(t)$}
+In this section the final total solution $V_6$ for a frequency of 1KHz is determined by superimposing the natural and forced solutions determined in previous sections ($V_6$=$V_{n6}$+$V_{6f}$) In \textbf{Figure: ~\ref{fig:theo5}} the voltage of the independent font $V_{st}$ and the voltage of $V_{6}$ were ploted for the time interval of [-5,20] ms. 
+\begin{figure}[h!] \centering
 \includegraphics[width=0.9\linewidth]{theo5_tab.pdf}
-\caption{point 5: Graph for time interval from -5 to 20 ms}
+\caption{Voltage of $V_{6}(t)$ and $V_{st}(t)$ as functions of time from [-5,20] ms}
 \label{fig:theo5}
 \end{figure}
+\vspace{15cm}
+\pagebreak
 
-\begin{figure}[h] \centering
+
+\subsection{Frequency responses $v_c(f)$, $v_s(f)$ and $v_6(f)$ for frequency range 0.1 Hz to 1 MHz}
+\begin{figure}[h!] \centering
 \includegraphics[width=0.9\linewidth]{freq_resp_tab.pdf}
-\caption{point 6: Graph for amplitude frequency response of Vc, V8 and Vs for frequencies ranging from 0.1Hz to 1MHz}
+\caption{point 6: Graph for amplitude frequency response of Vc, V6 and Vs for frequencies ranging from 0.1Hz to 1MHz}
 \label{fig:freq_resp}
 \end{figure}
 
-\begin{figure}[h] \centering
+\vspace{15cm}
+
+\begin{figure}[h!] \centering
 \includegraphics[width=0.9\linewidth]{angle_tab.pdf}
-\caption{point 6: Graph for phase frequency response of Vc, V8 and Vs for frequencies ranging from 0.1Hz to 1MHz}
+\caption{point 6: Graph for phase frequency response of Vc, V6 and Vs for frequencies ranging from 0.1Hz to 1MHz}
 \label{fig:angle_resp}
 \end{figure}
 
-
+\vspace{15cm}
 
 
 
