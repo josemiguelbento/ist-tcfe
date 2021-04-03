@@ -339,7 +339,7 @@ vsf = aux1*ones(1,size(freq,2));
 vsfa = aux1*ones(1,size(freq,2));
 
 hfr = figure(5);
-semilogx(freq, 20*log10(abs(ax)),";vc(f);", freq, 20*log10(abs(a6)),";v8(f);");
+semilogx(freq, 20*log10(abs(ax)),";vc(f);", freq, 20*log10(abs(a6)),";v6(f);");
 hold on
 semilogx(freq, 20*log10(vsf),";vs(f);")
 hold off
