@@ -22,7 +22,7 @@ fprintf(simf, 'R6 0 4 %fk\n', data(6,3));
 fprintf(simf, 'R7 7 8 %fk\n', data(7,3));
 fprintf(simf, 'Vs 1 0 DC %f\n', data(8,3));
 fprintf(simf, 'Vf 4 7 DC 0\n');
-fprintf(simf, 'C 6 8 %fu\n', data(9,3));
+fprintf(simf, 'C 6 8 %f\n' ,data(9,3));
 fprintf(simf, 'Gb 6 3 2 5 %fm\n', data(10,3));
 fprintf(simf, 'Hd 5 8 Vf %fk\n', data(11,3));
 
@@ -60,17 +60,17 @@ sn = solve(Eq_0,Eq_f,Eq_d,Eq_s,Eq_2,Eq_3,Eq_5,Eq_6,Eq_7);
 diary "nodal_tab.tex"
 diary on
 
-V0 = double(sn.V0)
-V1 = double(sn.V1)
-V2 = double(sn.V2)
-V3 = double(sn.V3)
-V4 = double(sn.V4)
-V5 = double(sn.V5)
-V6 = double(sn.V6)
-V7 = double(sn.V7)
-V8 = double(sn.V8)
+V0 = double(sn.V0);
+V1 = double(sn.V1);
+V2 = double(sn.V2);
+V3 = double(sn.V3);
+V4 = double(sn.V4);
+V5 = double(sn.V5);
+V6 = double(sn.V6);
+V7 = double(sn.V7);
+V8 = double(sn.V8);
 
-
+Gb = (V6 -V5)/double(R5)
 I_r1 = (V2 -V1)/double(R1)
 I_r2 = (V3 -V2)/double(R2)
 I_r3 = (V5 -V2)/double(R3)
@@ -78,7 +78,18 @@ I_r4 = (V5 -V0)/double(R4)
 I_r5 = (V6 -V5)/double(R5)
 I_r6 = (V4 -V0)/double(R6)
 I_r7 = (V8 -V7)/double(R7)
-Gb = I_r5
+
+printf('v(0) = %.11f\n', V0);
+printf('v(1) = %.11f\n', V1);
+printf('v(2) = %.11f\n', V2);
+printf('v(3) = %.11f\n', V3);
+printf('v(4) = %.11f\n', V4);
+printf('v(5) = %.11f\n', V5);
+printf('v(6) = %.11f\n', V6);
+printf('v(7) = %.11f\n', V7);
+printf('v(8) = %.11f\n', V8);
+
+
 Hd = double(Kd)*(V0-V4)/double(R6);
 
 diary off
@@ -126,15 +137,37 @@ sn_eq = solve(Eq2_v0,Eq2_f,Eq2_d,Eq2_s,Eq2_2,Eq2_3,Eq2_0,Eq2_6,Eq2_7,Eq2_x);
 diary "req_tab.tex"
 diary on
 
-V0eq = double(sn_eq.V0eq)
-V1eq = double(sn_eq.V1eq)
-V2eq = double(sn_eq.V2eq)
-V3eq = double(sn_eq.V3eq)
-V4eq = double(sn_eq.V4eq)
-V5eq = double(sn_eq.V5eq)
-V6eq = double(sn_eq.V6eq)
-V7eq = double(sn_eq.V7eq)
-V8eq = double(sn_eq.V8eq)
+V0eq = double(sn_eq.V0eq);
+V1eq = double(sn_eq.V1eq);
+V2eq = double(sn_eq.V2eq);
+V3eq = double(sn_eq.V3eq);
+V4eq = double(sn_eq.V4eq);
+V5eq = double(sn_eq.V5eq);
+V6eq = double(sn_eq.V6eq);
+V7eq = double(sn_eq.V7eq);
+V8eq = double(sn_eq.V8eq);
+
+I_r1eq = (V2eq -V1eq)/double(R1)
+I_r2eq = (V3eq -V2eq)/double(R2)
+I_r3eq = (V5eq -V2eq)/double(R3)
+I_r4eq = (V5eq -V0eq)/double(R4)
+I_r5eq = (V6eq -V5eq)/double(R5)
+I_r6eq = (V4eq -V0eq)/double(R6)
+I_r7eq = (V8eq -V7eq)/double(R7)
+
+printf('v(0) = %.11f\n', V0eq);
+printf('v(1) = %.11f\n', V1eq);
+printf('v(2) = %.11f\n', V2eq);
+printf('v(3) = %.11f\n', V3eq);
+printf('v(4) = %.11f\n', V4eq);
+printf('v(5) = %.11f\n', V5eq);
+printf('v(6) = %.11f\n', V6eq);
+printf('v(7) = %.11f\n', V7eq);
+printf('v(8) = %.11f\n', V8eq);
+
+printf('Ix = %.11f\n',double(sn_eq.Ix));
+printf('Vx = %.11f\n',double(Vx));
+
 Req = double(Vx)/double(sn_eq.Ix)
 tau = Req*double(C);
 printf('$tau$ = %e', tau)

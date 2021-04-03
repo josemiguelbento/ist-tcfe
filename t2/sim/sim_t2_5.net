@@ -20,7 +20,8 @@
 
 
 .INCLUDE data_sim5.txt
-.ic v(6)=8.573530 v(8)=0
+.INCLUDE dataic.txt
+*.ic v(6)=8.573530 v(8)=0
 * falta automatizar esta merda aqui de cima 
 .end
 .control

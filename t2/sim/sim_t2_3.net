@@ -21,7 +21,8 @@
 
 *resistors
 .INCLUDE data_sim3.txt
-.ic v(6) = 8.573530 v(8) = 0 
+.INCLUDE dataic.txt
+*.ic v(6) = 8.573530 v(8) = 0 
 *alterar para automatizar depois
 
 .end 

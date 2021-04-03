@@ -9,7 +9,7 @@ octave.log: rc.m
 	
 	sed -i 's/\=/\&/g' nodal_tab.tex
 	sed -i 's/$$/\\\\ \\hline/g' nodal_tab.tex
-	sed -i 's/\_//g' nodal_tab.tex
+	sed -i 's/\I_/\@/g' nodal_tab.tex
 	mv nodal_tab.tex ~/ist-tcfe/t2/doc
 	
 	sed -i 's/\=/\&/g' phaser_tab.tex
@@ -21,6 +21,7 @@ octave.log: rc.m
 	sed -i 's/$$/\\\\ \\hline/g' req_tab.tex
 	sed -i 's/eq//g' req_tab.tex
 	sed -i 's/R/Req/g' req_tab.tex
+	sed -i 's/\I_/\@/g' req_tab.tex
 	sed -i 's/tau/\\tau/g' req_tab.tex
 	mv req_tab.tex ~/ist-tcfe/t2/doc
 	
