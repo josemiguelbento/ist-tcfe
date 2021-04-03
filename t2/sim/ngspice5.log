@@ -1,0 +1,17 @@
+
+Circuit: *values
+
+********************************************
+Frequency analysis
+********************************************
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+
+No. of Data Rows : 7001
+
+The file "acm.ps" may be printed on a postscript printer.
+acm_FIG
+
+The file "phase.ps" may be printed on a postscript printer.
+phase_FIG
+ngspice-31 done

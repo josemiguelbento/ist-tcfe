@@ -1,0 +1,36 @@
+
+Circuit: *values:  95787
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+
+No. of Data Rows : 1
+********************************************
+Transient analysis
+********************************************
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+1                                            0
+2                                 -5.28328e-13
+3                                 -1.61185e-12
+5                                 -4.52771e-13
+6                                      8.57353
+4                                  1.81278e-13
+7                                  1.81278e-13
+8                                  2.72282e-13
+hd#branch                           0.00272282
+vf#branch                         -8.91908e-17
+vs#branch                         -5.13224e-16
+
+
+No. of Data Rows : 20008
+
+The file "trans.ps" may be printed on a postscript printer.
+trans_FIG
+ngspice-31 done
