@@ -52,25 +52,23 @@ To compute the equivalent resistance as seen by C the independent source $V_c$ n
 
 %In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the Octave script for both methods are presented. Here, the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
 \begin{table}[H]
-\parbox{.45\linewidth}{
+\parbox{.30\linewidth}{
   \centering
   \begin{tabular}{|l|r|}
     \hline    
-    {\bf Name} & {\bf Theoretical values for aux circuit}\\ \hline
+    {\bf Name} & {\bf Theoretical values }\\ \hline
     \input{req_tab}
   \end{tabular}
   \caption{A variable that stars with a "V" is of type {\it voltage} and expressed in
     Volt (V).The variable $R_{eq}$ is expresses in Ohm and the variable $\tau$ is expressed in seconds }
   \label{tab:equivalent resistor}
-
 }
-
  \hfill
- \parbox{.45\linewidth}{
+ \parbox{.30\linewidth}{
   \centering
   \begin{tabular}{|l|r|}
     \hline    
-    {\bf Name} & {\bf Simulation values for aux circuit } \\ \hline
+    {\bf Name} & {\bf Simulation values } \\ \hline
     \input{opeq_tab}
   \end{tabular}
   \caption{Step 2: Operating point for {\it $v_s(0)=0$}. A variable preceded by @ is of type {\em current}

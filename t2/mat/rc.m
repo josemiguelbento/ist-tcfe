@@ -70,6 +70,7 @@ V6 = double(sn.V6);
 V7 = double(sn.V7);
 V8 = double(sn.V8);
 
+printf('@c = 0\n');
 Gb = (V6 -V5)/double(R5)
 I_r1 = (V2 -V1)/double(R1)
 I_r2 = (V3 -V2)/double(R2)
@@ -79,7 +80,6 @@ I_r5 = (V6 -V5)/double(R5)
 I_r6 = (V4 -V0)/double(R6)
 I_r7 = (V8 -V7)/double(R7)
 
-printf('v(0) = %.11f\n', V0);
 printf('v(1) = %.11f\n', V1);
 printf('v(2) = %.11f\n', V2);
 printf('v(3) = %.11f\n', V3);
@@ -147,6 +147,7 @@ V6eq = double(sn_eq.V6eq);
 V7eq = double(sn_eq.V7eq);
 V8eq = double(sn_eq.V8eq);
 
+Gbeq = (V6eq -V5eq)/double(R5)
 I_r1eq = (V2eq -V1eq)/double(R1)
 I_r2eq = (V3eq -V2eq)/double(R2)
 I_r3eq = (V5eq -V2eq)/double(R3)
@@ -155,7 +156,6 @@ I_r5eq = (V6eq -V5eq)/double(R5)
 I_r6eq = (V4eq -V0eq)/double(R6)
 I_r7eq = (V8eq -V7eq)/double(R7)
 
-printf('v(0) = %.11f\n', V0eq);
 printf('v(1) = %.11f\n', V1eq);
 printf('v(2) = %.11f\n', V2eq);
 printf('v(3) = %.11f\n', V3eq);
