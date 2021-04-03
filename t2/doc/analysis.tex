@@ -14,6 +14,45 @@ theoretically.
 The nodal method is aplied to the circuit in order to determine the voltage in all nodes and the current on all branches . The nodal method aplies KVL and for $t<0$ no current passes through the capacitor, and therefore this component behaves like an open circuit.
 %In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the Octave script for both methods are presented. Here, the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
 
+\begin {equation}
+	V_0 = 0
+	\label{eq:n1}
+\end{equation}
+\begin {equation}
+	V_4 = V_7
+	\label{eq:n2}
+\end{equation}
+\begin {equation}
+	V_5 - V_8 = K_d \frac{V_0 - V_4}{R_6}
+	\label{eq:n3}
+\end{equation}
+\begin {equation}
+	V_1 - V_0 = V_s
+	\label{eq:n4}
+\end{equation}
+\begin {equation}
+	\frac{V_2-V_1}{R_1} + \frac{V_2 - V_5}{R_3} + \frac{V_2 - V_3}{R_2} = 0
+	\label{eq:n5}
+\end{equation}
+\begin {equation}
+	\frac{V_3-V_2}{R_2} - K_b(V_2-V_5)  = 0
+	\label{eq:n6}
+\end{equation}
+\begin {equation}
+	\frac{V_5-V_2}{R_3} + \frac{V_5-V_0}{R_4} + \frac{V_5-V_6}{R_5} + \frac{V_8-V_7}{R_7}= 0
+	\label{eq:n7}
+\end{equation}
+\begin {equation}
+	K_b(V_2-V_5) + \frac{V_6-V_5}{R_5}   = 0
+	\label{eq:n8}
+\end{equation}
+\begin {equation}
+	\frac{V_4-V_0}{R_6} + \frac{V_7 - V_8}{R_7} = 0
+	\label{eq:n9}
+\end{equation}
+
+
+
 \begin{table}[H]
 \parbox{.45\linewidth}{
   \centering 
@@ -48,9 +87,28 @@ The nodal method is aplied to the circuit in order to determine the voltage in a
 %point 2
 \subsection{Equivalent resistor as seen from the capacitor terminals}
 
-To compute the equivalent resistance as seen by C the independent source $V_c$ needs to be switched off. We do this by replacing it with a short circuit ($V_s=0$). We also replace the capacitor with a voltage source $V_x=V_6-V_8$.We use the $V_6$ and $V_8$ from the previous section beacause the voltage drop at the ends of the capacitor needs to be a continuous function (there can not be an energy discontinuity in the capacitor). With this in mind a nodal analysis is performed in order to determine the current $I_x$ that is supplied by $V_x$.With this values we can determine $R_{eq}$ ($R_{eq}=V_x/I_x$). All this procedures were required in order to determine the time constant $\tau$ ($\tau=R_{eq}*C$). The time constant in crucial to determine the natural and forced solutions for $V_6$, which will be done in the next subsections. 
+To compute the equivalent resistance as seen by C the independent source $V_c$ needs to be switched off. We do this by replacing it with a short circuit ($V_s=0$). We also replace the capacitor with a voltage source $V_x=V_6-V_8$.We use the $V_6$ and $V_8$ from the previous section beacause the voltage drop at the ends of the capacitor needs to be a continuous function (there can not be an energy discontinuity in the capacitor). With this in mind a nodal analysis is performed in order to determine the current $I_x$ that is supplied by $V_x$.With this values we can determine $R_{eq}$ ($R_{eq}=V_x/I_x$). All this procedures were required in order to determine the time constant $\tau$ ($\tau=R_{eq}*C$). The time constant in crucial to determine the natural and forced solutions for $V_6$, which will be done in the next subsections. The equations considered for these calculations were \ref{eq:n1}, \ref{eq:n2}, \ref{eq:n3}, \ref{eq:n4}, \ref{eq:n5}, \ref{eq:n6} and the following:
 
 %In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the Octave script for both methods are presented. Here, the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
+
+\begin {equation}
+	\frac{V_1-V_2}{R_1} + \frac{V_0-V_4}{R_6} + \frac{V_0-V_5}{R_4} = 0
+	\label{eq:eq7}
+\end{equation}
+\begin {equation}
+	K_b(V_2-V_5) + \frac{V_6-V_5}{R_5} + I_x  = 0
+	\label{eq:eq8}
+\end{equation}
+\begin {equation}
+	\frac{V_4-V_0}{R_6} + \frac{V_7 - V_8}{R_7} = 0
+	\label{eq:eq9}
+\end{equation}
+\begin {equation}
+	V_x = V_6 - V_8
+	\label{eq:eq10}
+\end{equation}
+
+
 \begin{table}[H]
 \parbox{.30\linewidth}{
   \centering
@@ -97,7 +155,61 @@ The natural solution depends on initial charge (voltage) and on $R_{eq}$ and C a
 %point 4
 \subsection{Forced solution for $V_6$ with $f=1000Hz$}
 
-In this section the forced solution $V_{6f}$ is determined for the same time interval and for a frequency of 1KHz. To do this a nodal analysis was used but insted of resistences and capacitances, impedences were used. It was also  considered that the magnitude of the phaser of the voltage sorce $V_s$  was 1 ($V_s=1$). By taking all these steps the phaser voltages in all nodes were determined. The complex amplitudes of the phasers are presented in  \textbf{Table ~\ref{tab:equivalent resistor}}
+In this section the forced solution $V_{6f}$ is determined for the same time interval and for a frequency of 1KHz. To do this a nodal analysis was used but insted of resistences and capacitances, impedences were used. It was also  considered that the magnitude of the phaser of the voltage sorce $V_s$  was 1 ($V_s=1$). By taking all these steps the phaser voltages in all nodes were determined in accordance to the following equations:
+
+\begin {equation}
+	Z = \frac{1}{w C j}
+	\label{eq:Z}
+\end{equation}
+
+\begin {equation}
+	\tilde{V}_s = -j
+	\label{eq:vs}
+\end{equation}
+
+\begin {equation}
+	\tilde{V}_0 = 0
+	\label{eq:p1}
+\end{equation}
+\begin {equation}
+	\tilde{V}_4 = \tilde{V}_7
+	\label{eq:p2}
+\end{equation}
+\begin {equation}
+	\tilde{V}_5 - \tilde{V}_8 = K_d \frac{\tilde{V}_0 - \tilde{V}_4}{R_6}
+	\label{eq:p3}
+\end{equation}
+\begin {equation}
+	\tilde{V}_1 - \tilde{V}_0 = \tilde{V}_s
+	\label{eq:p4}
+\end{equation}
+\begin {equation}
+	\frac{\tilde{V}_2-\tilde{V}_1}{R_1} + \frac{\tilde{V}_2 - \tilde{V}_5}{R_3} + \frac{\tilde{V}_2 - \tilde{V}_3}{R_2} = 0
+	\label{eq:p5}
+\end{equation}
+\begin {equation}
+	\frac{\tilde{V}_3-\tilde{V}_2}{R_2} - K_b(\tilde{V}_2-\tilde{V}_5)  = 0
+	\label{eq:p6}
+\end{equation}
+\begin {equation}
+	\frac{\tilde{V}_1-\tilde{V}_2}{R_1} + \frac{\tilde{V}_0-\tilde{V}_4}{R_6} + \frac{\tilde{V}_0-\tilde{V}_5}{R_4} = 0
+	\label{eq:p7}
+\end{equation}
+\begin {equation}
+	K_b(\tilde{V}_2-\tilde{V}_5) + \frac{\tilde{V}_6-\tilde{V}_5}{R_5} + \frac{\tilde{V}_6-\tilde{V}_8}{Z}  = 0
+	\label{eq:p8}
+\end{equation}
+\begin {equation}
+	\frac{\tilde{V}_4-\tilde{V}_0}{R_6} + \frac{\tilde{V}_7 - \tilde{V}_8}{R_7} = 0
+	\label{eq:p9}
+\end{equation}
+\begin {equation}
+	\tilde{V}_x = \tilde{V}_6 - \tilde{V}_8
+	\label{eq:p10}
+\end{equation}
+
+
+The complex amplitudes of the phasers are presented in  \textbf{Table ~\ref{tab:equivalent resistor}}
 \begin{table}[H]
   \centering
   \begin{tabular}{|l|r|}
