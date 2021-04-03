@@ -184,7 +184,7 @@ hf=figure(1)
 plot(t*1000, v6_n, "g")
 
 xlabel ("t[ms]");
-ylabel ("v6_n[V]");
+ylabel ("Potencial in node 6 in Volts");
 legend('v6_n(t)', 'Location', 'Northeast');
 print (hf, "natural_tab.odg", "-depsc");
 
