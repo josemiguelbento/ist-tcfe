@@ -27,6 +27,8 @@ all: ngspice.log ngspiceeq.log ngspice3.log ngspice4.log ngspice5.log
 ngspice.log: ../sim/sim_t2_1.net
 	ngspice -b $< -o $@
 	sed -i 's/v(6)-v(8) =/Vx 6 8 DC/g' datav6v8.txt
+	sed -i 's/v(6)-v(8) = /\.ic v(6)=/g' dataic.txt
+	sed -i 's/$$/ v(8)=0/g' dataic.txt
 
 
 ngspiceeq.log: ../sim/sim_t2_2.net
@@ -50,4 +52,5 @@ clean:
 	@rm -f data_sim3.txt
 	@rm -f data_sim4.txt
 	@rm -f data_sim5.txt
+	@rm -f dataic.txt
 .PHONY: all clean
