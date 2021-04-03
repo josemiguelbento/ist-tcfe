@@ -29,18 +29,18 @@ fprintf(simf, 'Hd 5 8 Vf %fk\n', data(11,3));
 fclose(simf);
 
 
-R1 = sym(sprintf('%.11f', data(1,3)));
-R2 = sym(sprintf('%.11f', data(2,3)));
-R3 = sym(sprintf('%.11f', data(3,3)));
-R4 = sym(sprintf('%.11f', data(4,3)));
-R5 = sym(sprintf('%.11f', data(5,3)));
-R6 = sym(sprintf('%.11f', data(6,3)));
-R7 = sym(sprintf('%.11f', data(7,3)));
+R1 = sym(sprintf('%.11f', data(1,3)*1000));
+R2 = sym(sprintf('%.11f', data(2,3)*1000));
+R3 = sym(sprintf('%.11f', data(3,3)*1000));
+R4 = sym(sprintf('%.11f', data(4,3)*1000));
+R5 = sym(sprintf('%.11f', data(5,3)*1000));
+R6 = sym(sprintf('%.11f', data(6,3)*1000));
+R7 = sym(sprintf('%.11f', data(7,3)*1000));
 Vs = sym(sprintf('%.11f', data(8,3)));
 Vf = sym('0');
-C = sym(sprintf('%.11f', data(9,3)));
-Kb = sym(sprintf('%.11f', data(10,3)));
-Kd = sym(sprintf('%.11f', data(11,3)));
+C = sym(sprintf('%.11f', data(9,3)*10^-6));
+Kb = sym(sprintf('%.11f', data(10,3)/1000));
+Kd = sym(sprintf('%.11f', data(11,3)*1000));
 
 %%NODAL THEO 1
 syms V0 V1 V2 V3 V4 V5 V6 V7 V8
@@ -136,7 +136,7 @@ V6eq = double(sn_eq.V6eq)
 V7eq = double(sn_eq.V7eq)
 V8eq = double(sn_eq.V8eq)
 Req = double(Vx)/double(sn_eq.Ix)
-tau = Req*1000*double(C)*10^(-6);
+tau = Req*double(C);
 printf('$tau$ = %e', tau)
 diary off
 
@@ -192,9 +192,9 @@ print (hf, "natural_tab.odg", "-depsc");
 %NODAL THEO 4 forced solution
 f=1000
 w=sym(sprintf('2*pi*%.11f', f))
-C = sym(sprintf('%.11f', data(9,3)))
+C = sym(sprintf('%.11f', data(9,3)*10^-6))
 Vsp = sym (0-j)
-Z = sym (0-1/(w*C)*j*10^6)
+Z = sym (0-1/(w*C)*j)
 
 syms V0p V1p V2p V3p V4p V5p V6p V7p V8p Vxp
 
@@ -248,8 +248,8 @@ M_V8p = double(abs(sn_p.V8p))
 A_V8p = double(angle(sn_p.V8p))
 
 t=0:1e-6:20e-3;
-v6_f = M_V6p*cos(double(w)*t-A_V6p);
-v8_f = M_V8p*cos(double(w)*t-A_V8p);
+v6_f = M_V6p*cos(double(w)*t+A_V6p);
+v8_f = M_V8p*cos(double(w)*t+A_V8p);
 vs_p = sin(double(w)*t);
 
 hf = figure (2);
@@ -298,9 +298,25 @@ print (hfc, "capacitor_voltage_tab.odg", "-depsc");
 
 %FREQUENCY RESPONSE
 
+sim5f=fopen('data_sim5.txt','w');
+fprintf(sim5f, 'R1 1 2 %fk\n', data(1,3));
+fprintf(sim5f, 'R2 2 3 %fk\n', data(2,3));
+fprintf(sim5f, 'R3 2 5 %fk\n', data(3,3));
+fprintf(sim5f, 'R4 0 5 %fk\n', data(4,3));
+fprintf(sim5f, 'R5 5 6 %fk\n', data(5,3));
+fprintf(sim5f, 'R6 0 4 %fk\n', data(6,3));
+fprintf(sim5f, 'R7 7 8 %fk\n', data(7,3));
+fprintf(sim5f, 'Vs 1 0 0 ac 1 -90\n');
+fprintf(sim5f, 'Vf 4 7 DC 0\n');
+fprintf(sim5f, 'C 6 8 %fu\n', data(9,3));
+fprintf(sim5f, 'Gb 6 3 2 5 %fm\n', data(10,3));
+fprintf(sim5f, 'Hd 5 8 Vf %fk\n', data(11,3));
+
+fclose(sim5f);
+
 syms f
 
-Z = sym (0-1/(2*sym(pi)*f*C)*j*10^6)
+Z = sym (0-1/(2*sym(pi)*f*C)*j)
 
 syms V0p V1p V2p V3p V4p V5p V6p V7p V8p Vxp
 
@@ -334,9 +350,9 @@ fhs = function_handle(Vsp);
 as = fhs(freq);
 
 aux1= double(abs(Vsp));
-aux2= double(angle(Vsp));
+aux2= double(angle(Vsp))*180/pi;
 vsf = aux1*ones(1,size(freq,2));
-vsfa = aux1*ones(1,size(freq,2));
+vsfa = aux2*ones(1,size(freq,2));
 
 hfr = figure(5);
 semilogx(freq, 20*log10(abs(ax)),";vc(f);", freq, 20*log10(abs(a6)),";v6(f);");

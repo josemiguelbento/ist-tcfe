@@ -1,4 +1,4 @@
-all: ngspice.log ngspiceeq.log ngspice3.log ngspice4.log
+all: ngspice.log ngspiceeq.log ngspice3.log ngspice4.log ngspice5.log
 	$(eval NGSFIGS=$(shell grep _FIG $< | sed 's/_FIG//g' | sed ':a;N;$!ba;s/\n/ /g'))
 	$(eval NGSFIGPS=$(addsuffix .ps, $(NGSFIGS)))
 	$(foreach i, $(NGSFIGPS), ps2pdf $i;)
@@ -13,6 +13,9 @@ all: ngspice.log ngspiceeq.log ngspice3.log ngspice4.log
 	$(eval NGSFIGPS=$(addsuffix .ps, $(NGSFIGS)))
 	$(foreach i, $(NGSFIGPS), ps2pdf $i;)
 	$(eval NGSFIGS=$(shell grep _FIG $(word 4,$^) | sed 's/_FIG//g' | sed ':a;N;$!ba;s/\n/ /g'))
+	$(eval NGSFIGPS=$(addsuffix .ps, $(NGSFIGS)))
+	$(foreach i, $(NGSFIGPS), ps2pdf $i;)
+	$(eval NGSFIGS=$(shell grep _FIG $(word 5,$^) | sed 's/_FIG//g' | sed ':a;N;$!ba;s/\n/ /g'))
 	$(eval NGSFIGPS=$(addsuffix .ps, $(NGSFIGS)))
 	$(foreach i, $(NGSFIGPS), ps2pdf $i;)
 
@@ -32,6 +35,9 @@ ngspice3.log: ../sim/sim_t2_3.net
 ngspice4.log: ../sim/sim_t2_4.net
 	ngspice -b $< -o $@
 	
+ngspice5.log: ../sim/sim_t2_5.net
+	ngspice -b $< -o $@
+	
 
 clean:
 	@rm -f *.log *.tex *.pdf *.ps *~
@@ -40,4 +46,5 @@ clean:
 	@rm -f datav6v8.txt
 	@rm -f data_sim3.txt
 	@rm -f data_sim4.txt
+	@rm -f data_sim5.txt
 .PHONY: all clean

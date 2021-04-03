@@ -12,7 +12,7 @@ theoretically.\par
 
 
 \subsection{Analysis for $t<0$} 
-The nodal method is aplied to the circuit in order to determine the voltage in all nodes and the current on all branches . The nodal method aplies KVL and for $t<0$ no current passes through the capacitor, and therefore this component behaves like an open circuit.******* sera que é a corrente ou é a voltagem que é nula?******** 
+The nodal method is aplied to the circuit in order to determine the voltage in all nodes and the current on all branches . The nodal method aplies KVL and for $t<0$ no current passes through the capacitor, and therefore this component behaves like an open circuit.
 %In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the Octave script for both methods are presented. Here, the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
  \pagebreak 
 \begin{table}[h]
@@ -32,7 +32,7 @@ The nodal method is aplied to the circuit in order to determine the voltage in a
 
 \subsection{Equivalent resistor as seen from the capacitor terminals}
 
-To compute the equivalent resistance as seen by C the independent source $V_c$ needs to be switched off. We do this by replacing it with a short circuit ($V_s=0$). We also replace the capacitor with a voltage source $V_x=V_6-V_8$.We use the $V_6$ and $V_8$ from the previous section beacause the voltage drop at the ends of the capacitor needs to be a continuous function (there can not be an energy spike in the capacitor). With this in mind a nodal analysis is performed in order to determine the current $I_x$ that is supplied by $V_x$.With this values we can determine $R_{eq}$ ($R_{eq}=V_x/I_x$). All this procedures were required in order to determine the time constant $\tau$ ($\tau=R_eq*C$). The time constant in crucial to determine the natural and forced solutions for $V_6$, which will be done in the next subsections. 
+To compute the equivalent resistance as seen by C the independent source $V_c$ needs to be switched off. We do this by replacing it with a short circuit ($V_s=0$). We also replace the capacitor with a voltage source $V_x=V_6-V_8$.We use the $V_6$ and $V_8$ from the previous section beacause the voltage drop at the ends of the capacitor needs to be a continuous function (there can not be an energy spike in the capacitor). With this in mind a nodal analysis is performed in order to determine the current $I_x$ that is supplied by $V_x$.With this values we can determine $R_{eq}$ ($R_{eq}=V_x/I_x$). All this procedures were required in order to determine the time constant $\tau$ ($\tau=R_{eq}*C$). The time constant in crucial to determine the natural and forced solutions for $V_6$, which will be done in the next subsections. 
 
 %In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the Octave script for both methods are presented. Here, the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
  \pagebreak 
