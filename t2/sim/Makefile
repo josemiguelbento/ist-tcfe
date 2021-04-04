@@ -18,10 +18,10 @@ all: ngspice.log ngspiceeq.log ngspice3.log ngspice4.log ngspice5.log
 	$(eval NGSFIGS=$(shell grep _FIG $(word 5,$^) | sed 's/_FIG//g' | sed ':a;N;$!ba;s/\n/ /g'))
 	$(eval NGSFIGPS=$(addsuffix .ps, $(NGSFIGS)))
 	$(foreach i, $(NGSFIGPS), ps2pdf $i;)
-	mv acm.pdf ~/ist-tcfe/t2/doc
-	mv trans.pdf ~/ist-tcfe/t2/doc
-	mv transv5vs.pdf ~/ist-tcfe/t2/doc
-	mv phase.pdf ~/ist-tcfe/t2/doc
+	mv acm.pdf ../doc
+	mv trans.pdf ../doc
+	mv transv5vs.pdf ../doc
+	mv phase.pdf ../doc
 
 	
 ngspice.log: ../sim/sim_t2_1.net
