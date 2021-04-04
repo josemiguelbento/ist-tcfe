@@ -9,7 +9,7 @@ all:
 	echo 95815 | python2.7 t2_datagen.py > data.txt
 	sed -i -e '1,8d;20,22d' data.txt
 	sed -i 's/Values:  //g' data.txt
-	cp data.txt ~/ist-tcfe/t2/mat
+	cp data.txt ./mat
 	make -C mat
 	make -C sim
 	mv ~/ist-tcfe/t2/sim/op_tab.tex ~/ist-tcfe/t2/doc
