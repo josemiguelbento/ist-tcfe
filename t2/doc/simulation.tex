@@ -1,6 +1,6 @@
 \section{Simulation Analysis}
 \label{sec:simulation}
-In this section we will describe the steps needed to simulate this circuit using the software Ngspice.Three types of analysis will be performed:Operating Point analysis, Transient analysis ans Frequency analysis.
+In this section we will describe the steps needed to simulate this circuit using the software Ngspice. Three types of analysis will be performed: Operating Point analysis, Transient analysis ans Frequency analysis.
 
 The following steps in the simulations are to be conducted: 
 \begin{itemize}
@@ -41,8 +41,8 @@ under analysis for $t<0$.
 \pagebreak
 \subsection{Operating Point Analysis for $t=0$}
 In this section the circuit was simulated using an operating point analysis with $V_s(0) = 0$ and 
-with the capacitor replaced by a voltage source {\it $V_x=V(6)-V(8)$} with these as obtained in the last step. This step was taken because we must compute the boundary conditions that guarantee continuity in the capacitor's discharge (such may imply that the boundary conditions differ from those computed for $t<0$). In other words $V(6)-V(8)$ needs to be a continuos function in time (in this case particularly from $t<0$ to $t=0$), as there can not be a engergy discontinuity in the capacitor ($E_C=\frac{1}{2}CV²$). However that does not imply that that $V(6)$ and $V(8)$ are continuos functions in/ time.
-In \textbf{Table~\ref{tab:opeq}} the simulation results are pressented. 
+with the capacitor replaced by a voltage source {\it $V_x=V(6)-V(8)$} with these as obtained in the last step. This step was taken because we must compute the boundary conditions that guarantee continuity in the capacitor's discharge (such may imply that the boundary conditions differ from those computed for $t<0$). In other words $V(6)-V(8)$ needs to be a continuos function in time (in this case particularly from $t<0$ to $t=0$), as there can not be a energy discontinuity in the capacitor ($E_C=\frac{1}{2}CV^{2}$). However, that does not imply that that $V(6)$ and $V(8)$ are continuos functions in time.
+In \textbf{Table~\ref{tab:opeq}} the simulation results are presented. 
 \begin{table}[h!]
   \centering
   \begin{tabular}{|l|r|}
@@ -52,7 +52,7 @@ In \textbf{Table~\ref{tab:opeq}} the simulation results are pressented.
   \end{tabular} 
   \caption{Operating point for {\it $v_s(0)=0$}. A variable preceded by @ is of type {\em current}
     and expressed in miliAmpere; variables are of type {\it voltage} and expressed in
-    Volt.The equivelant resistance is in Ohms}
+    Volt. The equivalent resistance is in Ohms}
   \label{tab:opeq}
 \end{table}
 
@@ -60,12 +60,11 @@ In \textbf{Table~\ref{tab:opeq}} the simulation results are pressented.
 %ponto 3
  
 \subsection{ Natural solution for $V_6$ using transient analysis}
-In this section the natural response of the circuit in the interval [0,20]ms was studied using a transient analysis simulation. To do so the boundary conditions V(6) and V(8) obtained in the previous section were used, as well as the NgSpice directive \textit{.ic}.  
+In this section the natural response of the circuit in the interval [0,20] ms was studied using a transient analysis simulation. To do so the boundary conditions V(6) and V(8) obtained in the previous section were used, as well as the NgSpice directive \textit{.ic}. These values are being obtained from the previous simulations run, and not from the theoretical previsions. 
 \par
-In \textbf{Figure: ~\ref{fig:transient}} the \textit{x axis} represents the time in miliseconds and the \textit{y axis} the Potencial in node 6  in Volts.  
-\begin{figure}[h] \centering
+\begin{figure}[H] \centering
 \includegraphics[width=0.6\linewidth]{trans.pdf}
-\caption{Simulated natural response of $V_6(t)$ in the interval [0,20] ms  }
+\caption{Simulated natural response of $V_6(t)$ in the interval [0,20] ms. The \textit{x axis} represents the time in miliseconds and the \textit{y axis} the Potencial in node 6  in Volts.  }
 \label{fig:transient}
 \end{figure}
 
@@ -74,10 +73,9 @@ In \textbf{Figure: ~\ref{fig:transient}} the \textit{x axis} represents the time
 \subsection{ Total solution for $V_6$ using transient analysis}
 
 In this section the total response of $V_6$ (natural + forced) is simulated using transient analysis. This is done by repeating the previous section, but using {\it $V_s$} as given in \textbf{Figure~\ref{fig:time_step}} and f = 1kHz.\par
-In \textbf{Figure~\ref{fig:resp_total}} both the stimulus and the total response are ploted.The \textit{x axis} represents the time in miliseconds and the \textit{y axis} the Voltage in Volts. 
-\begin{figure}[h] \centering
+\begin{figure}[H] \centering
 \includegraphics[width=0.6\linewidth]{transv5vs.pdf}
-\caption{Simulated response of $V_{6}(t)$ and of the stimulus $V_{s}(t)$ as functions of time from [0,20] ms}
+\caption{Simulated response of $V_{6}(t)$ and of the stimulus $V_{s}(t)$ as functions of time from [0,20] ms. The \textit{x axis} represents the time in miliseconds and the \textit{y axis} the Voltage in Volts.}
 \label{fig:resp_total}
 \end{figure}
 
@@ -86,18 +84,16 @@ In \textbf{Figure~\ref{fig:resp_total}} both the stimulus and the total response
 \subsection{ Frequency response in node 6}
 In this section the frequency response in node 6 is simulated for the frequency range from 0.1 Hz to 1 MHz. 
 The reasons of how and why $V_{6}(t)$ and $V_{s}(t)$ differ have been coverd in \textbf{subsection ~\ref{ref}}.\par
-In \textbf{Figure: ~\ref{fig:Magnitude}} the \textit{x axis} represents the frequency using a logarithmic scale and the \textit{y axis} the magnitude in dB.  
-\begin{figure}[h] \centering
+\begin{figure}[H] \centering
 \includegraphics[width=0.6\linewidth]{acm.pdf}
-\caption{Magnitude of $V_s(f)$, $V_c(f)$  and of $V_6(f)$ }
+\caption{Magnitude of $V_s(f)$, $V_c(f)$  and of $V_6(f)$. The \textit{x axis} represents the frequency in Hz, using a logarithmic scale and the \textit{y axis} the magnitude in dB.}
 \label{fig:Magnitude}
 \end{figure}
 \pagebreak
 \par
-In \textbf{Figure: ~\ref{fig:phase}} the \textit{x axis} represents the frequency using a logarithmic scale and the \textit{y axis} the phase in degrees.  
-\begin{figure}[h] \centering
+\begin{figure}[H] \centering
 \includegraphics[width=0.6\linewidth]{phase.pdf}
-\caption{Phase of $V_s(f)$, $V_c(f)$ and of $V_6(f)$}
+\caption{Phase of $V_s(f)$, $V_c(f)$ and of $V_6(f)$. The \textit{x axis} represents the frequency in HZ, using a logarithmic scale and the \textit{y axis} the phase in degrees.}  
 \label{fig:phase}
 \end{figure}
 

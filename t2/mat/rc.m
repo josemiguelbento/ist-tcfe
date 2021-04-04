@@ -71,14 +71,15 @@ V7 = double(sn.V7);
 V8 = double(sn.V8);
 
 printf('@c = 0\n');
-Gb = (V6 -V5)/double(R5)
-I_r1 = (V2 -V1)/double(R1)
-I_r2 = (V3 -V2)/double(R2)
-I_r3 = (V5 -V2)/double(R3)
-I_r4 = (V5 -V0)/double(R4)
-I_r5 = (V6 -V5)/double(R5)
-I_r6 = (V4 -V0)/double(R6)
-I_r7 = (V8 -V7)/double(R7)
+Gb = -(V6 -V5)/double(R5);
+printf('@Gb = %e\n', Gb);
+I_r1 = -(V2 -V1)/double(R1)
+I_r2 = -(V3 -V2)/double(R2)
+I_r3 = -(V5 -V2)/double(R3)
+I_r4 = -(V5 -V0)/double(R4)
+I_r5 = -(V6 -V5)/double(R5)
+I_r6 = -(V4 -V0)/double(R6)
+I_r7 = -(V8 -V7)/double(R7)
 
 printf('v(1) = %.11f\n', V1);
 printf('v(2) = %.11f\n', V2);
@@ -147,12 +148,13 @@ V6eq = double(sn_eq.V6eq);
 V7eq = double(sn_eq.V7eq);
 V8eq = double(sn_eq.V8eq);
 
-Gbeq = (V6eq -V5eq)/double(R5)
+Gbeq = (V3eq -V2eq)/double(R2);
+printf('@Gb = %.11f\n', Gbeq);
 I_r1eq = (V2eq -V1eq)/double(R1)
 I_r2eq = (V3eq -V2eq)/double(R2)
 I_r3eq = (V5eq -V2eq)/double(R3)
 I_r4eq = (V5eq -V0eq)/double(R4)
-I_r5eq = (V6eq -V5eq)/double(R5)
+I_r5eq = -(V6eq -V5eq)/double(R5)
 I_r6eq = (V4eq -V0eq)/double(R6)
 I_r7eq = (V8eq -V7eq)/double(R7)
 
@@ -168,7 +170,8 @@ printf('v(8) = %.11f\n', V8eq);
 printf('Ix = %.11f\n',double(sn_eq.Ix));
 printf('Vx = %.11f\n',double(Vx));
 
-Req = double(Vx)/double(sn_eq.Ix)
+Req = double(Vx)/double(sn_eq.Ix);
+printf('$R_{eq}$ = %e\n', Req)
 tau = Req*double(C);
 printf('$tau$ = %e', tau)
 diary off
@@ -389,6 +392,8 @@ vsfa = aux2*ones(1,size(freq,2));
 
 hfr = figure(5);
 semilogx(freq, 20*log10(abs(ax)),";vc(f);", freq, 20*log10(abs(a6)),";v6(f);");
+xlabel("frequency in Hz (logarithmic scale)")
+ylabel("copmlex amplitude (dB)")
 hold on
 semilogx(freq, 20*log10(vsf),";vs(f);")
 hold off
