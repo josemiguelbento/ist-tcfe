@@ -1,0 +1,16 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {2}Theoretical Analysis}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Analysis for $t<0$}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Equivalent resistor as seen from the capacitor terminals}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Natural solution for $V_6$}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Forced solution for $V_6$ with $f=1000Hz$}{8}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Final total solution $v_6(t)$}{9}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Frequency responses $v_c(f)$, $v_s(f)$ and $v_6(f)$ for frequency range 0.1 Hz to 1 MHz}{10}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Simulation Analysis}{13}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Operating Point Analysis for $t<0$}{13}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Operating Point Analysis for $t=0$}{14}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3} Natural solution for $V_6$ using transient analysis}{15}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4} Total solution for $V_6$ using transient analysis}{17}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5} Frequency response in node 6}{18}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Conclusion}{20}{section.4}%

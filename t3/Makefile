@@ -12,8 +12,8 @@ all:
 	cp data.txt ./mat
 	make -C mat
 	make -C sim
-	mv ./sim/op_tab.tex ./doc
-	mv ./sim/opeq_tab.tex ./doc
+	mv ~/ist-tcfe/t2/sim/op_tab.tex ~/ist-tcfe/t2/doc
+	mv ~/ist-tcfe/t2/sim/opeq_tab.tex ~/ist-tcfe/t2/doc
 	make -C doc
 	cp doc/report.pdf .
 
