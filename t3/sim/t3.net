@@ -10,7 +10,7 @@
 *************Circuito que mandei para o messenger*****************
 
 ***Fonte dependente (meti amplitude de 13.94 que equivale a 230/16.5)
-Vs 1 0 0 sin(0 13.94 50)
+Vs 1 0 0 sin(0 13.94 50 0 0 90)
 
 ***Envelope detector***
 De 1 2 Default
@@ -36,6 +36,8 @@ Dr14 16 17 Default
 Dr15 17 18 Default
 Dr16 18 19 Default
 Dr17 19 0 Default
+
+
 
 .model Default D
 .op

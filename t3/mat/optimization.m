@@ -1,3 +1,6 @@
+
+
+
 close all
 clear all
 
@@ -88,11 +91,7 @@ new = 1;
 
 rd = new*vt/(Is*exp(von/(new*vt)))
 
-if average_env >= von*n_diodes
-  vOreg_ac = n_diodes*rd/(n_diodes*rd+Rreg) * (vOenv-average_env);
-else
-  vOreg_ac = vOenv-average_env;
-endif 
+vOreg_ac = n_diodes*rd/(n_diodes*rd+Rreg) * (vOenv-average_env);
 
 vOreg = vOreg_dc + vOreg_ac;
 
@@ -100,22 +99,22 @@ vOreg = vOreg_dc + vOreg_ac;
 %plots ----------------------------------------------
 
 %output voltages at rectifier, envelope detector and regulator
-hfc = figure(1);
-title("Regulator and envelope output voltage v_o(t)")
-plot (t*1000, vOhr, ";vo_{rectifier}(t);", t*1000,vOenv, ";vo_{envelope}(t);", t*1000,vOreg, ";vo_{regulator}(t);");
-xlabel ("t[ms]")
-ylabel ("v_O [Volts]")
-legend('Location','northeast');
-print (hfc, "all_vout.eps", "-depsc");
+%hfc = figure(1);
+%title("Regulator and envelope output voltage v_o(t)")
+%plot (t*1000, vOhr, ";vo_{rectifier}(t);", t*1000,vOenv, ";vo_{envelope}(t);", t*1000,vOreg, ";vo_{regulator}(t);");
+%xlabel ("t[ms]")
+%ylabel ("v_O [Volts]")
+%legend('Location','northeast');
+%print (hfc, "all_vout.eps", "-depsc");
 
 %Deviations (vO - 12) 
-hfc = figure(2);
-title("Deviations from desired DC voltage")
-plot (t*1000,vOreg-12, ";vo-12 (t);");
-xlabel ("t[ms]")
-ylabel ("v_O [Volts]")
-legend('Location','northeast');
-print (hfc, "deviation.eps", "-depsc");
+%hfc = figure(2);
+%title("Deviations from desired DC voltage")
+%plot (t*1000,vOreg-12, ";vo-12 (t);");
+%xlabel ("t[ms]")
+%ylabel ("v_O [Volts]")
+%legend('Location','northeast');
+%print (hfc, "deviation.eps", "-depsc");
 
 
 average_reg = mean(vOreg)
