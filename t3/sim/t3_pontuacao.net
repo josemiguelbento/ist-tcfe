@@ -41,7 +41,7 @@ meas tran ymin MIN v(5) from=50m to=250m
 
 let vripple_reg = ymax - ymin
 
-print yavg ymax ymin vripple_reg
+print yavg ymax ymin vripple_reg > result_sim.txt 
 
 plot  v(2)
 hardcopy vrect.ps v(2)-v(3)
