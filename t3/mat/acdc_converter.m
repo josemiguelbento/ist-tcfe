@@ -9,11 +9,11 @@ format long;
 option = 2 %full wave rectifier
 
 %variables -----------------------------------------
-Renv = 5e3
-C = 5e-6
+Renv = 10e3
+C = 10e-6
 f=50;
 vini = 230;
-Rreg = 5e3
+Rreg = 1e3
 
 %transformer -----------------------------------------
 n = 10
@@ -88,11 +88,22 @@ new = 1;
 
 rd = new*vt/(Is*exp(von/(new*vt)))
 
-if average_env >= von*n_diodes
-  vOreg_ac = n_diodes*rd/(n_diodes*rd+Rreg) * (vOenv-average_env);
-else
-  vOreg_ac = vOenv-average_env;
-endif 
+%if average_env >= von*n_diodes
+%  vOreg_ac = n_diodes*rd/(n_diodes*rd+Rreg) * (vOenv-average_env);
+%else
+%  vOreg_ac = vOenv-average_env;
+%endif 
+
+
+
+% ac regulator
+for i = 1:length(t)
+  if vOenv(i) >= n_diodes*von
+    vOreg_ac(i) = n_diodes*rd/(n_diodes*rd+Rreg) * (vOenv(i)-average_env);
+  else
+    vOreg_ac(i) = vOenv(i)-average_env;
+  endif
+endfor
 
 vOreg = vOreg_dc + vOreg_ac;
 
