@@ -1,8 +1,8 @@
 *Values
 *Units for the values: V, mA, kOhm and mS
-*R1 =5000 K
-*R2 = 5000
-*C=5*10⁻6
+*R1 =5000 Ohm
+*R2 = 1000 Ohm
+*C=5*10⁻6 F
 
 * forces current values to be saved
 .options savecurrents
@@ -10,7 +10,7 @@
 *************Circuito que mandei para o messenger*****************
 
 ***Fonte dependente (meti amplitude de 13.94 que equivale a 230/16.5)
-Vs 1 0 0 sin(0 13.94 50 0 0 90)
+Vs 1 0 0 sin(0 15.33 50 0 0 90)
 
 ***Envelope detector***
 De 1 2 Default
@@ -18,7 +18,7 @@ R1 2 0 5k
 C 2 0 5u
 
 ***Voltage regulator***
-R2 2 3 5k
+R2 2 3 1k
 Dr1 3 4 Default
 Dr2 4 5 Default
 Dr3 5 6 Default
@@ -35,13 +35,27 @@ Dr13 15 16 Default
 Dr14 16 17 Default
 Dr15 17 18 Default
 Dr16 18 19 Default
-Dr17 19 0 Default
-
+Dr17 19 20 Default
+Dr18 20 21 Default
+Dr19 21 22 Default
+Dr20 22 23 Default
+Dr21 23 24 Default
+Dr22 24 25 Default
+Dr23 25 0 Default
 
 
 .model Default D
 .op
 .end
+
+.tran 50m 250m
+
+***Average***
+.measure tran yavg AVG v(3) from=50m to=250m
+
+*** max and min v0***
+.measure tran ymax MAX v(3) from=50m to=250m
+.measure tran ymin MIN v(3) from=50m to=250m
 .control
 
 *makes plots in color
@@ -54,15 +68,15 @@ set color4=violet
 set color5=rgb:3/8/0
 set color6=rgb:4/0/0
 
-*2) average function (??)
+print (ymax-ymin)
 
-*3) ripple ; max and min functions
+*3)
 
 *4) 
 echo "********************************************"
 echo  "Transient analysis"
 echo "********************************************"
-tran 1e-5 0.2 
+tran 1e-5 0.25 
 plot  v(2) v(1)
 hardcopy Ven.ps v(2) v(1)
 
