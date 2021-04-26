@@ -1,6 +1,3 @@
-
-
-
 close all
 clear all
 
@@ -12,11 +9,11 @@ format long;
 option = 2 %full wave rectifier
 
 %variables -----------------------------------------
-Renv = 5e3
-C = 5e-6
+Renv = 10e3
+C = 10e-6
 f=50;
 vini = 230;
-Rreg = 5e3
+Rreg = 1e3
 
 %transformer -----------------------------------------
 n = 10
@@ -91,7 +88,22 @@ new = 1;
 
 rd = new*vt/(Is*exp(von/(new*vt)))
 
-vOreg_ac = n_diodes*rd/(n_diodes*rd+Rreg) * (vOenv-average_env);
+%if average_env >= von*n_diodes
+%  vOreg_ac = n_diodes*rd/(n_diodes*rd+Rreg) * (vOenv-average_env);
+%else
+%  vOreg_ac = vOenv-average_env;
+%endif 
+
+
+
+% ac regulator
+for i = 1:length(t)
+  if vOenv(i) >= n_diodes*von
+    vOreg_ac(i) = n_diodes*rd/(n_diodes*rd+Rreg) * (vOenv(i)-average_env);
+  else
+    vOreg_ac(i) = vOenv(i)-average_env;
+  endif
+endfor
 
 vOreg = vOreg_dc + vOreg_ac;
 
@@ -99,22 +111,22 @@ vOreg = vOreg_dc + vOreg_ac;
 %plots ----------------------------------------------
 
 %output voltages at rectifier, envelope detector and regulator
-%hfc = figure(1);
-%title("Regulator and envelope output voltage v_o(t)")
-%plot (t*1000, vOhr, ";vo_{rectifier}(t);", t*1000,vOenv, ";vo_{envelope}(t);", t*1000,vOreg, ";vo_{regulator}(t);");
-%xlabel ("t[ms]")
-%ylabel ("v_O [Volts]")
-%legend('Location','northeast');
-%print (hfc, "all_vout.eps", "-depsc");
+hfc = figure(1);
+title("Regulator and envelope output voltage v_o(t)")
+plot (t*1000, vOhr, ";vo_{rectifier}(t);", t*1000,vOenv, ";vo_{envelope}(t);", t*1000,vOreg, ";vo_{regulator}(t);");
+xlabel ("t[ms]")
+ylabel ("v_O [Volts]")
+legend('Location','northeast');
+print (hfc, "all_vout.eps", "-depsc");
 
 %Deviations (vO - 12) 
-%hfc = figure(2);
-%title("Deviations from desired DC voltage")
-%plot (t*1000,vOreg-12, ";vo-12 (t);");
-%xlabel ("t[ms]")
-%ylabel ("v_O [Volts]")
-%legend('Location','northeast');
-%print (hfc, "deviation.eps", "-depsc");
+hfc = figure(2);
+title("Deviations from desired DC voltage")
+plot (t*1000,vOreg-12, ";vo-12 (t);");
+xlabel ("t[ms]")
+ylabel ("v_O [Volts]")
+legend('Location','northeast');
+print (hfc, "deviation.eps", "-depsc");
 
 
 average_reg = mean(vOreg)

@@ -5,7 +5,7 @@
 .options savecurrents
 
 
-.INCLUDE data_t3.txt
+.INCLUDE ../data_t3.txt
 
 .op
 .end

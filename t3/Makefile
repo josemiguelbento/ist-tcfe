@@ -5,14 +5,16 @@
 # type "make clean" to delete all generated files
 # ------------------------------------------------------------
 
-all:
-	make -C mat
+all:	
+	octave data_gen.m
+	#make -C mat
 	make -C sim
-	make -C doc
-	cp doc/report.pdf .
+#	make -C doc
+	octave eval_sim.m
+#	cp doc/report.pdf .
 
 clean:
-	@rm -f data.txt
+	@rm -f data_octave.txt data_t3.txt merit.txt
 	make -C mat clean
 	make -C sim clean
 	make -C doc clean

@@ -1,4 +1,4 @@
-yavg = 1.196803e+01
-ymax = 1.225969e+01
-ymin = 1.160367e+01
-vripple_reg = 6.560200e-01
+yavg = 1.274516e+01
+ymax = 1.295554e+01
+ymin = 1.247375e+01
+vripple_reg = 4.817900e-01

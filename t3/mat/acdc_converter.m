@@ -8,15 +8,21 @@ format long;
 %option = 1 %half wave rectifier
 option = 2 %full wave rectifier
 
+
+%reads data file ----------------------------------
+dataf = fopen('../data_octave.txt','r');
+DATA = fscanf(dataf,'%*s = %f');
+fclose(dataf);
+
 %variables -----------------------------------------
-Renv = 10e3
-C = 10e-6
+Renv = DATA(1)
+C = DATA(2)
 f=50;
 vini = 230;
-Rreg = 1e3
+Rreg = DATA(3)
 
 %transformer -----------------------------------------
-n = 10
+n = DATA(4)
 A = vini/n;
 
 %envelope detector -----------------------------------------
@@ -67,8 +73,8 @@ ripple_env = max(vOenv) - min(vOenv)
 
 
 %voltage regulator -----------------------------------------
-n_diodes = 17
-von = 0.7;
+n_diodes = DATA(5)
+von = 0.6;
 
 vOreg = zeros(1, length(t));
 vOreg_dc = 0;
@@ -113,7 +119,7 @@ vOreg = vOreg_dc + vOreg_ac;
 %output voltages at rectifier, envelope detector and regulator
 hfc = figure(1);
 title("Regulator and envelope output voltage v_o(t)")
-plot (t*1000, vOhr, ";vo_{rectifier}(t);", t*1000,vOenv, ";vo_{envelope}(t);", t*1000,vOreg, ";vo_{regulator}(t);");
+plot (t*1000, vSenv, ";vs_{transformer}(t);", t*1000,vOenv, ";vo_{envelope}(t);", t*1000,vOreg, ";vo_{regulator}(t);");
 xlabel ("t[ms]")
 ylabel ("v_O [Volts]")
 legend('Location','northeast');
