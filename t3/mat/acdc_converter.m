@@ -74,7 +74,7 @@ ripple_env = max(vOenv) - min(vOenv)
 
 %voltage regulator -----------------------------------------
 n_diodes = DATA(5)
-von = 0.6;
+von = 0.670798;
 
 vOreg = zeros(1, length(t));
 vOreg_dc = 0;
@@ -136,11 +136,9 @@ print (hfc, "deviation.eps", "-depsc");
 
 
 average_reg = mean(vOreg)
-ripple_reg = max(vOreg)-min(vOreg)
+ripple_reg = max(vOreg)-min(vOreg) 
 
-quality = 1/ripple_reg + 1/abs(average_reg-12) 
-
-cost = Renv/1000 + Rreg/1000 + C*1e6 + 0.1 + n_diodes*0.1; %o 0.1 e do diodo do envelope detector 
+cost = Renv/1000 + Rreg/1000 + C*1e6 + n_diodes*0.1*2; %o 0.1 e do diodo do envelope detector 
 
 if option == 1
   cost = cost + 0.1
@@ -148,5 +146,5 @@ elseif option == 2
   cost = cost + 0.4
 endif
 
-MERIT = quality/cost
+MERIT = 1/(cost*(ripple_reg + abs(average_reg - 12) + 1e-6))
 

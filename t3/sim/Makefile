@@ -21,5 +21,5 @@ ngspice_auto.log: ../sim/t3_pontuacao.net
 	
 clean:
 	@rm -f *.log *.tex *.pdf *.ps *~
-	@rm -f data_sim.txt
+	@rm -f *.txt
 .PHONY: all clean

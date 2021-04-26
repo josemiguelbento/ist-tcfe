@@ -8,7 +8,7 @@ diary on
 Renv = 10e3
 C = 10e-6
 Rreg = 1e3
-n = 11.5
+n = 11.5 %amplitude(Vs) = 230/n
 n_diodes = 19
 diary off
 
