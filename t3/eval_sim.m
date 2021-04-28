@@ -26,6 +26,6 @@ cost = Renv/1000 + C*1e6 + Rreg/1000 + n_diodes*2*0.1+4*0.1
 average = DATA(1)
 ripple = DATA(4)
 
-MERIT = 1/cost/(ripple+(average-12)+1e-6)
+MERIT = 1/cost/(ripple+abs(average-12)+1e-6)
 
 diary off

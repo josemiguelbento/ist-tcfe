@@ -7,7 +7,7 @@
 
 all:	
 	octave data_gen.m
-	make -C mat
+	#make -C mat
 	make -C sim
 #	make -C doc
 	octave eval_sim.m
