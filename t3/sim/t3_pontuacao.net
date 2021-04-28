@@ -10,7 +10,7 @@
 .op
 .end
 
-.tran 50m 200m
+.tran 50m 250m
 
 .control
 
@@ -33,11 +33,11 @@ echo "********************************************"
 tran 1e-5 0.2 
 
 ***Average***
-meas tran yavg AVG v(5) from=50m to=250m
+meas tran yavg AVG v(5) from=150m to=350m
 
 *** max and min v0***
-meas tran ymax MAX v(5) from=50m to=250m
-meas tran ymin MIN v(5) from=50m to=250m
+meas tran ymax MAX v(5) from=150m to=350m
+meas tran ymin MIN v(5) from=150m to=350m
 
 let vripple_reg = ymax - ymin
 
