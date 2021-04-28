@@ -11,10 +11,11 @@ all:
 	make -C sim
 	make -C doc
 	octave eval_sim.m
+	sed -i 's/$$/\\\\ \\hline/g' merit.tex
 	cp doc/report.pdf .
 
 clean:
-	@rm -f data_octave.txt data_t3.txt merit.txt
+	@rm -f data_octave.txt data_t3.txt merit.tex
 	make -C mat clean
 	make -C sim clean
 	make -C doc clean
