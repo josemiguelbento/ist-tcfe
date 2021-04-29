@@ -30,7 +30,7 @@ set color6=rgb:4/0/0
 echo "********************************************"
 echo  "Transient analysis"
 echo "********************************************"
-tran 1e-5 0.2 
+tran 1e-5 0.35 0.15 
 
 ***Average***
 meas tran yavg AVG v(5) from=150m to=350m
@@ -44,7 +44,7 @@ let vripple_reg = ymax - ymin
 print yavg ymax ymin vripple_reg > result_sim.txt 
 
 plot  v(2)
-hardcopy vrect.ps v(2)-v(3)
+hardcopy vrect.ps v(2)
 echo vrect_FIG
 
 plot  v(5)
