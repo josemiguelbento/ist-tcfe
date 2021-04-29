@@ -6,9 +6,9 @@ all: ngspice_auto.log
 	$(foreach i, $(NGSTABS), sed -n '/^$i_TAB/,/^$i_END/{p;/^$i_END/q}' $< | grep -v $i_TAB | grep -v $i_END | grep -v '#' | sed 's/\=/\&/g' | sed 's/$$/\\\\ \\hline/g' > $i_tab.tex;)
 	
 	
-	mv var_output.pdf ../doc
+	mv vo_menos_12.pdf ../doc
 	mv vout.pdf ../doc
-	mv vs_vout.pdf ../doc
+	mv vs_vout_venv.pdf ../doc
 	mv vrect.pdf ../doc
 
 	

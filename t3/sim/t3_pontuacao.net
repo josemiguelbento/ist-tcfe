@@ -53,13 +53,13 @@ echo vout_FIG
 
 *5)
 plot v(5)-12
-hardcopy var_output.ps v(5)-12
-echo var_output_FIG
+hardcopy vo_menos_12.ps v(5)-12
+echo vo_menos_12_FIG
 
 
 plot v(1)-v(3) v(2) v(5)
-hardcopy vs_vout.ps v(1)-v(3) v(2) v(5)
-echo vs_vout_FIG
+hardcopy vs_vout_venv.ps v(1)-v(3) v(2) v(5)
+echo vs_vout_venv_FIG
 
 quit
 .endc
