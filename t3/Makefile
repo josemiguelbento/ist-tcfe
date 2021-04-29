@@ -15,7 +15,7 @@ all:
 	cp doc/report.pdf .
 
 clean:
-	@rm -f data_octave.txt data_t3.txt merit.tex
+	@rm -f data_octave.txt data_t3.txt merit.tex report.pdf
 	make -C mat clean
 	make -C sim clean
 	make -C doc clean
