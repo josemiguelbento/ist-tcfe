@@ -1,10 +1,10 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-In this laboratory assignment the objective of analysing a circuit containing multiple resistances, a capacitor and a sinusoidal voltage source $v_s$ that  varies in time has been achieved.\par
-Static, time and frequency analyses have been performed both theoretically, using the Octave maths tool, and by circuit simulation, using the
-Ngspice tool. The theoretical results obtained match the simulation results quite precisely - one must call attention to the fact that certain values obtained theoretically were precisely zero, whilst im some cases (the boundary conditions simulated for t=0) the corresponding simulated results were of the order of 1e-15 - we considered these results to be effectively zero, given they were multiple orders of magnitude inferior to the remaining nominal values and aproximately of the magnitude of the floating point precision for the numerical representation types used.\par
-The reason for this overall satisfactory match is the fact that this is a
-relatively straightforward circuit, containing only one capacitor, besides linear components - as such, any differences will be related to the model used in ngspice for the capacitor, and in particular for the transient boundary condition analysis. For more complex components and circuits, the
-theoretical and simulation models could differ more (given the greater complexity of the models implemented by the simulator Ngspice, as well as the interactions between these, when compared to those studied in the theoretical classes).\par
+In this laboratory assignment the objective of creating a circuit that transforms an input AC voltage of 230V and frequency 50 Hz to an usable output DC voltage of 12V with minimun cost and ripple has been achieved .\par
+The circuit created was analysed theoretically using  the Octave maths tool, and by circuit simulation, using the
+Ngspice tool. The theoretical results obtained are very close to the simulation results. The slight differece obtained was mainly due to the fact that the models used for the diodes in the theorethical analysis differ from those used by Ngspice. The diode model used by Ngspice is way more complex than the one implemented theoretically. However due to the overall satisfactory match we can say that the theoretical model is acceptable due to it's low complexity and it's good results. \par
+ For more complex components and circuits, the
+theoretical and simulation models could differ more, given that the greater complexity of the models implemented by the simulator Ngspice, as well as the interactions between these, will be more noticeble when compared to the results obtained using the simpler models studied in the theoretical classes).\par
+The value for the Merit was 2.7499 using the Ngsice's results and  3.6940 using Octave's theoretical results.  
 
