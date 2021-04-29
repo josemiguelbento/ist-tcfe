@@ -74,7 +74,7 @@ ripple_env = max(vOenv) - min(vOenv)
 
 %voltage regulator -----------------------------------------
 n_diodes = DATA(5)
-von = 0.670798;
+von = 0.6;
 
 vOreg = zeros(1, length(t));
 vOreg_dc = 0;
@@ -105,7 +105,7 @@ rd = new*vt/(Is*exp(von/(new*vt)))
 % ac regulator
 for i = 1:length(t)
   if vOenv(i) >= n_diodes*von
-    vOreg_ac(i) = n_diodes*rd/(n_diodes*rd+Rreg) * (vOenv(i)-average_env);
+    vOreg_ac(i) = n_diodes*rd/2/(n_diodes*rd/2+Rreg) * (vOenv(i)-average_env);
   else
     vOreg_ac(i) = vOenv(i)-average_env;
   endif
@@ -134,9 +134,13 @@ ylabel ("v_O [Volts]")
 legend('Location','northeast');
 print (hfc, "deviation.eps", "-depsc");
 
-
+diary result_octave.txt
+diary on
 average_reg = mean(vOreg)
+max(vOreg)
+min(vOreg)
 ripple_reg = max(vOreg)-min(vOreg) 
+diary off
 
 cost = Renv/1000 + Rreg/1000 + C*1e6 + n_diodes*0.1*2; %o 0.1 e do diodo do envelope detector 
 
