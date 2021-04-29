@@ -7,11 +7,11 @@
 
 all:	
 	octave data_gen.m
-	#make -C mat
+	make -C mat
 	make -C sim
-#	make -C doc
+	make -C doc
 	octave eval_sim.m
-#	cp doc/report.pdf .
+	cp doc/report.pdf .
 
 clean:
 	@rm -f data_octave.txt data_t3.txt merit.txt
