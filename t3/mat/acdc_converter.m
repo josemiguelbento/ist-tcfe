@@ -27,7 +27,7 @@ A = vini/n;
 
 %envelope detector -----------------------------------------
 
-t=linspace(0, 10/f, 1000);
+t=linspace(0, 10/f, 50000);
 w=2*pi*f;
 vSenv = A * cos(w*t);
 vOhr = zeros(1, length(t));

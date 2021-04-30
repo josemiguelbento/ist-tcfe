@@ -10,8 +10,6 @@
 .op
 .end
 
-.tran 50m 250m
-
 .control
 
 *makes plots in color
@@ -30,14 +28,14 @@ set color6=rgb:4/0/0
 echo "********************************************"
 echo  "Transient analysis"
 echo "********************************************"
-tran 1e-5 0.35 0.15 
+tran 1e-5 0.6 0.4 
 
 ***Average***
-meas tran yavg AVG v(5) from=150m to=350m
+meas tran yavg AVG v(5) from=400m to=600m
 
 *** max and min v0***
-meas tran ymax MAX v(5) from=150m to=350m
-meas tran ymin MIN v(5) from=150m to=350m
+meas tran ymax MAX v(5) from=400m to=600m
+meas tran ymin MIN v(5) from=400m to=600m
 
 let vripple_reg = ymax - ymin
 
