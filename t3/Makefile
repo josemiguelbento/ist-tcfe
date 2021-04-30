@@ -9,9 +9,10 @@ all:
 	octave data_gen.m
 	make -C mat
 	make -C sim
-	make -C doc
 	octave eval_sim.m
 	sed -i 's/$$/\\\\ \\hline/g' merit.tex
+	mv merit.tex ./doc
+	make -C doc
 	cp doc/report.pdf .
 
 clean:

@@ -28,14 +28,14 @@ set color6=rgb:4/0/0
 echo "********************************************"
 echo  "Transient analysis"
 echo "********************************************"
-tran 1e-5 0.6 0.4 
+tran 1e-5 1.6 1.4 
 
 ***Average***
-meas tran yavg AVG v(5) from=400m to=600m
+meas tran yavg AVG v(5) from=1400m to=1600m
 
 *** max and min v0***
-meas tran ymax MAX v(5) from=400m to=600m
-meas tran ymin MIN v(5) from=400m to=600m
+meas tran ymax MAX v(5) from=1400m to=1600m
+meas tran ymin MIN v(5) from=1400m to=1600m
 
 let vripple_reg = ymax - ymin
 
