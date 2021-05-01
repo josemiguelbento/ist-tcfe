@@ -24,7 +24,7 @@ The ratio of the transformer and the values of the resistors, the capacitor and 
  \parbox{1\linewidth}{
   \centering
   \begin{tabular}{|l|l|l|r|}
-    %\hline    
+    \hline    
     {\bf Parameter} & {\bf Simulation} & {\bf Theoretical } & {\bf Units }\\ \hline
     \input{merit.tex}
   \end{tabular}
@@ -42,7 +42,41 @@ model used by Ngspice is way more complex than the one implemented theoretically
 %In \textbf{Table~\ref{tab:theoretical}} the values for the branch currents and the node voltages obtained from the Octave script for both methods are presented. Here, the node voltages in the mesh method were computed from the respective currents, which were determined as described in the previous subsection.
 
 
-  \centering
+
+\subsection{Output of the voltage regulator circuit, compared with the input sinusoidal voltage and the envelope detector voltage}
+
+\par
+\begin{figure}[H] \centering
+\includegraphics[width=0.6\linewidth]{all_vout.eps}
+\caption{Output of the voltage regulator circuit (yellow), compared with the input sinusoidal voltage (blue) and the envelope detector voltage (red)}
+\label{fig:all_vout}
+\end{figure}
+
+
+\subsection{Output of the Envelope Detector (acting on the output of the full-wave rectifier)}
+
+\par
+\begin{figure}[H] \centering
+\includegraphics[width=0.6\linewidth]{envelope.eps}
+\caption{Output of the Envelope Detector (acting on the output of the full-wave rectifier)}
+\label{fig:envelope}
+\end{figure}
+
+
+
+\par
+\begin{figure}[H] \centering
+\includegraphics[width=0.6\linewidth]{regulator.eps}
+\caption{Output of the voltage regulator circuit alone, so as to visualize the ripple effect in greater detail}
+\label{fig:regulator}
+\end{figure}
+
+\par
+\begin{figure}[H] \centering
+\includegraphics[width=0.6\linewidth]{deviation.eps}
+\caption{($v_O$ – 12) (output AC component + DC deviation) - note the vetical scale is in microVolts}
+\label{fig:deviation}
+\end{figure}
 
 
 %\begin{figure}[H] \centering

@@ -117,22 +117,41 @@ vOreg = vOreg_dc + vOreg_ac;
 %plots ----------------------------------------------
 
 %output voltages at rectifier, envelope detector and regulator
-hfc = figure(1);
-title("Regulator and envelope output voltage v_o(t)")
+hfa = figure(1);
+title('Regulator and envelope output voltage v_o(t)')
 plot (t*1000, vSenv, ";vs_{transformer}(t);", t*1000,vOenv, ";vo_{envelope}(t);", t*1000,vOreg, ";vo_{regulator}(t);");
 xlabel ("t[ms]")
 ylabel ("v_O [Volts]")
 legend('Location','northeast');
-print (hfc, "all_vout.eps", "-depsc");
+print (hfa, "all_vout.eps", "-depsc");
 
 %Deviations (vO - 12) 
-hfc = figure(2);
-title("Deviations from desired DC voltage")
+hfb = figure(2);
+title('Deviations from desired DC voltage')
 plot (t*1000,vOreg-12, ";vo-12 (t);");
 xlabel ("t[ms]")
 ylabel ("v_O [Volts]")
 legend('Location','northeast');
-print (hfc, "deviation.eps", "-depsc");
+print (hfb, "deviation.eps", "-depsc");
+
+%output ENVELOPE DETECTOR
+hfc = figure(3);
+title('Envelope detector output')
+plot (t*1000,vOenv, ";vo_{envelope}(t);");
+xlabel ("t[ms]")
+ylabel ("v_O [Volts]")
+legend('Location','northeast');
+print (hfc, "envelope.eps", "-depsc");
+
+%output REGULATOR
+hfd = figure(4);
+title('Regulator output')
+plot (t*1000,vOreg, ";vo_{regulator}(t);");
+xlabel ("t[ms]")
+ylabel ("v_O [Volts]")
+legend('Location','northeast');
+print (hfd, "regulator.eps", "-depsc");
+
 
 diary result_octave.txt
 diary on
