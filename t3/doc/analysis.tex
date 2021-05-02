@@ -4,21 +4,21 @@
 In this section, the circuit shown in \textbf{Figure~\ref{fig:diagram_t3}} is analysed
 theoretically.
 \begin{figure}[H] \centering
-\includegraphics[width=0.6\linewidth]{diagram_t3.pdf}
+\includegraphics[width=0.5\linewidth]{diagram_t3.pdf}
 \vspace{-6cm}
 \caption{Diagram of the circuit considered for the computations and simulations.}
 \label{fig:diagram_t3}
 \end{figure}
 
-The transformer used has an n:1 ratio. This means that the initial voltage source will have its Amplitude (A) reduced by a factor of n. Therefore we can represent the voltage at the terminals of the transformer as a voltage source with an Amplitude of A/n and with the same frequency as the initial source. As noted in the previous section, this paremeter n is indeed a rational number - we considered any combination of transformer coils to be possible - and can, even, be inferior to 1.
+The transformer used has an n:1 ratio. This means that the initial voltage source will have its Amplitude (A) divided by a factor of n. Therefore we can represent the voltage at the terminals of the transformer as a voltage source with an Amplitude of A/n and with the same frequency as the initial source. As noted in the previous section, this paremeter n is indeed a rational number - we considered any combination of transformer coils to be possible - and can, even, be inferior to 1.
 
 The output of the transformer will be the input of our Envelope detector. The Envelope Detector circuit is made up of a rectifier and a capacitor. The rectifier is a full-wave bridge rectifier circuit and is composed of 4 diodes and a resistor. The full-wave rectifier was used as oposed to a half-wave rectifier because the full-wave rectifier allows us to reduce the ripple without increasing the time constant, which will avoid a big raise in costs. The full-wave rectifier reduces the ripple because the voltage that comes out of the transformer will leave the rectifier oscillating at twice the frequency, which helps us in our ripple problem, by reducing the period corresponding to the wave ripple.
 
 The output of the Envelope Detector will be the input of the Voltage Regulator. The voltage regulator is made up of 40 diodes, two series of twenty diodes in parallel (as this proved to be an inexpensive way to reduce by half the equivalent incremental resistance of the regulator's diodes, and thus minimize ripple even more) and one resistance. The resistance is in series with the paralel of 2 rows of 20 diodes each. The diodes in each row are in series. The output of the paralel of diodes is the output of the AC/DC converter.
 
-In the Envolope Detector the diode model used has an ideal diode and an voltage source while in the Voltage Regulator de Diode model has an ideal diode, a voltage source and a resistor. Do note that the voltage Von for this diode model was obtained by dividing the the output voltage of the spice simulation by the number of diodes in series, in order to achieve a more realistic model for the theoretical analysis. This yielded Von = 0.6, a slight deviation from the standard Von = 0.7 generally used.
+In the Envolope Detector the diode model used has an ideal diode and an voltage source while in the Voltage Regulator de Diode model has an ideal diode, a voltage source and a resistor. Do note that the voltage Von for this diode model was obtained by dividing the the output voltage of the Ngspice simulation by the number of diodes in series, in order to achieve a more realistic model for the theoretical analysis. This yielded Von = 0.6, a slight deviation from the standard Von = 0.7 generally used.
 
-The ratio of the transformer and the values of the resistors, the capacitor and nº of diodes are presented in the following table, along with a side-by-side comparison of the the corresponding results (ripple, average, merit) in the theoretical analysis (right) and the ngspice simulation (left).
+The ratio of the transformer and the values of the resistors, the capacitor and nº of diodes are presented in the following table, along with a side-by-side comparison of the corresponding results (ripple, average, merit) in the theoretical analysis (right) and the Ngspice simulation (left).
 
 \hfill
  \parbox{1\linewidth}{
@@ -67,14 +67,14 @@ model used by Ngspice is way more complex than the one implemented theoretically
 \par
 \begin{figure}[H] \centering
 \includegraphics[width=0.6\linewidth]{regulator.eps}
-\caption{Output of the voltage regulator circuit alone, so as to visualize the ripple effect in greater detail}
+\caption{Output of the voltage regulator circuit, so as to visualize the ripple effect in greater detail}
 \label{fig:regulator}
 \end{figure}
 
 \par
 \begin{figure}[H] \centering
 \includegraphics[width=0.6\linewidth]{deviation.eps}
-\caption{($v_O$ – 12) (output AC component + DC deviation) - note the vetical scale is in microVolts}
+\caption{($v_O$ – 12) (output AC component + DC deviation)}
 \label{fig:deviation}
 \end{figure}
 

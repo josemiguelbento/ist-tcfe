@@ -5,13 +5,13 @@ In this section we will describe the steps needed to simulate this circuit using
 The following steps in the simulations were conducted: 
 \begin{itemize}
 	\item describing the circuit architecture in the spice script;
-	\item simulating the AC/DC converter for 10 periods (200 ms, given the source frequency of 50 Hz); given the initial transient period, corresponding to the charge/discharge of the Capacitors up to operating point conditions, we considered a time period betwenn 1400ms and 1600ms, to avoid having our average and ripple values contaminated by this transient initial period, beginning at t=0ms.
+	\item simulating the AC/DC converter for 10 periods (200 ms, given the source frequency of 50 Hz); given the initial transient period, corresponding to the charge/discharge of the Capacitors up to operating point conditions, we considered a time period between 1400ms and 1600ms, to avoid having our average and ripple values contaminated by this transient initial period, beginning at t=0ms.
 	\item measuring the output voltage ripple using Ngpice’s min and
 max functions: ripple($v_O$) = max($v_O$) - min($v_O$)
 	\item plotting the voltages at the output of the Envelope Detector
 and Voltage Regulator circuits
 	\item plotting ($v_O$ – 12) (output AC component + DC deviation)
-	\item recursively automating the parameter generation data with a different octave script, so as to only alter the parameters in one file and simultaneously run the simulation and the the theoretcial analysis for comparison
+	\item recursively automating the parameter generation data with a different octave script, so as to only alter the parameters in one file and simultaneously run the simulation and the theoretical analysis for comparison
 	\item automate the result evaluation process, in order to automatically generate the merit, given the parameters used (relating to cost) as input and the simulation results.
 	\item trying to optimize the the parameters for a maximum merit. This was done by choosing values for the envelope detector (a quick analysis suggested the ideal combination would have equal numerical values for the capacitance and for the resistor in this segment of the circuit), in order to minimize ripple and cost, followed by fine-tuning the output voltage to 12V by tweaking the parameters n and Voltage Regulator resistor. Multiple iterations of this process were carried out before a "final configuration" was chosen.
 	
@@ -24,7 +24,7 @@ The only significant change implemented regarding the architecture for a convert
  \parbox{1\linewidth}{
   \centering
   \begin{tabular}{|l|l|l|r|}
-    %\hline    
+    \hline    
     {\bf Parameter} & {\bf Simulation} & {\bf Theoretical } & {\bf Units }\\ \hline
     \input{merit.tex}
   \end{tabular}
@@ -59,14 +59,14 @@ The only significant change implemented regarding the architecture for a convert
 \par
 \begin{figure}[H] \centering
 \includegraphics[width=0.6\linewidth]{vout.pdf}
-\caption{Output of the voltage regulator circuit alone, so as to visualize the ripple effect in greater detail}
+\caption{Output of the voltage regulator circuit, so as to visualize the ripple effect in greater detail}
 \label{fig:vout}
 \end{figure}
 
 \par
 \begin{figure}[H] \centering
 \includegraphics[width=0.6\linewidth]{vo_menos_12.pdf}
-\caption{($v_O$ – 12) (output AC component + DC deviation) - note the vetical scale is in microVolts}
+\caption{($v_O$ – 12) (output AC component + DC deviation) - note the vertical scale is in microVolts}
 \label{fig:deviation}
 \end{figure}
 

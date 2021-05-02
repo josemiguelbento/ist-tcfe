@@ -3,6 +3,8 @@ clear all
 
 pkg load symbolic;
 
+%graphics_toolkit("gnuplot")
+
 format long;
 
 %option = 1 %half wave rectifier
@@ -147,6 +149,14 @@ print (hfc, "envelope.eps", "-depsc");
 hfd = figure(4);
 title('Regulator output')
 plot (t*1000,vOreg, ";vo_{regulator}(t);");
+
+%axis("tic", "labely");
+%get(gca, 'yticklabel');
+%yticks([11.999995 12 12.000005]);
+%yticklabels('%.6d');
+yticks=get(gca, "ytick");
+ylabels=arrayfun(@(x) sprintf ("%.6f", x),yticks,"uniformoutput", false);
+set(gca, "yticklabel", ylabels) 
 xlabel ("t[ms]")
 ylabel ("v_O [Volts]")
 legend('Location','northeast');
