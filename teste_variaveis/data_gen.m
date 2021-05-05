@@ -5,11 +5,11 @@ clear all
 
 diary data_octave.txt
 diary on
-Renv = 3000e3
-C = 3000e-6
-Rreg = 2588.5e3
-n = 2 %amplitude(Vs) = 230/n
-n_diodes = 21
+Renv = 7000e3
+C = 7000e-6
+Rreg = 6266.6e3
+n = 5.2 %amplitude(Vs) = 230/n
+n_diodes = 24
 diary off
 
 %variables for ngspice-----------------------------------------
@@ -26,7 +26,7 @@ printf("R1 2 0 %d\n", Renv)
 printf("C 2 0 %d\n",C)
 printf("R2 2 5 %d\n",Rreg)
 printf("Dr1 5 0 Default_n\n")
-%printf("Dr2 5 0 Default_n\n")
+printf("Dr2 5 0 Default_n\n")
 printf(".model Default D\n")
 printf(".model Default_n D (n=%d)\n", n_diodes)
 

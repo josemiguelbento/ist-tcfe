@@ -5,15 +5,15 @@ clear all
 
 diary data_octave.txt
 diary on
-Renv = 650e3
-C = 650e-6
-Rreg = 1153.88e3
-n = 0.8 %amplitude(Vs) = 230/n
+Renv = 100e3
+C = 100e-6
+Rreg = 120e3
+n = 5.48 %amplitude(Vs) = 230/n
 n_diodes = 20
 diary off
 
 %variables for ngspice-----------------------------------------
-537
+
 diary data_t3.txt
 diary on
 

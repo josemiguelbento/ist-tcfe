@@ -76,7 +76,7 @@ ripple_env = max(vOenv) - min(vOenv)
 
 %voltage regulator -----------------------------------------
 n_diodes = DATA(5)
-von = 0.6;
+von = 12/n_diodes;
 
 vOreg = zeros(1, length(t));
 vOreg_dc = 0;
@@ -148,15 +148,13 @@ print (hfc, "envelope.eps", "-depsc");
 %output REGULATOR
 hfd = figure(4);
 title('Regulator output')
-plot (t*1000,vOreg, ";vo_{regulator}(t);");
+plot (t*1000,vOreg-12, ";vo_{regulator}(t);");
 
-%axis("tic", "labely");
-%get(gca, 'yticklabel');
-%yticks([11.999995 12 12.000005]);
-%yticklabels('%.6d');
+
 yticks=get(gca, "ytick");
-ylabels=arrayfun(@(x) sprintf ("%.6f", x),yticks,"uniformoutput", false);
+ylabels=arrayfun(@(x) sprintf ("%.8f", x+12),yticks,"uniformoutput", false);
 set(gca, "yticklabel", ylabels) 
+
 xlabel ("t[ms]")
 ylabel ("v_O [Volts]")
 legend('Location','northeast');
