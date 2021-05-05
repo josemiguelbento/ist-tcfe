@@ -1,0 +1,46 @@
+
+Circuit: *values
+
+********************************************
+Transient analysis
+********************************************
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+1                                      114.411
+3                                    -0.588896
+2                                      113.822
+5                                           12
+vs#branch                         -7.72773e-05
+
+
+No. of Data Rows : 20008
+yavg                =  1.200000e+01 from=  5.000000e-02 to=  2.000000e-01
+ymax                =  1.200001e+01 at=  5.001280e-02
+ymin                =  1.199999e+01 at=  1.999728e-01
+ERROR: (internal)  This operation is not defined for display type printf.
+Can't open viewport for graphics.
+
+The file "vrect.ps" may be printed on a postscript printer.
+vrect_FIG
+ERROR: (internal)  This operation is not defined for display type printf.
+Can't open viewport for graphics.
+
+The file "vout.ps" may be printed on a postscript printer.
+vout_FIG
+ERROR: (internal)  This operation is not defined for display type printf.
+Can't open viewport for graphics.
+
+The file "var_output.ps" may be printed on a postscript printer.
+var_output_FIG
+ERROR: (internal)  This operation is not defined for display type printf.
+Can't open viewport for graphics.
+
+The file "vs_vout.ps" may be printed on a postscript printer.
+vs_vout_FIG
+ngspice-31 done

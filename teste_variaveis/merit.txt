@@ -1,0 +1,9 @@
+Renv =  3000000
+C =  0.0030000
+Rreg =  2588500
+n =  2
+n_diodes =  21
+cost =  8593.1
+average =  12
+ripple =  0.000020000
+MERIT =  5.5415
