@@ -4,7 +4,7 @@ In this section we will describe the steps needed to simulate this circuit using
 
 The following steps in the simulations were conducted: 
 \begin{itemize}
-	\item describing the circuit architecture in the spice script;
+	\item describing the circuit architecture in the Ngspice script;
 	\item simulating the AC/DC converter for 10 periods (200 ms, given the source frequency of 50 Hz); given the initial transient period, corresponding to the charge/discharge of the Capacitors up to operating point conditions, we considered a time period between 1400ms and 1600ms, to avoid having our average and ripple values contaminated by this transient initial period, beginning at t=0ms.
 	\item measuring the output voltage ripple using Ngpice’s min and
 max functions: ripple($v_O$) = max($v_O$) - min($v_O$)
@@ -18,7 +18,7 @@ and Voltage Regulator circuits
 
 \end{itemize}
 
-The only significant change implemented regarding the architecture for a converter studied in class (using the full wave rectifier, which seemed, off the bat, to be the best choice), was substituting the series of diodes in the regulator for a parallel of two equal series of 20 diodes, which offered a slight advantage, as this proved to be an inexpensive way to reduce by half the equivalent incremental resistance of the regulator's diodes, and thus minimize the ripple even more. The results of the simulation (left) are repeated here, compared with the corresponding theoretical simulations.
+The only significant change implemented regarding the architecture for a converter studied in class (using the full wave rectifier, which seemed, off the bat, to be the best choice), was substituting the series of diodes in the regulator for a parallel of two equal series of 21 diodes, which offered a slight advantage, as this proved to be an inexpensive way to reduce by half the equivalent incremental resistance of the regulator's diodes, and thus minimize the ripple even more. The results of the simulation (left) are repeated here, compared with the corresponding theoretical simulations.
  
 \hfill
  \parbox{1\linewidth}{
@@ -35,12 +35,12 @@ The only significant change implemented regarding the architecture for a convert
 
   
 %ponto 1
-\subsection{Output of the voltage regulator circuit, compared with the input sinusoidal voltage and the envelope detector voltage}
+\subsection{Output of the voltage regulator circuit, compared with the output sinusoidal voltage of the transformer and the envelope detector voltage}
 
 \par
 \begin{figure}[H] \centering
 \includegraphics[width=0.6\linewidth]{vs_vout_venv.pdf}
-\caption{Output of the voltage regulator circuit (yellow), compared with the input sinusoidal voltage (red) and the envelope detector voltage (blue)}
+\caption{Output of the voltage regulator circuit (yellow), compared with the output sinusoidal voltage of the transformer (red) and the envelope detector voltage (blue)}
 \label{fig:vs_venv_vout}
 \end{figure}
 
