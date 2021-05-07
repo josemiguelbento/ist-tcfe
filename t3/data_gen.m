@@ -5,11 +5,11 @@ clear all
 
 diary data_octave.txt
 diary on
-Renv = 100e3
-C = 100e-6
-Rreg = 120e3
-n = 5.48 %amplitude(Vs) = 230/n
-n_diodes = 20
+Renv = 600e3
+C = 600e-6
+Rreg = 803.84e3
+n = 3 %amplitude(Vs) = 230/n
+n_diodes = 21
 diary off
 
 %variables for ngspice-----------------------------------------
