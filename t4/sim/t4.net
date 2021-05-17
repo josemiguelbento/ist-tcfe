@@ -11,7 +11,7 @@
 
 .control
 
-print all > op.txt
+print all
 
 * time analysis
 tran 1e-5 1e-2
