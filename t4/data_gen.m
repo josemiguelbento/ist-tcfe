@@ -5,30 +5,49 @@ clear all
 
 diary data_octave.txt
 diary on
-Renv = 600e3
-C = 600e-6
-Rreg = 803.84e3
-n = 3 %amplitude(Vs) = 230/n
-n_diodes = 21
+Vcc = 12
+Vinm = 10e-3
+Vinf = 1000
+Rin = 100
+Ci = 1e-3
+R1 = 80e3
+R2 = 20e3
+Rc = 1e3
+Re = 100
+Cb = 1e-3
+Rout = 100
+Co = 1e-6
+RL = 8
+
 diary off
 
 %variables for ngspice-----------------------------------------
 
-diary data_t3.txt
+diary data_t4.txt
 diary on
 
-printf("Vs 1 3 0 sin(0 %f 50 0 0 90)\n", 230/n)
-printf("Dtl 1 2 Default\n")
-printf("Dtr 3 2 Default\n")
-printf("Dbl 0 3 Default\n")
-printf("Dbr 0 1 Default\n")
-printf("R1 2 0 %d\n", Renv)
-printf("C 2 0 %d\n",C)
-printf("R2 2 5 %d\n",Rreg)
-printf("Dr1 5 0 Default_n\n")
-printf("Dr2 5 0 Default_n\n")
-printf(".model Default D\n")
-printf(".model Default_n D (n=%d)\n", n_diodes)
+printf("Vcc vcc 0 12.0\n")
+printf("Vin in 0 0 ac 1.0 sin(0 %d %d)\n", Vinm, Vinf)
+printf("Rin in in2 %d\n", Rin)
+printf("* input coupling capacitor\n")
+printf("Ci in2 base %d\n", Ci)
+printf("* bias circuit\n")
+printf("R1 vcc base %d\n", R1)
+printf("R2 base 0 %d\n", R2)
+printf("* gain stage\n")
+printf("Q1 coll base emit BC547A\n")
+printf("Rc vcc coll %d\n", Rc)
+printf("Re emit 0 %d\n", Re)
+printf("* bypass capacitor\n")
+printf("Cb emit 0 %d\n", Cb)
+printf("* output stage\n")
+printf("Q2 0 coll emit2 BC557A\n")
+printf("Rout emit2 vcc %d\n", Rout)
+printf("* output coupling capacitor\n")
+printf("Co emit2 out %d\n", Co)
+printf("* load\n")
+printf("RL out 0 %d\n", RL)
+
 
 diary off
 
