@@ -7,16 +7,17 @@
 
 all:	
 	octave data_gen.m
+	mv data_t4.txt ./sim
 	make -C mat
 	make -C sim
 	octave eval_sim.m
-	sed -i 's/$$/\\\\ \\hline/g' merit.tex
-	mv merit.tex ./doc
-	make -C doc
-	cp doc/report.pdf .
+#	sed -i 's/$$/\\\\ \\hline/g' merit.tex
+#	mv merit.tex ./doc
+#	make -C doc
+#	cp doc/report.pdf .
 
 clean:
-	@rm -f data_octave.txt data_t3.txt merit.tex report.pdf
+	@rm -f data_octave.txt data_t3.txt merit.tex report.pdf data_t4.txt
 	make -C mat clean
 	make -C sim clean
 	make -C doc clean

@@ -4,10 +4,10 @@
 In this section, the circuit shown in \textbf{Figure~\ref{fig:diagram_t3}} is analysed
 theoretically.
 \begin{figure}[H] \centering
-\includegraphics[width=0.5\linewidth]{diagram_t3.pdf}
+\includegraphics[width=0.5\linewidth]{diagram_t4.pdf}
 \vspace{-6cm}
 \caption{Diagram of the circuit considered for the computations and simulations.}
-\label{fig:diagram_t3}
+\label{fig:diagram_t4}
 \end{figure}
 
 The transformer used has an n:1 ratio. This means that the initial voltage source will have its Amplitude (A) divided by a factor of n. Therefore we can represent the voltage at the terminals of the transformer as a voltage source with an Amplitude of A/n and with the same frequency as the initial source. As noted in the previous section, this paremeter n is indeed a rational number - we considered any combination of transformer coils to be possible.
@@ -49,7 +49,7 @@ model used by Ngspice is way more complex than the one implemented theoretically
 
 \par
 \begin{figure}[H] \centering
-\includegraphics[width=0.6\linewidth]{all_vout.eps}
+%\includegraphics[width=0.6\linewidth]{all_vout.eps}
 \caption{Output of the voltage regulator circuit (yellow), compared with the output sinusoidal voltage of the transformer (blue) and the envelope detector voltage (red)}
 \label{fig:all_vout}
 \end{figure}
@@ -59,7 +59,7 @@ model used by Ngspice is way more complex than the one implemented theoretically
 
 \par
 \begin{figure}[H] \centering
-\includegraphics[width=0.6\linewidth]{envelope.eps}
+%\includegraphics[width=0.6\linewidth]{envelope.eps}
 \caption{Output of the Envelope Detector (acting on the output of the full-wave rectifier)}
 \label{fig:envelope}
 \end{figure}
@@ -68,14 +68,14 @@ model used by Ngspice is way more complex than the one implemented theoretically
 
 \par
 \begin{figure}[H] \centering
-\includegraphics[width=0.6\linewidth]{regulator.eps}
+%\includegraphics[width=0.6\linewidth]{regulator.eps}
 \caption{Output of the voltage regulator circuit, so as to visualize the ripple effect in greater detail}
 \label{fig:regulator}
 \end{figure}
 
 \par
 \begin{figure}[H] \centering
-\includegraphics[width=0.6\linewidth]{deviation.eps}
+%\includegraphics[width=0.6\linewidth]{deviation.eps}
 \caption{($v_O$ – 12) (output AC component + DC deviation)}
 \label{fig:deviation}
 \end{figure}

@@ -32,14 +32,14 @@ gain = DATA(4)
 MERIT = gain*bandwidth/(cost*lco);
 
 
-datar = fopen('./mat/result_octave.txt','r');
-DATAR = fscanf(datar,'%*s = %f');
-fclose(datar);
+%datar = fopen('./mat/result_octave.txt','r');
+%DATAR = fscanf(datar,'%*s = %f');
+%fclose(datar);
 
 
-average_oct = DATAR(1);
-ripple_oct = DATAR(4);
-MERIT_oct = 1/cost/(ripple_oct+abs(average_oct-12)+1e-6);
+%average_oct = DATAR(1);
+%ripple_oct = DATAR(4);
+%MERIT_oct = 1/cost/(ripple_oct+abs(average_oct-12)+1e-6);
 
 
 diary merit.tex
