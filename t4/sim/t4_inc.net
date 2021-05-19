@@ -25,17 +25,17 @@ plot vdb(out)
 plot vp(out)
 hardcopy vo2f_inc.ps vp(out)
 
-let Zo = 1/Vo#branch
+let Zo = exp(-ln(Vo#branch))
 
 plot Zo
 hardcopy Zo_inc.ps Zo
 
 
 echo Vo#branch
-print Vo#branch[10]
+print Vo#branch
 
-echo Zo = 1/Vo#branch
-print Zo[10]
+echo Zo = Vo#branch
+print Zo
 
 *print Vo/Vo#branch> result_sim_inc.txt 
 quit
