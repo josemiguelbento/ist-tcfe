@@ -8,6 +8,7 @@
 all:	
 	octave data_gen.m
 	mv data_t4.txt ./sim
+	mv data_t4_inc.txt ./sim
 	make -C mat
 	make -C sim
 	octave eval_sim.m

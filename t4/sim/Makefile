@@ -14,7 +14,10 @@ all: ngspice_auto.log
 	
 ngspice_auto.log: ../sim/t4.net
 	ngspice -b $< -o $@
+	ngspice -b t4_inc.net
 	
+ngspice_auto_inc.log: ../sim/t4_inc.net
+	ngspice -b $< -o $@	
 	
 clean:
 	@rm -f *.log *.tex *.pdf *.ps *~
