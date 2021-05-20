@@ -50,21 +50,9 @@ MERIT = gain*bandwidth/(cost*lco);
 
 diary merit.tex
 diary on
-Vcc = DATAO(1)
-Vinm = DATAO(2)
-Vinf = DATAO(3)
-Rin = DATAO(4)
-Ci = DATAO(5)
-R1 = DATAO(6)
-R2 = DATAO(7)
-Rc = DATAO(8)
-Re = DATAO(9)
-Cb = DATAO(10)
-Rout = DATAO(11)
-Co = DATAO(12)
-RL = DATAO(13)
-printf('Z_i & %d & Ohm\n', DATA(9));
-printf('Z_o & %d & Ohm\n', DATAINC(3));
+
+printf('Zi & %d & Ohm\n', DATA(9));
+printf('Zo & %d & Ohm\n', DATAINC(3));
 printf('Cost & %d & MU\n', cost);
 printf('lco & %.3f & V\n', lco);
 printf('Bandwidth & %.3f & V\n', bandwidth);
@@ -72,8 +60,15 @@ printf('Gainv(out) & %.3f & V\n', gain);
 printf('MERIT & %.4f & gold medals\n', MERIT);
 diary off
 
+%-----------------------------------------GARANTIA
+%npn
 
+%vc>vb
+%vb>ve
+%vc-ve > v_ce_sat
 
-
+%pnp
+%vc<vb
+%ve-vc >v_ec_sat
 
 

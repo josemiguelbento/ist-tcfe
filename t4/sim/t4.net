@@ -24,8 +24,7 @@ ac dec 10 10 100MEG
 *plot vdb(coll)
 *plot vp(coll)
 hardcopy vo1f.ps vdb(coll)
-print v(coll)
-
+*print v(coll)
 
 *plot vdb(out)
 *plot vp(out)

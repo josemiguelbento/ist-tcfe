@@ -26,7 +26,7 @@ hardcopy vo1f_inc.ps vdb(coll)
 
 *plot vdb(out)
 *plot vp(out)
-hardcopy vo2f_inc.ps vp(out)
+hardcopy vo2f_inc.ps vdb(out)
 
 echo Zo
 let Zo = v(out)/Vo#branch
