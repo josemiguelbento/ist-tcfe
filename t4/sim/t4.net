@@ -15,31 +15,23 @@ print all
 
 * time analysis
 tran 1e-5 1e-2
-plot v(coll)
+*plot v(coll)
 hardcopy vo1.ps vdb(coll)
 
 
 * frequency analysis
 ac dec 10 10 100MEG
-plot vdb(coll)
-plot vp(coll)
+*plot vdb(coll)
+*plot vp(coll)
 hardcopy vo1f.ps vdb(coll)
 print v(coll)
 
 
-plot vdb(out)
-plot vp(out)
+*plot vdb(out)
+*plot vp(out)
 hardcopy vo2f.ps vdb(out)
 
 
-
-*total gain
-echo v(out)
-echo $&v(out)
-echo v(coll)
-echo $&v(coll)
-echo v(in)
-echo $&v(in)
 echo v(out)/v(in)
 
 print v(out)/v(in)
@@ -49,12 +41,21 @@ let threshold = vecmax(vdb(out))-3
 meas ac lco WHEN vdb(out) = threshold RISE = 1
 meas ac uco WHEN vdb(out) = threshold CROSS = LAST
 
+
 *input impedance in kohm
-print vecmax(v(in2))/(vecmax(v(in))-vecmax(v(in2)))/100*1000
+*print all
+
+*plot abs(v(in2)[40]/vin#branch[40]/(-1000))
+print v(in2)[40]/vin#branch[40]/(-1000)
+hardcopy zin.ps v(in2)/vin#branch/(-1000)
+
+let zin = v(in2)[40]/vin#branch[40]/(-1000)
+let gain = v(out)[40]/v(in)[40]
+
+print lco uco threshold re(gain) im(gain) abs(gain) re(zin) im(zin) abs(zin)> result_sim.txt 
 
 *need a different setup to measure output impedance
 
-print lco uco threshold vecmax(abs(v(out)/v(in)))> result_sim.txt 
 quit
 .endc 
 

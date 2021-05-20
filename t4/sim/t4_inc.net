@@ -6,6 +6,9 @@ options savecurrents
 
 .INCLUDE data_t4_inc.txt
 
+F1 a 0 Vo 1
+Rteste a 0 1
+
 .op
 .end
 
@@ -16,28 +19,30 @@ print all
 
 * frequency analysis
 ac dec 10 10 100MEG
-plot vdb(coll)
-plot vp(coll)
+*plot vdb(coll)
+*plot vp(coll)
 hardcopy vo1f_inc.ps vdb(coll)
 
 
-plot vdb(out)
-plot vp(out)
+*plot vdb(out)
+*plot vp(out)
 hardcopy vo2f_inc.ps vp(out)
 
-let Zo = 1/Vo#branch
+echo Zo
+let Zo = v(out)/Vo#branch
 
-plot Zo
+
+*plot Zo
 hardcopy Zo_inc.ps Zo
 
 
-echo Vo#branch
-print Vo#branch[10]
+*print Vo#branch
 
 echo Zo = 1/Vo#branch
-print Zo[10]
+print Zo[40]
 
-*print Vo/Vo#branch> result_sim_inc.txt 
+
+print re(Zo[40]) im(Zo[40]) abs(Zo[40])> result_sim_inc.txt 
 quit
 .endc 
 
