@@ -32,15 +32,15 @@ echo Zo
 let Zo = -v(out)/Vo#branch
 
 
-plot 20*log(abs(Zo))
+*plot 20*log(abs(Zo))
 hardcopy Zo_inc.ps abs(Zo)
+hardcopy Zo_inc_db.ps 20*log(abs(Zo))/log(10)
 
 
 *print Vo#branch
 
-echo Zo = 1/Vo#branch
-print Zo
-print abs(Zo)
+*print Zo
+*print abs(Zo)
 
 print re(Zo[40]) im(Zo[40]) abs(Zo[40])> result_sim_inc.txt 
 *quit

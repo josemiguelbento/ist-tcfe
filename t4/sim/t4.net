@@ -44,10 +44,11 @@ meas ac uco WHEN vdb(out) = threshold CROSS = LAST
 *print all
 
 *plot abs(v(in2)[40]/vin#branch[40]/(-1000))
-print v(in2)[40]/vin#branch[40]/(-1000)
-hardcopy zin.ps v(in2)/vin#branch/(-1000)
+print -v(in2)[40]/vin#branch[40]
+hardcopy zin.ps abs(-v(in2)/vin#branch)
+hardcopy zin_db.ps 20*log(abs(-v(in2)/vin#branch))/log(10)
 
-let zin = v(in2)[40]/vin#branch[40]/(-1000)
+let zin = -v(in2)[40]/vin#branch[40]
 let gain = v(out)[40]/v(in)[40]
 
 print lco uco threshold re(gain) im(gain) abs(gain) re(zin) im(zin) abs(zin)> result_sim.txt 

@@ -55,7 +55,7 @@ MERIT_oct = DATA(8)
 diary merit.tex
 diary on
 
-printf('Zi & %d & %d & kOhm\n', DATA(9), Zi_oct);
+printf('Zi & %d & %d & Ohm\n', DATA(9), Zi_oct);
 printf('Zo & %d & %d & Ohm\n', DATAINC(3), Zo_oct);
 printf('Cost & %d & Cost & MU\n', cost);
 printf('uco & %.3f & %.3f & Hz\n', uco, uco_oct);

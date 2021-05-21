@@ -1,3 +1,5 @@
+pkg load symbolic;
+
 %gain stage
 data = fopen('data_octave.txt','r');
 DATA = fscanf(data,'%*s = %f');
@@ -13,12 +15,11 @@ RB1=DATA(6)
 RB2=DATA(7)
 VBEON=0.7
 VCC = DATA(1)
-RS=DATA(4)
-
-Vin = DATA(2)
+RS=DATA(4) + 1/(DATA(5)*2*pi*f*i)
 
 Ci = DATA(5)
 Co = DATA(12)
+
 
 
 RB=1/(1/RB1+1/RB2)
@@ -84,6 +85,7 @@ AV = (gB+gm2/gpi2*gB)/(gB+ge2+go2+gm2/gpi2*gB)*AV1
 AV_DB = 20*log10(abs(AV))
 ZI=ZI1
 ZO=1/(go2+gm2/gpi2*gB+ge2+gB)
+
 
 
 
