@@ -10,13 +10,13 @@ Vinm = 10e-3
 Vinf = 1000
 Rin = 100
 Ci = 1e-3
-R1 = 80e3
+R1 = 100e3
 R2 = 20e3
-Rc = 1e3
+Rc = 0.5e3
 Re = 100
-Cb = 1e-3
+Cb = 5e-3
 Rout = 100
-Co = 1e-6
+Co = 1.995e-3
 RL = 8
 
 diary off
