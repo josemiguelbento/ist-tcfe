@@ -74,3 +74,18 @@ AV = (gB+gm2/gpi2*gB)/(gB+ge2+go2+gm2/gpi2*gB)*AV1
 AV_DB = 20*log10(abs(AV))
 ZI=ZI1
 ZO=1/(go2+gm2/gpi2*gB+ge2+gB)
+
+
+
+
+diary result_octave.txt
+diary on
+Zi = ZI
+Zo = ZO
+cost = 2123123123123 %fazer esta conta
+uco = 2123123123123 %fazer esta conta
+lco = 2123123123123 %fazer esta conta
+bandwidth = 2123123123123 %fazer esta conta
+gain = AV
+merit = 31978481764 % fazer esta conta
+diary off
