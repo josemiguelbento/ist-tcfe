@@ -11,7 +11,6 @@
 
 .control
 
-print all
 
 * time analysis
 tran 1e-5 1e-2
@@ -44,6 +43,7 @@ meas ac uco WHEN vdb(out) = threshold CROSS = LAST
 *input impedance in kohm
 *print all
 
+<<<<<<< HEAD:t4/sim/t4.net
 *plot abs(v(in2)[40]/vin#branch[40]/(-1000))
 print v(in2)[40]/vin#branch[40]/(-1000)
 hardcopy zin.ps v(in2)/vin#branch/(-1000)
