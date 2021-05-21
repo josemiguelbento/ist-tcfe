@@ -17,7 +17,7 @@ Re = 100
 Cb = 1e-3
 Rout = 100
 Co = 1e-6
-RL = 8
+RL = 1000000
 
 diary off
 

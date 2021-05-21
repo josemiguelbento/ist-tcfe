@@ -51,7 +51,7 @@ MERIT = gain*bandwidth/(cost*lco);
 diary merit.tex
 diary on
 
-printf('Zi & %d & Ohm\n', DATA(9));
+printf('Zi & %d & kOhm\n', DATA(9));
 printf('Zo & %d & Ohm\n', DATAINC(3));
 printf('Cost & %d & MU\n', cost);
 printf('lco & %.3f & V\n', lco);

@@ -29,21 +29,21 @@ hardcopy vo1f_inc.ps vdb(coll)
 hardcopy vo2f_inc.ps vdb(out)
 
 echo Zo
-let Zo = v(out)/Vo#branch
+let Zo = -v(out)/Vo#branch
 
 
-*plot Zo
-hardcopy Zo_inc.ps Zo
+plot 20*log(abs(Zo))
+hardcopy Zo_inc.ps abs(Zo)
 
 
 *print Vo#branch
 
 echo Zo = 1/Vo#branch
-print Zo[40]
-
+print Zo
+print abs(Zo)
 
 print re(Zo[40]) im(Zo[40]) abs(Zo[40])> result_sim_inc.txt 
-quit
+*quit
 .endc 
 
 
