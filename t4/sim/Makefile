@@ -10,7 +10,7 @@ all: ngspice_auto.log ngspice_auto_inc.log
 	$(eval NGSTABS=$(shell grep _TAB $(word 2,$^) | sed 's/_TAB//g' | sed ':a;N;$!ba;s/\n/ /g'))
 	$(foreach i, $(NGSTABS), sed -n '/^$i_TAB/,/^$i_END/{p;/^$i_END/q}' $(word 2,$^) | grep -v $i_TAB | grep -v $i_END | sed 's/vx#branch/Ix/g'| grep -v '#' | sed 's/v(6)-v(8)/Vx/g' | sed 's/(Vx)\/Ix/Req/g' | sed 's/\=/\&/g' | sed 's/$$/\\\\ \\hline/g' > $i_tab.tex;)
 	
-#	mv vo_menos_12.pdf ../doc
+#	mv vo2f.pdf ../doc
 #	mv vout.pdf ../doc
 #	mv vs_vout_venv.pdf ../doc
 #	mv vrect.pdf ../doc

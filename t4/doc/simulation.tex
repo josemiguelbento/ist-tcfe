@@ -5,31 +5,14 @@ The circuit used to simulate the output impedance of the amplifier as a whole wa
 
 \begin{figure}[H] \centering
 \includegraphics[width=0.95\linewidth]{diagram_t4_zout.pdf}
-\vspace{-8cm}
+\vspace{-10cm}
 \caption{Diagram of the circuit considered for the simulation of the output impedance of the amplifier .}
 \label{fig:diagram_t4_zout}
 \end{figure}
 
-In this section we will describe the steps needed to simulate this circuit using the software Ngspice. Essentially, we only need to perform transient analysis.
 
-The following steps in the simulations were conducted: 
-\begin{itemize}
-	\item describing the circuit architecture in the Ngspice script;
-	\item simulating the AC/DC converter for 10 periods (200 ms, given the source frequency of 50 Hz); given the initial transient period, corresponding to the charge/discharge of the Capacitors up to operating point conditions, we considered a time period between 1400ms and 1600ms, to avoid having our average and ripple values contaminated by this transient initial period, beginning at t=0ms.
-	\item measuring the output voltage ripple using Ngpice’s min and
-max functions: ripple($v_O$) = max($v_O$) - min($v_O$)
-	\item plotting the voltages at the output of the Envelope Detector
-and Voltage Regulator circuits
-	\item plotting ($v_O$ – 12) (output AC component + DC deviation)
-	\item recursively automating the parameter generation data with a different octave script, so as to only alter the parameters in one file and simultaneously run the simulation and the theoretical analysis for comparison
-	\item automate the result evaluation process, in order to automatically generate the merit, given the parameters used (relating to cost) as input and the simulation results.
-	\item trying to optimize the the parameters for a maximum merit. This was done by choosing values for the envelope detector (a quick analysis suggested the ideal combination would have equal numerical values for the capacitance and for the resistor in this segment of the circuit), in order to minimize ripple and cost, followed by fine-tuning the output voltage to 12V by tweaking the parameters n and Voltage Regulator resistor. Multiple iterations of this process were carried out before a "final configuration" was chosen.
-	
+The gain of the audio amplifier, the upper and lower cut off frequency, the bandwidth and the input and output impedances as well as the merit are presented in the following table, both for the theoretical analysis (right) and the Ngspice simulation (left), in order to make a side-by-side comparison.
 
-\end{itemize}
-
-The only significant change implemented regarding the architecture for a converter studied in class (using the full wave rectifier, which seemed, off the bat, to be the best choice), was substituting the series of diodes in the regulator for a parallel of two equal series of 21 diodes, which offered a slight advantage, as this proved to be an inexpensive way to reduce by half the equivalent incremental resistance of the regulator's diodes, and thus minimize the ripple even more. The results of the simulation (left) are repeated here, compared with the corresponding theoretical simulations.
- 
 \hfill
  \parbox{1\linewidth}{
   \centering
@@ -42,42 +25,34 @@ The only significant change implemented regarding the architecture for a convert
     %\caption{Side-by-side comparison of the circuit parameters (resistors, capacitors, etc) and the corresponding results (ripple, average, merit)}
   }
 
-
   
-%ponto 1
-\subsection{Output of the voltage regulator circuit, compared with the output sinusoidal voltage of the transformer and the envelope detector voltage}
+
+\subsection{Output voltage gain in the passband}
 
 \par
 \begin{figure}[H] \centering
 %\includegraphics[width=0.6\linewidth]{vs_vout_venv.pdf}
-\caption{Output of the voltage regulator circuit (yellow), compared with the output sinusoidal voltage of the transformer (red) and the envelope detector voltage (blue)}
-\label{fig:vs_venv_vout}
+\caption{Output voltage gain in the passband}
+\label{fig:gain_sim}
 \end{figure}
 
 
-\subsection{Output of the Envelope Detector (acting on the output of the full-wave rectifier)}
+\subsection{The input and output impedances}
 
 \par
 \begin{figure}[H] \centering
 %\includegraphics[width=0.6\linewidth]{vrect.pdf}
-\caption{Output of the Envelope Detector (acting on the output of the full-wave rectifier)}
-\label{fig:env}
+\caption{Input of the Audio amplifier circuit}
+\label{fig:In_imp}
 \end{figure}
-
 
 
 \par
 \begin{figure}[H] \centering
 %\includegraphics[width=0.6\linewidth]{vout.pdf}
-\caption{Output of the voltage regulator circuit, so as to visualize the ripple effect in greater detail}
-\label{fig:vout}
+\caption{Output of the Audio amplifier circuit}
+\label{fig:out_imp}
 \end{figure}
 
-\par
-\begin{figure}[H] \centering
-%\includegraphics[width=0.6\linewidth]{vo_menos_12.pdf}
-\caption{($v_O$ – 12) (output AC component + DC deviation) - note the vertical scale is in microVolts}
-\label{fig:deviation}
-\end{figure}
 
 \pagebreak
