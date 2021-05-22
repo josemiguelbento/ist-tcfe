@@ -96,6 +96,8 @@ Zo1 = ZO1
 Zi2 = ZI2
 Zo2 = ZO2
 Gain = abs(AV)
+Gain1 = abs(AV1)
+Gain2 = abs(AV2)
 diary off
 %cost = 2123123123123 %fazer esta conta
 %uco = 2123123123123 %fazer esta conta
@@ -104,3 +106,15 @@ diary off
 %gain = AV
 %merit = 31978481764 % fazer esta conta
 
+
+diary operating_point.txt
+diary on
+Vbase = VEQ
+Vcoll = -RC1*IC1+VCC
+Vemit = VE1
+Vemit2 = -RE2*IE2+VCC
+Vin = 0
+Vin2 = 0
+Vout = 0
+Vvcc = VCC
+diary off

@@ -27,7 +27,7 @@ diary data_t4.txt
 diary on
 
 printf("Vcc vcc 0 %d\n", Vcc)
-printf("Vin in 0 0 ac %d sin(0 %d %d)\n",Vinm, Vinm, Vinf)
+printf("Vin in 0 0 ac %d sin(0 %d %d)\n",Vinm, 10e-3, Vinf)
 printf("Rin in in2 %d\n", Rin)
 printf("* input coupling capacitor\n")
 printf("Ci in2 base %d\n", Ci)

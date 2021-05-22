@@ -33,7 +33,8 @@ let Zo = -v(out)/Vo#branch
 
 
 *plot 20*log(abs(Zo))
-hardcopy Zo_inc.ps abs(Zo)
+hardcopy zoinc.ps abs(Zo)
+echo zoinc_FIG
 hardcopy Zo_inc_db.ps 20*log(abs(Zo))/log(10)
 
 

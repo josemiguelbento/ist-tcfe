@@ -5,7 +5,7 @@
 #doc name
 FILE=report
 
-#list of LibreOffice Draw files
+#list of LibreOffice Draw files 
 LODFIGS = $(patsubst %.odg,%.pdf,$(wildcard *.odg))
 
 all: $(FILE).pdf
@@ -28,7 +28,10 @@ clean:
 	@rm -rf *.log *.lot *.nlo *.nls *.out *.toc *~ *.*% ./*.pdf ./*.eps
 	@rm -f *_tab.tex
 	@rm -f *_tab.odg
-
+	@rm -f gain_octave.odg 
+	@rm -f merit.tex 
+	@rm -f op.tex 
+	@rm -f valores.tex
 .PHONY: all clean
 
 

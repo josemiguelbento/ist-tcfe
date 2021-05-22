@@ -19,6 +19,23 @@ Rout = DATAO(11);
 Co = DATAO(12);
 RL = DATAO(13);
 
+diary valores.tex
+diary on
+
+printf('$V_{cc}$ & %d & V\n', Vcc);
+printf('$abs(V_{in})$ & %d & V\n', Vinm);
+%printf('$phase(V_{in})$ & %d & rad\n', Vinf);
+printf('$R_{in}$ & %d & Ohm\n', Rin);
+printf('$C_{i}$ & %d & F\n', Ci);
+printf('$R_{1}$ & %d & Ohm\n', R1);
+printf('$R_{2}$ & %d & Ohm\n', R2);
+printf('$R_{c}$ & %d & Ohm\n', Rc);
+printf('$R_{e}$ & %d & Ohm\n', Re);
+printf('$C_{b}$ & %d & F\n', Cb);
+printf('$R_{out}$ & %d & Ohm\n', Rout);
+printf('$C_{o}$ & %d & F\n', Co);
+printf('$R_{L}$ & %d & Ohm\n', RL);
+diary off
 
 %-----------------------------------------GARANTIA
 %		npn
@@ -41,6 +58,19 @@ Vin2 = DATAOP(6);
 Vout = DATAOP(7);
 Vvcc = DATAOP(8);
 
+dataopm = fopen('./mat/operating_point.txt','r');
+DATAOPM = fscanf(dataopm,'%*s = %f');
+fclose(dataopm);
+
+Vbase_oct = DATAOPM(1);
+Vcoll_oct = DATAOPM(2);
+Vemit_oct = DATAOPM(3);
+Vemit2_oct = DATAOPM(4);
+Vin_oct = DATAOPM(5);
+Vin2_oct = DATAOPM(6);
+Vout_oct = DATAOPM(7);
+Vvcc_oct = DATAOPM(8);
+
 if ((Vcoll > Vbase) && (0<Vcoll))
   flag = "ok"
 else
@@ -48,7 +78,7 @@ else
 endif
 
 % mudar isto quando tivermos op do octave
-if ((Vcoll > Vbase))
+if ((Vcoll_oct > Vbase_oct) && (0<Vcoll_oct))
   flag_oct = "ok"
 else
   flag_oct = "bad"
@@ -57,14 +87,14 @@ endif
 diary op.tex
 diary on
 
-printf('Vbase & %.4f & %.4f & V\n', Vbase, Vbase);
-printf('Vcoll & %.4f & %.4f & V\n', Vcoll, Vcoll);
-printf('Vemit & %.4f & %.4f & V\n', Vemit, Vemit);
-printf('Vemit2 & %.4f & %.4f & V\n', Vemit2, Vemit2);
-printf('Vin & %.4f & %.4f & V\n', Vin, Vin);
-printf('Vin2 & %.4f & %.4f & V\n', Vin2, Vin2);
-printf('Vout & %.4f & %.4f & V\n', Vout, Vout);
-printf('Vvcc & %.4f & %.4f & V\n', Vvcc, Vvcc);
+printf('Vbase & %.4f & %.4f & V\n', Vbase, Vbase_oct);
+printf('Vcoll & %.4f & %.4f & V\n', Vcoll, Vcoll_oct);
+printf('Vemit & %.4f & %.4f & V\n', Vemit, Vemit_oct);
+printf('Vemit2 & %.4f & %.4f & V\n', Vemit2, Vemit2_oct);
+printf('Vin & %.4f & %.4f & V\n', Vin, Vin_oct);
+printf('Vin2 & %.4f & %.4f & V\n', Vin2, Vin2_oct);
+printf('Vout & %.4f & %.4f & V\n', Vout, Vout_oct);
+printf('Vvcc & %.4f & %.4f & V\n', Vvcc, Vvcc_oct);
 printf('FAR? & %s & %s & V\n', flag, flag_oct);
 diary off
 
@@ -102,11 +132,11 @@ Zi1_oct = DATAR(3);
 Zo1_oct = DATAR(4);
 Zi2_oct = DATAR(5);
 Zo2_oct = DATAR(6);
-uco_oct = 0;
+uco_oct = uco;
 lco_oct = DATAFREQ(2);
-bandwidth_oct = 0;
+bandwidth_oct = uco_oct-lco_oct;
 gain_oct = DATAR(7);
-MERIT_oct = 0;
+MERIT_oct = gain_oct*bandwidth_oct/(cost*lco_oct);
 
 
 diary merit.tex
@@ -122,7 +152,9 @@ printf('Cost & %d & %d & MU\n', cost, cost);
 printf('uco & %.3f & %.3f & Hz\n', uco, uco_oct);
 printf('lco & %.3f & %.3f & Hz\n', lco, lco_oct);
 printf('Bandwidth & %.3f & %.3f & Hz\n', bandwidth, bandwidth_oct);
-printf('Gainv(out) & %.3f & %.3f & [adimensional]\n', gain, gain_oct);
+printf('$Gain_{gainstage}$ & - & %.3f & [adimensional]\n', DATAR(8));
+printf('$Gain{outputstage}$ & - & %.3f & [adimensional]\n', DATAR(9));
+printf('$Gain{total}$ & %.3f & %.3f & [adimensional]\n', gain, gain_oct);
 printf('MERIT & %.4f & %.4f & gold medals\n', MERIT, MERIT_oct);
 diary off
 

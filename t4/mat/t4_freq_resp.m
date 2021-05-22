@@ -95,6 +95,8 @@ X = Y\B;
 
 gain(a) = abs(X(7)/X(1));
 gain_db(a) = 20*log10(gain(a));
+vout_vec(a) = abs(X(7));
+vout_vec_db(a) = 20*log10(vout_vec(a));
 
 endfor
 

@@ -17,6 +17,8 @@ all:
 	mv merit.tex ./doc
 	sed -i 's/$$/\\\\ \\hline/g' op.tex
 	mv op.tex ./doc
+	sed -i 's/$$/\\\\ \\hline/g' valores.tex
+	mv valores.tex ./doc
 	make -C doc
 	cp doc/report.pdf .
 
