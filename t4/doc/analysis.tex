@@ -11,12 +11,24 @@ theoretically.
 \end{figure}
 
 
-As explained before, in the previous section the audio amplifier is composed of two stages.In the first stage (the gain stage) the primary objective is to amplifie the voltage input signal. To do so this section will have an high gain. This stage also has a high input impedance which avoids the degradation of the input signal. The  downside of this stage is its high output impedance that makes it difficult to connect to a speaker without having the signal degrade in the exit. That is why there is an output stage. This stage will have a low output impedance which is very good because it allows us to connect to the speaker without the signal degrading. When we connect the two stages the signal does not degrade beacuse the output stage input impedance is higher than the output impedance of the gain stage, meaning no signal degradation in the transtion between stages. In the output stage the gain is very close to one, meaning than there will be no amplification nor attenuation of the signal.   
+As explained before, in the previous section, the audio amplifier is composed of two stages. In the first stage (the gain stage) the primary objective is to amplify the voltage input signal. To do so this section will have a high gain. This stage also has a high input impedance which avoids the degradation of the input signal. The  downside of this stage is its high output impedance that makes it difficult to connect to a speaker without having the signal degrade in the exit. That is why there is an output stage. This stage will have a low output impedance which is very good because it allows us to connect to the speaker while minimizing signal degradation. When we connect the two stages the signal does not degrade very much beacuse the output stage input impedance is higher than the output impedance of the gain stage, meaning no signal degradation in the transtion between stages. In the output stage the gain is very close to one, meaning than there will be no amplification nor attenuation of the signal.   
 
-The main purpose of the bypass capacitor $C_{E}$ in the gain stage is to avoid a gain loss through resitor ${R_E}$ and the main purpose of resitor ${R_E}$ is to stabilize the temperature effect. In the DC the temperature effect is most important while in AC is the gain. Therefore there needs to be an equilibrium. This components where placed in parallel in order to achive this equilibrium. For lower frequencies (DC) capacitor $C_{E}$ behaves like an open circuit and the current goes through resistor ${R_E}$ stabilizing the temperature effect. For higher frequencies (AC) the capacitor is a short circuit and therefore it is used to bypass the resistor $R_{E}$ avoiding lowering the gain. 
+The main purpose of the bypass capacitor $C_{E}$ in the gain stage is to avoid a gain loss through resistor ${R_E}$ and the main purpose of resistor ${R_E}$ is to stabilize the temperature effect. In the DC the temperature effect is most important while in AC the gain is. Therefore there needs to be an equilibrium. This components were placed in parallel in order to achive this equilibrium. For lower frequencies (DC) capacitor $C_{E}$ behaves like an open circuit and the current goes through resistor ${R_E}$, stabilizing the temperature effect. For higher frequencies (AC) the capacitor is a short circuit and therefore it is used to bypass the resistor $R_{E}$, avoiding lowering the gain. 
 
+In the following table is the operating point analysis, both for the theoretical analysis (right) and the Ngspice simulation (left), in order to make a side-by-side comparison. This also includes a flag (last row) that ensures that both BJTs are in the Forward Active Region - if everything is ok, the flag should read "ok". If any (or both) of the transistor are not in this region, the flag should read "bad". The condition considered was, for the NPN transistor: $V_{CE} > V_{BE} <=> V_{C} > V_{B}$ and for the PNP transistor: $V_{EC} > V_{EB} <=> V_{C} < V_{B}$
 
-The gain of the audio amplifier, the upper and lower cut off frequency, the bandwidth and the input and output impedances as well as the merit are presented in the following table, both for the theoretical analysis (right) and the Ngspice simulation (left) in order to make a side-by-side comparison.
+\hfill
+ \parbox{1\linewidth}{
+  \centering
+  \begin{tabular}{|l|l|l|r|}
+    \hline    
+    {\bf Node Voltage} & {\bf Simulation} & {\bf Theoretical } & {\bf Units }\\ \hline
+    \input{op.tex}
+  \label{tab:op_FAR}
+  \end{tabular}
+  }
+
+The gain of the audio amplifier, the upper and lower cut off frequency, the bandwidth and the input and output impedances as well as the merit are presented in the following table, both for the theoretical analysis (right) and the Ngspice simulation (left), in order to make a side-by-side comparison.
 
 \hfill
  \parbox{1\linewidth}{

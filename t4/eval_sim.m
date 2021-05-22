@@ -24,12 +24,9 @@ RL = DATAO(13);
 %		npn
 
 %		vc>vb
-%		vb>ve
-%		vc-ve > v_ce_sat
 
 %		pnp
 %		vc<vb
-%		ve-vc >v_ec_sat
 
 dataop = fopen('./sim/FAR_check.txt','r');
 DATAOP = fscanf(dataop,'%*s = %f');
@@ -44,6 +41,19 @@ Vin2 = DATAOP(6);
 Vout = DATAOP(7);
 Vvcc = DATAOP(8);
 
+if ((Vcoll > Vbase) && (0<Vcoll))
+  flag = "ok"
+else
+  flag = "bad"
+endif
+
+% mudar isto quando tivermos op do octave
+if ((Vcoll > Vbase))
+  flag_oct = "ok"
+else
+  flag_oct = "bad"
+endif
+
 diary op.tex
 diary on
 
@@ -55,6 +65,7 @@ printf('Vin & %.4f & %.4f & V\n', Vin, Vin);
 printf('Vin2 & %.4f & %.4f & V\n', Vin2, Vin2);
 printf('Vout & %.4f & %.4f & V\n', Vout, Vout);
 printf('Vvcc & %.4f & %.4f & V\n', Vvcc, Vvcc);
+printf('FAR? & %s & %s & V\n', flag, flag_oct);
 diary off
 
 
