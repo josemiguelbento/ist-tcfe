@@ -104,7 +104,6 @@ xlabel ("f [Hz]");
 ylabel ("gain");
 %legend('gain(f)','Location','northwest');
 print (hfa, "gain_octave.odg", "-depsc");
-
 hfb = figure (2);
 semilogx(freq, gain_db,";gain(f) Db;");
 xlabel ("f [Hz]");
@@ -113,9 +112,29 @@ ylabel ("gain Db");
 print (hfb, "gain_db_octave.odg", "-depsc");
 
 
+
+%buscar o ganho teorico/---------------------
+datar = fopen('result_octave.txt','r');
+DATAR = fscanf(datar,'%*s = %f');
+fclose(datar);
+
+gain_oct = DATAR(7);
+
+gain_cutoff_db = 20*log10(gain_oct) - 3
+gain_cutoff = 10^(gain_cutoff_db/20)
+
+ref = abs(gain(1)-gain_cutoff)
+for i = 2:1:200
+  if abs(gain(i)-gain_cutoff) < ref
+  	freq_cutoff = freq(i)
+  	ref = abs(gain(i)-gain_cutoff)
+  endif
+endfor
+LCO = freq_cutoff
+
 diary result_octave_lco_uco.txt
 diary on
 uco = 2123123123123 %fazer esta conta
-lco = 2123123123123 %fazer esta conta
+lco = LCO %fazer esta conta
 bandwidth = 2123123123123 %fazer esta conta
 diary off

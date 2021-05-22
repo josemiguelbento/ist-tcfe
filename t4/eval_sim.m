@@ -92,25 +92,37 @@ datar = fopen('./mat/result_octave.txt','r');
 DATAR = fscanf(datar,'%*s = %f');
 fclose(datar);
 
+datafreq = fopen('./mat/result_octave_lco_uco.txt','r');
+DATAFREQ = fscanf(datafreq,'%*s = %f');
+fclose(datafreq);
 
 Zi_oct = DATAR(1);
 Zo_oct = DATAR(2);
-uco_oct = DATAR(4);
-lco_oct = DATAR(5);
-bandwidth_oct = DATAR(6);
-MERIT_oct = DATA(8)
+Zi1_oct = DATAR(3);
+Zo1_oct = DATAR(4);
+Zi2_oct = DATAR(5);
+Zo2_oct = DATAR(6);
+uco_oct = 0;
+lco_oct = DATAFREQ(2);
+bandwidth_oct = 0;
+gain_oct = DATAR(7);
+MERIT_oct = 0;
 
 
 diary merit.tex
 diary on
 
-printf('Zi & %d & %d & Ohm\n', DATA(9), Zi_oct);
-printf('Zo & %d & %d & Ohm\n', DATAINC(3), Zo_oct);
-printf('Cost & %d & Cost & MU\n', cost);
+printf('$Zi_{total}$ & %d & %d & Ohm\n', DATA(9), Zi_oct);
+printf('$Zo_{total}$ & %d & %d & Ohm\n', DATAINC(3), Zo_oct);
+printf('$Zi_{gain}$ & - & %d & Ohm\n', Zi1_oct);
+printf('$Zo_{gain}$ & - & %d & Ohm\n', Zo1_oct);
+printf('$Zi_{output}$ & - & %d & Ohm\n', Zi2_oct);
+printf('$Zo_{output}$ & - & %d & Ohm\n', Zo2_oct);
+printf('Cost & %d & %d & MU\n', cost, cost);
 printf('uco & %.3f & %.3f & Hz\n', uco, uco_oct);
 printf('lco & %.3f & %.3f & Hz\n', lco, lco_oct);
 printf('Bandwidth & %.3f & %.3f & Hz\n', bandwidth, bandwidth_oct);
-printf('Gainv(out) & %.3f & %.3f & [adimensional]\n', gain, DATAR(7));
+printf('Gainv(out) & %.3f & %.3f & [adimensional]\n', gain, gain_oct);
 printf('MERIT & %.4f & %.4f & gold medals\n', MERIT, MERIT_oct);
 diary off
 

@@ -6,7 +6,7 @@ clear all
 diary data_octave.txt
 diary on
 Vcc = 12
-Vinm = 10e-3
+Vinm = 1
 Vinf = 1000
 Rin = 100
 Ci = 1e-3

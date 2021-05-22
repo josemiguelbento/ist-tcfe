@@ -91,10 +91,16 @@ diary result_octave.txt
 diary on
 Zi = ZI
 Zo = ZO
-cost = 2123123123123 %fazer esta conta
-uco = 2123123123123 %fazer esta conta
-lco = 2123123123123 %fazer esta conta
-bandwidth = 2123123123123 %fazer esta conta
-gain = AV
-merit = 31978481764 % fazer esta conta
+Zi1 = ZI1
+Zo1 = ZO1
+Zi2 = ZI2
+Zo2 = ZO2
+Gain = abs(AV)
 diary off
+%cost = 2123123123123 %fazer esta conta
+%uco = 2123123123123 %fazer esta conta
+%lco = 2123123123123 %fazer esta conta
+%bandwidth = 2123123123123 %fazer esta conta
+%gain = AV
+%merit = 31978481764 % fazer esta conta
+

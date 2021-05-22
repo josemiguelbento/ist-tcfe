@@ -6,10 +6,12 @@ all: octave.log
 
 octave.log: t4.m
 	octave $< > $@
+	octave t4_freq_resp.m > octave_freq_resp.log
+
 
 clean:
 	@rm -f octave.log octave-workspace *.eps *~
 	@rm -f data*
-	@rm -f *_tab.tex result_octave.txt
+	@rm -f *_tab.tex result_octave.txt result_octave_lco_uco.txt
 	
 .PHONY: clean
