@@ -15,6 +15,8 @@ all:
 	octave eval_sim.m
 	sed -i 's/$$/\\\\ \\hline/g' merit.tex
 	mv merit.tex ./doc
+	sed -i 's/$$/\\\\ \\hline/g' op.tex
+	mv op.tex ./doc
 	make -C doc
 	cp doc/report.pdf .
 

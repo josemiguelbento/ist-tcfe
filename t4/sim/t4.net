@@ -6,10 +6,15 @@
 
 .INCLUDE data_t4.txt
 
-.op
-.end
-
 .control
+op
+
+echo "********************************************"
+echo  "Operating point"
+echo "********************************************"
+
+print all > FAR_check.txt
+
 
 
 * time analysis
@@ -51,7 +56,7 @@ hardcopy zin_db.ps 20*log(abs(-v(in2)/vin#branch))/log(10)
 let zin = -v(in2)[40]/vin#branch[40]
 let gain = v(out)[40]/v(in)[40]
 
-print lco uco threshold re(gain) im(gain) abs(gain) re(zin) im(zin) abs(zin)> result_sim.txt 
+print lco uco threshold re(gain) im(gain) abs(gain) re(zin) im(zin) abs(zin) > result_sim.txt 
 
 *need a different setup to measure output impedance
 

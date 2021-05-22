@@ -20,6 +20,44 @@ Co = DATAO(12);
 RL = DATAO(13);
 
 
+%-----------------------------------------GARANTIA
+%		npn
+
+%		vc>vb
+%		vb>ve
+%		vc-ve > v_ce_sat
+
+%		pnp
+%		vc<vb
+%		ve-vc >v_ec_sat
+
+dataop = fopen('./sim/FAR_check.txt','r');
+DATAOP = fscanf(dataop,'%*s = %f');
+fclose(datao);
+
+Vbase = DATAOP(1);
+Vcoll = DATAOP(2);
+Vemit = DATAOP(3);
+Vemit2 = DATAOP(4);
+Vin = DATAOP(5);
+Vin2 = DATAOP(6);
+Vout = DATAOP(7);
+Vvcc = DATAOP(8);
+
+diary op.tex
+diary on
+
+printf('Vbase & %.4f & %.4f & V\n', Vbase, Vbase);
+printf('Vcoll & %.4f & %.4f & V\n', Vcoll, Vcoll);
+printf('Vemit & %.4f & %.4f & V\n', Vemit, Vemit);
+printf('Vemit2 & %.4f & %.4f & V\n', Vemit2, Vemit2);
+printf('Vin & %.4f & %.4f & V\n', Vin, Vin);
+printf('Vin2 & %.4f & %.4f & V\n', Vin2, Vin2);
+printf('Vout & %.4f & %.4f & V\n', Vout, Vout);
+printf('Vvcc & %.4f & %.4f & V\n', Vvcc, Vvcc);
+diary off
+
+
 dataf = fopen('./sim/result_sim.txt','r');
 DATA = fscanf(dataf,'%*s = %f');
 fclose(dataf);
@@ -64,16 +102,5 @@ printf('Bandwidth & %.3f & %.3f & Hz\n', bandwidth, bandwidth_oct);
 printf('Gainv(out) & %.3f & %.3f & [adimensional]\n', gain, DATAR(7));
 printf('MERIT & %.4f & %.4f & gold medals\n', MERIT, MERIT_oct);
 diary off
-
-%-----------------------------------------GARANTIA
-%npn
-
-%vc>vb
-%vb>ve
-%vc-ve > v_ce_sat
-
-%pnp
-%vc<vb
-%ve-vc >v_ec_sat
 
 
