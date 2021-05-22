@@ -3,22 +3,20 @@
 
 In this section, the circuit shown in \textbf{Figure~\ref{fig:diagram_t4}} is analysed
 theoretically.
-\begin{figure}[H] \centering
+\begin{figure}[h] \centering
 \includegraphics[width=0.95\linewidth]{diagram_t4.pdf}
-\vspace{-6cm}
+\vspace{-7cm}
 \caption{Diagram of the circuit considered for the computations and simulations.}
 \label{fig:diagram_t4}
 \end{figure}
 
-The transformer used has an n:1 ratio. This means that the initial voltage source will have its Amplitude (A) divided by a factor of n. Therefore we can represent the voltage at the terminals of the transformer as a voltage source with an Amplitude of A/n and with the same frequency as the initial source. As noted in the previous section, this paremeter n is indeed a rational number - we considered any combination of transformer coils to be possible.
 
-The output of the transformer will be the input of our Envelope detector. The Envelope Detector circuit is made up of a rectifier and a capacitor. The rectifier is a full-wave bridge rectifier circuit and is composed of 4 diodes and a resistor. The full-wave rectifier was used as oposed to a half-wave rectifier because the full-wave rectifier allows us to reduce the ripple without increasing the time constant, which will avoid a big raise in costs. The full-wave rectifier reduces the ripple because the voltage that comes out of the transformer will leave the rectifier oscillating at twice the frequency, which helps us in our ripple problem, by reducing the period corresponding to the wave ripple.
+As explained before, in the previous section the audio amplifier is composed of two stages.In the first stage (the gain stage) the primary objective is to amplifie the voltage input signal. To do so this section will have an high gain. This stage also has a high input impedance which avoids the degradation of the input signal. The  downside of this stage is its high output impedance that makes it difficult to connect to a speaker without having the signal degrade in the exit. That is why there is an output stage. This stage will have a low output impedance which is very good because it allows us to connect to the speaker without the signal degrading. When we connect the two stages the signal does not degrade beacuse the output stage input impedance is higher than the output impedance of the gain stage, meaning no signal degradation in the transtion between stages. In the output stage the gain is very close to one, meaning than there will be no amplification nor attenuation of the signal.   
 
-The output of the Envelope Detector will be the input of the Voltage Regulator. The voltage regulator is made up of 42 diodes, two series of twenty diodes in parallel (as this proved to be an inexpensive way to reduce by half the equivalent incremental resistance of the regulator's diodes, and thus minimize ripple even more) and one resistance. The resistance is in series with the paralel of 2 rows of 21 diodes each. The diodes in each row are in series. The output of the paralel of diodes is the output of the AC/DC converter.
+The main purpose of the bypass capacitor $C_{E}$ in the gain stage is to avoid a gain loss through resitor ${R_E}$ and the main purpose of resitor ${R_E}$ is to stabilize the temperature effect. In the DC the temperature effect is most important while in AC is the gain. Therefore there needs to be an equilibrium. This components where placed in parallel in order to achive this equilibrium. For lower frequencies (DC) capacitor $C_{E}$ behaves like an open circuit and the current goes through resistor ${R_E}$ stabilizing the temperature effect. For higher frequencies (AC) the capacitor is a short circuit and therefore it is used to bypass the resistor $R_{E}$ avoiding lowering the gain. 
 
-In the Envolope Detector the diode model used has an ideal diode and a voltage source while in the Voltage Regulator de Diode model has an ideal diode, a voltage source and a resistor. Do note that the voltage Von for this diode model was obtained by dividing the the output voltage of the Ngspice simulation by the number of diodes in series, in order to achieve a more realistic model for the theoretical analysis. This yielded Von = 0.5714 V, a slight deviation from the standard Von = 0.7 V generally used.
 
-The ratio of the transformer and the values of the resistors, the capacitor and nº of diodes are presented in the following table, along with a side-by-side comparison of the corresponding results (ripple, average, merit) in the theoretical analysis (right) and the Ngspice simulation (left).
+The gain of the audio amplifier, the upper and lower cut off frequency, the bandwidth and the input and output impedances as well as the merit are presented in the following table, both for the theoretical analysis (right) and the Ngspice simulation (left) in order to make a side-by-side comparison.
 
 \hfill
  \parbox{1\linewidth}{
@@ -27,14 +25,11 @@ The ratio of the transformer and the values of the resistors, the capacitor and 
     \hline    
     {\bf Parameter} & {\bf Simulation} & {\bf Theoretical } & {\bf Units }\\ \hline
     \input{merit.tex}
-  \end{tabular}
   \label{tab:results}
-    %\caption{Side-by-side comparison of the circuit parameters (resistors, capacitors, etc) and the corresponding results (ripple, average, merit)}
-    
-
+  \end{tabular}
   }
-
-
+  
+\vspace{2cm}
     The only difference is in the ripple value, given the Von parameter for the thoeretical model was derived from the simulation results - this accounts for the perfect fit between the simulated and predicted average output voltages. As such, the merit figures differ given the ripple value is found in denominator - this means that, despite the ripple deviation being in the order of microvolts, this deviation is amplified in the merit formula. In adition, the precision of octave and ngspice floating point is different, which may account for part of the differences found. But more importantly, the difference obtained was mainly due to the fact that the models
 used for the diodes in the theorethical analysis differ from those used by Ngspice. The diode
 model used by Ngspice is way more complex than the one implemented theoretically.
