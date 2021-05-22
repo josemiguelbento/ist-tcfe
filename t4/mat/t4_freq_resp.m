@@ -5,13 +5,13 @@ data = fopen('data_octave.txt','r');
 DATA = fscanf(data,'%*s = %f');
 fclose(data);
 
-size = 200
+size = 500
 
 freq = logspace(1, 8, size);
 gain = zeros(1,size);
 gain_db = zeros(1,size);
 
-for a = 1:1:200
+for a = 1:1:size
 f = freq(a);
 
 Vin = DATA(2)*e^(i*2*pi*f); %------------------------------
@@ -124,7 +124,7 @@ gain_cutoff_db = 20*log10(gain_oct) - 3
 gain_cutoff = 10^(gain_cutoff_db/20)
 
 ref = abs(gain(1)-gain_cutoff)
-for i = 2:1:200
+for i = 2:1:size
   if abs(gain(i)-gain_cutoff) < ref
   	freq_cutoff = freq(i)
   	ref = abs(gain(i)-gain_cutoff)
