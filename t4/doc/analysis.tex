@@ -28,6 +28,15 @@ In the following table is the operating point analysis, both for the theoretical
   \end{tabular}
   }
 
+The circuit used to compute the cutoff frequencies and the gain, theoretically, was the following incremetal model (wichi includes the coupling and bypass capacitors given that these are the limiting factors in terms of the lower cutoff frequency). For the upper cutoff frequency it is a little bit more complex given that this is due to the parasitic capacitances of the transistor, which are part of the Ngspice model, but were not considered in the theory: 
+
+\begin{figure}[h] \centering
+\includegraphics[width=0.95\linewidth]{incremental_t4.pdf}
+\vspace{-7cm}
+\caption{Diagram of the incremental model considered for the gain and frequency response computations.}
+\label{fig:diagram_t4}
+\end{figure}
+
 The gain of the audio amplifier, the upper and lower cut off frequency, the bandwidth and the input and output impedances as well as the merit are presented in the following table, both for the theoretical analysis (right) and the Ngspice simulation (left), in order to make a side-by-side comparison.
 
 \hfill
@@ -40,6 +49,8 @@ The gain of the audio amplifier, the upper and lower cut off frequency, the band
   \label{tab:results}
   \end{tabular}
   }
+  
+ 
   
 \vspace{2cm}
     The only difference is in the ripple value, given the Von parameter for the thoeretical model was derived from the simulation results - this accounts for the perfect fit between the simulated and predicted average output voltages. As such, the merit figures differ given the ripple value is found in denominator - this means that, despite the ripple deviation being in the order of microvolts, this deviation is amplified in the merit formula. In adition, the precision of octave and ngspice floating point is different, which may account for part of the differences found. But more importantly, the difference obtained was mainly due to the fact that the models
