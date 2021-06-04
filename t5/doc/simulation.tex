@@ -1,0 +1,59 @@
+\section{Simulation Analysis}
+\label{sec:simulation}
+
+The circuit used to simulate the output impedance of the amplifier as a whole was the one that can be found in the following figure. The intermediate input and output impedances for the different stages were not simulated.
+
+\begin{figure}[H] \centering
+\includegraphics[width=0.95\linewidth]{diagram_t4_zout.pdf}
+\vspace{-10cm}
+\caption{Diagram of the circuit considered for the simulation of the output impedance of the amplifier .}
+\label{fig:diagram_t4_zout}
+\end{figure}
+
+
+The gain of the audio amplifier, the upper and lower cut off frequency, the bandwidth and the input and output impedances as well as the merit are presented in the following table, both for the theoretical analysis (right) and for the Ngspice simulation (left), in order to make a side-by-side comparison.
+
+\hfill
+ \parbox{1\linewidth}{
+  \centering
+  \begin{tabular}{|l|l|l|r|}
+    \hline    
+    {\bf Parameter} & {\bf Simulation} & {\bf Theoretical } & {\bf Units }\\ \hline
+    \input{merit.tex}
+  \end{tabular}
+  \label{tab:results}
+    %\caption{Side-by-side comparison of the circuit parameters (resistors, capacitors, etc) and the corresponding results (ripple, average, merit)}
+  }
+
+  
+
+\subsection{Output voltage gain in the passband}
+\par
+\vspace{-4cm}
+\begin{figure}[H] \centering
+\includegraphics[width=0.6\linewidth]{vo2f.pdf}
+\vspace{-1cm}
+\caption{Output voltage gain in the passband}
+\label{fig:gain_sim}
+\end{figure}
+
+
+\subsection{The input and output impedances}
+
+\begin{figure}[H] \centering
+\includegraphics[width=0.6\linewidth]{zin.pdf}
+\caption{Input impedance of the Audio amplifier circuit}
+\label{fig:In_imp}
+\end{figure}
+\vspace{-3cm}
+
+
+\begin{figure}[H] \centering
+\includegraphics[width=0.6\linewidth]{zoinc.pdf}
+\caption{Output impedance of the Audio amplifier circuit}
+\label{fig:out_imp}
+\end{figure}
+\vspace{-3cm}
+
+
+\pagebreak
