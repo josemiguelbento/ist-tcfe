@@ -61,8 +61,8 @@ print all
 * time analysis
 tran 1e-5 1e-2
 *plot v(out)
-echo v_out_FIG
-hardcopy vo1.ps vdb(out)
+echo vout_FIG
+hardcopy vout.ps v(out)
 
 
 * frequency analysis
@@ -73,8 +73,15 @@ hardcopy vdb_out.ps vdb(out)
 echo vdb_out_FIG
 *hardcopy vo1.ps vdb(out)
 
+let threshold = vecmax(vdb(out))-3
+
+meas ac lco WHEN vdb(out) = threshold RISE = 1
+meas ac uco WHEN vdb(out) = threshold CROSS = LAST
+
+print lco uco sqrt(lco*uco) threshold > result_sim.txt 
+
 *input impedance in kohm
-print v(in)[40]/R1[i]/1000
+*print v(in)[40]/R1[i]/1000
 
 *need a different setup to measure output impedance
 
