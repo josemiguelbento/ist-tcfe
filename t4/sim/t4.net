@@ -59,6 +59,8 @@ let zin = -v(in2)[40]/vin#branch[40]
 let gain = v(out)[40]/v(in)[40]
 
 print lco uco threshold re(gain) im(gain) abs(gain) re(zin) im(zin) abs(zin) > result_sim.txt 
+plot abs(v(in2)/vin#branch/(-1000))
+print v(in2)[40]/vin#branch[40]/(-1000)
 
 *need a different setup to measure output impedance
 
