@@ -67,23 +67,26 @@ hardcopy vout.ps v(out)
 
 * frequency analysis
 ac dec 10 10 100MEG
-*plot vdb(out)
-*plot vp(out)
 hardcopy vdb_out.ps vdb(out)
 echo vdb_out_FIG
-*hardcopy vo1.ps vdb(out)
+
+hardcopy vp_out.ps vp(out)
+echo vp_out_FIG
+
 
 let threshold = vecmax(vdb(out))-3
 
 meas ac lco WHEN vdb(out) = threshold RISE = 1
 meas ac uco WHEN vdb(out) = threshold CROSS = LAST
 
-print lco uco sqrt(lco*uco) threshold > result_sim.txt 
+
+*print v(in)[38]/Vin#branch[38]
+*print v(out)[38]
 
 *input impedance in kohm
-*print v(in)[40]/R1[i]/1000
+let Zin = v(in)[40]/Vin#branch[40]
 
 *need a different setup to measure output impedance
-
+print uco lco sqrt(lco*uco) threshold vecmax(abs(v(out))) vecmax(vdb(out)) abs(Zin)> result_sim.txt 
 .endc 
 

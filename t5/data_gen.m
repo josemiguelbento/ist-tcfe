@@ -6,19 +6,19 @@ clear all
 % vou deixar as cenas do opamp já diretamente no spice, nao vale a pena estar a passar para aqui
 diary data_octave.txt
 diary on
-Vcc = 5;
-Vee = -5;
-Vin_amp_ac = 1;
-Vin_param2 = 0.01;
-Vinf = 1000;
+Vcc = 5
+Vee = -5
+Vin_amp_ac = 1
+Vin_param2 = 0.01
+Vinf = 1000
 
-R1 = 1000;
-R2 = 1000;
-R3 = 100e3;
-R4 = 1e3;
-RL = 8;
-C1 = 220e-9;
-C2 = 110e-9;
+R1 = 1000
+R2 = 1000
+R3 = 100e3
+R4 = 1e3
+RL = 8
+C1 = 220e-9
+C2 = 110e-9
 
 
 
