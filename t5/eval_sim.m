@@ -47,7 +47,7 @@ fo_sim =DATASIM(3)
 gain_sim = DATASIM(5)
 gain_db_sim = DATASIM(6)
 Z_in_sim = DATASIM(7)
-%Z_out_sim = DATASIM(8) 
+Z_out_sim = DATASIM(8) 
 
 gain_deviation_sim = abs(100-gain_sim)
 frequency_deviation_sim = abs(fo_sim-1000)
@@ -59,9 +59,7 @@ diary merit.tex
 diary on
 
 printf('$Zi_{total}$ & %d & %d & Ohm\n', Z_in_sim, Z_in_oct);
-%printf('$Zo_{total}$ & %d & %d & Ohm\n', DATAINC(3), Zo_oct);
-
-
+printf('$Zo_{total}$ & %d & %d & Ohm\n', Z_out_sim, Z_out_oct);
 
 printf('uco & %.3f & %.3f & Hz\n', uco_sim, uco_oct);
 printf('lco & %.3f & %.3f & Hz\n', lco_sim, lco_oct);

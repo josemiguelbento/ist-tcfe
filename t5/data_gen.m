@@ -51,12 +51,19 @@ diary on
 
 printf("Vcc vcc 0 %d\n", Vcc)
 printf("Vee vee 0 %d\n", Vee)
-printf("Vin in 0 0 ac %d sin(0 %d %d)\n", Vin_amp_ac, Vin_param2, Vinf)
-printf("X1 0 inv_in vcc vee out uA741\n")
+%printf("Vin in 0 0 ac %d sin(0 %d %d)\n", Vin_amp_ac, Vin_param2, Vinf)
+printf("Vin in 0 0\n")
+printf("C1 in n_inv %d\n", C1)
+printf("R1 n_inv 0 %d\n", R1)
+printf("R3 amp inv_in %d\n", R3)
+printf("R4 inv_in 0 %d\n", R4)
 
-printf("R1 in inv_in %d\n", R1)
-printf("R2 inv_in out %d\n", R2)
+printf("X1 n_inv inv_in vcc vee out uA741\n")
 
+printf("R2 amp out %d\n", R2)
+printf("C2 out 0 %d\n", C2)
+
+printf("Vo out 0 0 ac 1 sin(0 1 %d)\n", Vinf)
 
 diary off
 

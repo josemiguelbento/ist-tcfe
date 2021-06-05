@@ -1,4 +1,4 @@
-all: ngspice_auto.log
+all: ngspice_auto.log ngspice_auto_inc.log
 	$(eval NGSFIGS=$(shell grep _FIG $< | sed 's/_FIG//g' | sed ':a;N;$!ba;s/\n/ /g'))
 	$(eval NGSFIGPS=$(addsuffix .ps, $(NGSFIGS)))
 	$(foreach i, $(NGSFIGPS), ps2pdf $i;)
@@ -17,6 +17,9 @@ all: ngspice_auto.log
 
 	
 ngspice_auto.log: ../sim/t5.net
+	ngspice -b $< -o $@
+	
+ngspice_auto_inc.log: ../sim/t5_inc.net
 	ngspice -b $< -o $@
 	
 clean:
