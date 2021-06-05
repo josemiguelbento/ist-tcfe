@@ -15,7 +15,7 @@ R4 = DATA(9)
 C1 = DATA(10)
 C2 = DATA(11)
 
-cost = (R1+R2+R3+R4)/1000 + (C1+C2)*1000000
+cost = (R1+R2+R3+R4)/1000 + (C1+C2)*1000000 +1.3323e4
 
 %data from octave ------------------------------------------
 data_oct = fopen('./mat/results_oct.txt','r');
@@ -33,7 +33,7 @@ Z_out_oct = DATAOCT(8)
 gain_deviation_oct = abs(100-gain_oct)
 frequency_deviation_oct = abs(fo_oct-1000)
 
-MERIT_oct = 1/(cost*gain_deviation_oct*frequency_deviation_oct);
+MERIT_oct = 1/cost/(gain_deviation_oct + frequency_deviation_oct+1e-6);
 
 %data from ngspice ---------------------------------------------------
 
@@ -52,7 +52,7 @@ Z_out_sim = DATASIM(8)
 gain_deviation_sim = abs(100-gain_sim)
 frequency_deviation_sim = abs(fo_sim-1000)
 
-MERIT_sim = 1/(cost*gain_deviation_sim*frequency_deviation_sim);
+MERIT_sim = 1/cost/(gain_deviation_sim + frequency_deviation_sim+1e-6);
 
 
 diary merit.tex

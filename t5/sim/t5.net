@@ -70,7 +70,7 @@ ac dec 10 10 100MEG
 hardcopy vdb_out.ps vdb(out)
 echo vdb_out_FIG
 
-hardcopy vp_out.ps vp(out)
+hardcopy vp_out.ps vp(out)*180/pi
 echo vp_out_FIG
 
 
