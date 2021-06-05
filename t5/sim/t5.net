@@ -61,20 +61,20 @@ print all
 * time analysis
 tran 1e-5 1e-2
 *plot v(out)
-echo v_out_FIG
-hardcopy vo1.ps vdb(out)
+echo vout_FIG
+hardcopy vout.ps vdb(out)
 
 
 * frequency analysis
 ac dec 10 10 100MEG
 *plot vdb(out)
 *plot vp(out)
-hardcopy vdb_out.ps vdb(out)
-echo vdb_out_FIG
+hardcopy vdbout.ps vdb(out)
+echo vdbout_FIG
 *hardcopy vo1.ps vdb(out)
 
 *input impedance in kohm
-print v(in)[40]/R1[i]/1000
+*print v(in)[40]/R1[i]/1000
 
 *need a different setup to measure output impedance
 

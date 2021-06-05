@@ -1,0 +1,11 @@
+Vcc vcc 0 5
+Vee vee 0 -5
+Vin in 0 0 ac 1 sin(0 0.01 1000)
+C1 in n_inv 2.2e-07
+R1 n_inv 0 1000
+R3 amp inv_in 100000
+R4 inv_in 0 1000
+X1 n_inv inv_in vcc vee amp uA741
+R2 amp out 500
+C2 out 0 1.1e-07
+RL out 0 8
