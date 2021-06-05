@@ -72,6 +72,6 @@ printf('$Gain_{deviation}$ & %.3f & %.3f & [adimensional]\n', gain_deviation_sim
 
 printf('Cost & %d & %d & MU\n', cost, cost);
 
-printf('MERIT & %.4f & %.4f & gold medals\n', MERIT_sim, MERIT_oct);
+printf('MERIT & %.8f & %.8f & gold medals\n', MERIT_sim, MERIT_oct);
 diary off
 
