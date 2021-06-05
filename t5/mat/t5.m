@@ -10,8 +10,8 @@ R1 = DATA(6)
 R2 = DATA(7)
 R3 = DATA(8)
 R4 = DATA(9)
-C1 = DATA(11)
-C2 = DATA(12)
+C1 = DATA(10)
+C2 = DATA(11)
 
 freq = logspace(1,8,100);
 

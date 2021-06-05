@@ -16,7 +16,6 @@ R1 = 1000
 R2 = 1000
 R3 = 100e3
 R4 = 1e3
-RL = 8
 C1 = 220e-9
 C2 = 110e-9
 
@@ -42,7 +41,7 @@ printf("X1 n_inv inv_in vcc vee out uA741\n")
 
 printf("R2 amp out %d\n", R2)
 printf("C2 out 0 %d\n", C2)
-printf("RL out 0 %d\n", RL)
+
 
 diary off
 
@@ -57,7 +56,7 @@ printf("X1 0 inv_in vcc vee out uA741\n")
 
 printf("R1 in inv_in %d\n", R1)
 printf("R2 inv_in out %d\n", R2)
-printf("RL out 0 %d\n", RL)
+
 
 diary off
 

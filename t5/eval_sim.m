@@ -12,8 +12,8 @@ R1 = DATA(6)
 R2 = DATA(7)
 R3 = DATA(8)
 R4 = DATA(9)
-C1 = DATA(11)
-C2 = DATA(12)
+C1 = DATA(10)
+C2 = DATA(11)
 
 cost = (R1+R2+R3+R4)/1000 + (C1+C2)*1000000
 
