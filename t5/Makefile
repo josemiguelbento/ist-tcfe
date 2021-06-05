@@ -10,9 +10,9 @@ all:
 	mv data_t5.txt ./sim
 	mv data_t5_inc.txt ./sim
 	cp data_octave.txt ./mat
-#	make -C mat
+	make -C mat
 	make -C sim
-#	octave eval_sim.m
+	octave eval_sim.m
 #	sed -i 's/$$/\\\\ \\hline/g' merit.tex
 #	mv merit.tex ./doc
 #	sed -i 's/$$/\\\\ \\hline/g' op.tex

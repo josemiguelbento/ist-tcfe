@@ -49,7 +49,7 @@
 
 .options savecurrents
 
-.INCLUDE data_t5.txt
+.INCLUDE data_t5_inc.txt
 
 .op
 .end
@@ -60,33 +60,20 @@ print all
 
 * time analysis
 tran 1e-5 1e-2
-*plot v(out)
-echo vout_FIG
-hardcopy vout.ps v(out)
 
 
 * frequency analysis
 ac dec 10 10 100MEG
-hardcopy vdb_out.ps vdb(out)
-echo vdb_out_FIG
 
-hardcopy vp_out.ps vp(out)*180/pi
-echo vp_out_FIG
-
-
-let threshold = vecmax(vdb(out))-3
-
-meas ac lco WHEN vdb(out) = threshold RISE = 1
-meas ac uco WHEN vdb(out) = threshold CROSS = LAST
 
 
 *print v(in)[38]/Vin#branch[38]
-*print v(out)[38]
+print v(out)[38]
 
 *input impedance in kohm
-let Zin = v(in)[40]/Vin#branch[40]
+let Zo = v(out)[40]/Vo#branch[40]
 
 *need a different setup to measure output impedance
-print uco lco sqrt(lco*uco) threshold vecmax(abs(v(out))) vecmax(vdb(out)) abs(Zin)> result_sim.txt 
+print abs(Zo) >> result_sim.txt 
 .endc 
 

@@ -2,21 +2,30 @@
 \label{sec:introduction}
 
 
-\par The objective of this laboratory assignment was to create an audio amplifier circuit. The audio amplifier would recieve an audio input of 10mV (maximum) and would connect to an 8 Ohm speaker. The source would have an 100 Ohm impedance and the circuit would be supplied with 12 volts by a DC source (Vcc).
-\par A good voltage amplifier has to have an high gain $(A_{V})$ (as we want to amplify), a high input impedance $(Z_{i})$ and a low output impedance $(Z_{o})$ (so as not to degrade the input and output voltages, respectively). In order to meet this criteria the audio amplifier circuit will have two stages: the gain stage and the output stage, as this seemed like the best way to combine the good and not so good properties of each of the amplifier circuits studied in class.\par
- In the gain stage a common emitter amplifier with degeneration was used because it allows us to have a high $Z_{i}$ and a high gain $A_{V}$. Unfortunately it has a high $Z_{o}$ as well, which will degrade the output signal. This problem will have to be fixed in the next stage. In this stage an NPN transistor was used.\par
- In the output stage a commom collector amplifier was used because it allows us to maintain  the high gain $A_{V}$ from the previous stage whilst having a low $Z_{o}$. This stage is able to maintain the high gain because its high input impedance connects to the lower output impedance (but still an high one) of the previous stage and the gain in this section is $\approx 1$. In this stage a PNP transistor was used.
+\par The objective of this laboratory assignment was to create an Bandpass filter using an OP-AMP. This filter should have a central frequency of 1kHz and the gain should be 40 dB at the central frequency. To implement this Bandpass filter the following componets were available: 
+\begin{itemize}
+
+\item One 741 OPAMP
+\item At most three 1kΩ resistors
+\item At most three 10kΩ resistors
+\item At most three 100kΩ resistors
+\item At most three 220nF capacitors
+\item At most three 1μF capacitors
+
+\end{itemize} 
+
+
 \par   
-To determine the quality of the audio amplifier, when compared to others, a merit classification system was created. This merit system took into account the cost of the components used, as well as the voltage gain, the cut off frequency and the bandwidth. The merit of the circuit will be determined according to the following equation: 
+As in previous lab assignents, to determine the quality of the Bandpass filter when compared to others, a merit classification system was created. This merit system took into account the cost of the components used, as well as the gain deviation and the central frequency deviation. The merit of the circuit will be determined according to the following equation: 
 \begin {equation}
-	 MERIT = \frac{Voltage Gain*Bandwidth}{Cost*Lower Cut Off Frequency}   	
+	 MERIT = \frac{1}{Cost*Gain deviation* Central Frequency deviation}   	
 	\label{eq:i1}
 \end{equation}
 
 and the cost of the components are the following: cost of resistors = 1 monetary unit (MU) per kOhm, cost of capacitors = 1 MU/uF
-and cost of transistors = 0.1 MU per diode. 
+and cost of transistors = 0.1 MU per transistor. 
 
-The general layout of the circuit that was implemented can be seen in \textbf{Figure~\ref{fig:circuit_t4}}. In the next sections the actual architecture implemented for each stage will be analyzed in greater detail.\par
+The general layout of the circuit that was implemented can be seen in \textbf{Figure~\ref{fig:circuit_t4}}.\par
 \begin{figure}[h] \centering
 \includegraphics[width=0.6\linewidth]{circuit_t5.jpg}
 %\vspace{-6cm}
@@ -26,9 +35,11 @@ The general layout of the circuit that was implemented can be seen in \textbf{Fi
 
 
 In Section~\ref{sec:analysis}, a theoretical analysis of the circuit is
-presented. Here the circuit is analised using the suitable OP (to ensure the transistors are in the Forward Active Region) and incremental theoretical models studied in the class, in order to predict the gain and the input and output impedances for each of the stages.
-In Section~\ref{sec:simulation}, the circuit is analysed by
-simulation using the program Ngspice. In Ngspice the Philips BJT'S model BC557A (PNP) and BC547A (NPN) for the transistors were used. The input and output impedances, the lower and upper 3dB cut off frequencies (the difference between them is the bandwidth), as well as the gain, were computed by simulation. The conclusions of this study are outlined in
+presented. Here the circuit is analised using the suitable theoretical models studied in the class, in order to predict the gain and the input and output impedances at the central frequencies.To compute the frequency response Vo(f)/Vi(f), an incremental circuit was used.This circuit was solved for a frequency vector in log scale with 10 points per decade, from 10Hz to 100MHz. 
+In Section~\ref{sec:simulation}, the Bandpass filter is analysed by
+simulation using the program Ngspice. In Ngspice the OP-AMP model that was provided by the professor was used(the famous 741 OP-AMP). The output voltage gain in the passband, the central frequency  and the input and output impedances at this frequency were computed by simulation. In Section~\ref{sec:Presencial} the results from the work done at the laboratory is shown through some pictures.
+
+The conclusions of this study are outlined in
 Section~\ref{sec:conclusion}, where the theoretical results obtained in
 Section~\ref{sec:analysis} are compared to the simulation results obtained in
 Section~\ref{sec:simulation}.
