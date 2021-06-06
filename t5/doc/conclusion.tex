@@ -1,10 +1,10 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-In this laboratory assignment, the objective of making an audio amplifier circuit has been achieved.\par
+In this laboratory assignment, the objective of making Bandpass filter with an OP-AMP has been achieved.\par
 The circuit created was analysed theoretically using the Octave maths tool, and by circuit simulation, using the
-Ngspice tool. The theoretical results obtained differed quite a lot from those obtained in the simulation analysis. This difference obtained is due to the fact that the models used for the transistors in the theoretical analysis are very different from those used by Ngspice. The transistor models that were used in Ngspice are way more complex than the ones implemented theoretically - one needs to look no further than the dozens of parameters considered by these models, compared to the handful used in the theoretical analysis, to explain this discrepance. 
+Ngspice tool. The theoretical results obtained differed quite a lot from those obtained in the simulation analysis. This difference obtained is due to the fact that the models used for the Op-AMP in the theoretical analysis are very different from those used by Ngspice. The OP-AMP model that was used in Ngspice is way more complex than the one implemented theoretically - one needs to look no further than the dozens of parameters considered for model, compared to the handful used in the theoretical analysis, to explain this discrepance. 
 
 However, due to the overall satisfactory match we can say that the theoretical model is acceptable due to its relatively lower complexity (one could sketch these equations on the back of a napkin) and its good results. Note that the output impedance (of the amplifier as a whole) were quite close - the simulation matched the theoretical model well - however, the simulated input impedance and the gain, were very much off when compared to the the predicted values - for the input inpedance, the deviation was in the hundreds, and the theoretical gain was over twice the simulated.\par
-The final value settled on for the Merit was 2707.52 using the Ngsice's results and 990.8967 (for the same values) using Octave's theoretical results. This may seem like a great discrepancy, but is in fact fully explained by the discrepancies, already commented, regarding the the lower cutoff frequency (and therefore the bandwith as well) and the gain.
+The final value settled on for the Merit was 2707.52 using the Ngsice's results and 990.8967 (for the same values) using Octave's theoretical results. This may seem like a great discrepancy, but is in fact fully explained by the discrepancies, already commented, regarding the voltage gain deviation and central frequency deviation .
 
