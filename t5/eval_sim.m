@@ -75,3 +75,17 @@ printf('Cost & %d & %d & MU\n', cost, cost);
 printf('MERIT & %.8f & %.8f & gold medals\n', MERIT_sim, MERIT_oct);
 diary off
 
+
+
+diary values.tex
+diary on
+
+printf('R1 & %d & Ohm\n', R1);
+printf('R2 & %d & Ohm\n', R2);
+printf('R3 & %d & Ohm\n', R3);
+printf('R4 & %d & Ohm\n', R4);
+printf('C1 & %d & Farad\n', C1);
+printf('C2 & %d & Farad\n', C2);
+
+diary off
+

@@ -6,8 +6,8 @@ all: octave.log
 
 octave.log: t5.m
 	octave $< > $@
-#	octave t5_freq_resp.m > octave_freq_resp.log
-#	mv gain_octave.odg ../doc
+	mv teo_gain.eps ../doc
+	mv teo_phase.eps ../doc
 
 
 clean:

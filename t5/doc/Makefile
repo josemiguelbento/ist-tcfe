@@ -9,7 +9,7 @@ FILE=report
 LODFIGS = $(patsubst %.odg,%.pdf,$(wildcard *.odg))
 
 all: $(FILE).pdf
-	mogrify -format pdf -- *jpg
+#	mogrify -format pdf -- *jpg
 	evince $< &
 	
 
@@ -32,7 +32,7 @@ clean:
 	@rm -f gain_octave.odg 
 	@rm -f merit.tex 
 	@rm -f op.tex 
-	@rm -f valores.tex
+	@rm -f values.tex
 .PHONY: all clean
 
 

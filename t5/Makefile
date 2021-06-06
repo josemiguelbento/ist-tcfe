@@ -13,12 +13,10 @@ all:
 	make -C mat
 	make -C sim
 	octave eval_sim.m
-#	sed -i 's/$$/\\\\ \\hline/g' merit.tex
-#	mv merit.tex ./doc
-#	sed -i 's/$$/\\\\ \\hline/g' op.tex
-#	mv op.tex ./doc
-#	sed -i 's/$$/\\\\ \\hline/g' valores.tex
-#	mv valores.tex ./doc
+	sed -i 's/$$/\\\\ \\hline/g' merit.tex
+	mv merit.tex ./doc
+	sed -i 's/$$/\\\\ \\hline/g' values.tex
+	mv values.tex ./doc
 	make -C doc
 	cp doc/report.pdf .
 
