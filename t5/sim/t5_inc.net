@@ -67,11 +67,11 @@ ac dec 10 10 100MEG
 
 
 
-*print v(in)[38]/Vin#branch[38]
-print v(out)[38]
+*print v(in)/Vin#branch
+*print v(out)
 
 *input impedance in kohm
-let Zo = v(out)[40]/Vo#branch[40]
+let Zo = v(out)[20]/Vo#branch[20]
 
 *need a different setup to measure output impedance
 print abs(Zo) >> result_sim.txt 
