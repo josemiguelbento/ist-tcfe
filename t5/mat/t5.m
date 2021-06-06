@@ -38,11 +38,13 @@ wH = 1/(R2*C2)
 wO = sqrt(wL*wH)
 f = wO/(2*pi)
 
-gain = abs((R1*C1*wO*j)/(1+R1*C1*wO*j)*(1+R3/R4)*(1/(1+R2*C2*wO*j)))
+wnorm = 2000*pi;
+
+gain = abs((R1*C1*wnorm*j)/(1+R1*C1*wnorm*j)*(1+R3/R4)*(1/(1+R2*C2*wnorm*j)))
 gain_db = 20*log10(abs(gain))
 
-Z_in = abs(R1 + 1/(j*wO*C1))
-Z_out = abs(1/(j*wO*C2+1/R2))
+Z_in = abs(R1 + 1/(j*wnorm*C1))
+Z_out = abs(1/(j*wnorm*C2+1/R2))
 
 diary off
 
