@@ -62,7 +62,7 @@ print all
 tran 1e-5 1e-2
 *plot v(out)
 echo vout_FIG
-hardcopy vout.ps v(out)
+hardcopy vout.ps v(out) v(in)
 
 
 * frequency analysis
