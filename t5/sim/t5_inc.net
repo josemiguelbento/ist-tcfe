@@ -68,7 +68,7 @@ ac dec 10 10 100MEG
 
 
 *print v(in)/Vin#branch
-*print v(out)
+print v(out) Vo#branch
 
 *input impedance in kohm
 let Zo = v(out)[20]/Vo#branch[20]

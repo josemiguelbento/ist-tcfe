@@ -30,6 +30,12 @@ gain_db_oct = DATAOCT(6)
 Z_in_oct = DATAOCT(7)
 Z_out_oct = DATAOCT(8) 
 
+if uco_oct < lco_oct
+	aux = uco_oct
+	uco_oct = lco_oct
+	lco_oct = aux
+endif
+
 gain_deviation_oct = abs(100-gain_oct)
 frequency_deviation_oct = abs(fo_oct-1000)
 
@@ -40,6 +46,7 @@ MERIT_oct = 1/cost/(gain_deviation_oct + frequency_deviation_oct+1e-6);
 data_sim = fopen('./sim/result_sim.txt','r');
 DATASIM = fscanf(data_sim,'%*s = %f');
 fclose(data_sim);
+
 
 uco_sim = DATASIM(1)
 lco_sim = DATASIM(2)
@@ -58,13 +65,13 @@ MERIT_sim = 1/cost/(gain_deviation_sim + frequency_deviation_sim+1e-6);
 diary merit.tex
 diary on
 
-printf('$Zi_{total}$ & %d & %d & Ohm\n', Z_in_sim, Z_in_oct);
-printf('$Zo_{total}$ & %d & %d & Ohm\n', Z_out_sim, Z_out_oct);
+printf('$Zi_{total}$ & %.2f & %.2f & Ohm\n', Z_in_sim, Z_in_oct);
+printf('$Zo_{total}$ & %.2f & %.2f & Ohm\n', Z_out_sim, Z_out_oct);
 
 printf('uco & %.3f & %.3f & Hz\n', uco_sim, uco_oct);
 printf('lco & %.3f & %.3f & Hz\n', lco_sim, lco_oct);
 printf('fo & %.3f & %.3f & Hz\n', fo_sim, fo_oct);
-printf('$f_{deviation}$ & %.3f & %.3f & Hz\n', frequency_deviation_sim , frequency_deviation_oct);
+printf('$f_{deviation}$ & %.5f & %.5f & Hz\n', frequency_deviation_sim , frequency_deviation_oct);
 
 
 printf('$Gain_{total}$ & %.3f & %.3f & [adimensional]\n', gain_sim, gain_oct);

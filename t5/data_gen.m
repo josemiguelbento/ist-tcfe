@@ -58,7 +58,7 @@ printf("R1 n_inv 0 %d\n", R1)
 printf("R3 amp inv_in %d\n", R3)
 printf("R4 inv_in 0 %d\n", R4)
 
-printf("X1 n_inv inv_in vcc vee out uA741\n")
+printf("X1 n_inv inv_in vcc vee amp uA741\n")
 
 printf("R2 amp out %d\n", R2)
 printf("C2 out 0 %d\n", C2)
