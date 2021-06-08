@@ -79,6 +79,7 @@ let threshold = vecmax(vdb(out))-3
 meas ac lco WHEN vdb(out) = threshold RISE = 1
 meas ac uco WHEN vdb(out) = threshold CROSS = LAST
 
+meas ac fo MAX_AT vdb(out) from=10 to=100MEG
 
 *print v(in)/Vin#branch
 *print v(out)
@@ -87,6 +88,6 @@ meas ac uco WHEN vdb(out) = threshold CROSS = LAST
 let Zin = v(in)[20]/Vin#branch[20]
 
 *need a different setup to measure output impedance
-print uco lco sqrt(lco*uco) threshold vecmax(abs(v(out))) vecmax(vdb(out)) abs(Zin)> result_sim.txt 
+print uco lco fo threshold vecmax(abs(v(out))) vecmax(vdb(out)) abs(Zin)> result_sim.txt 
 .endc 
 

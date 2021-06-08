@@ -12,12 +12,12 @@ Vin_amp_ac = 1
 Vin_param2 = 0.01
 Vinf = 1000
 
-R1 = 10000
-R2 = 5000
-R3 = 150e3
-R4 = 1500
-C1 = 220e-9
-C2 = 220e-9
+R1 = 1000
+R2 = 1000
+R3 = 310e3
+R4 = 1000
+C1 = 112e-9
+C2 = 221e-9
 
 
 
@@ -37,7 +37,7 @@ printf("R1 n_inv 0 %d\n", R1)
 printf("R3 amp inv_in %d\n", R3)
 printf("R4 inv_in 0 %d\n", R4)
 
-printf("X1 n_inv inv_in vcc vee out uA741\n")
+printf("X1 n_inv inv_in vcc vee amp uA741\n")
 
 printf("R2 amp out %d\n", R2)
 printf("C2 out 0 %d\n", C2)

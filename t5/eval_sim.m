@@ -15,7 +15,7 @@ R4 = DATA(9)
 C1 = DATA(10)
 C2 = DATA(11)
 
-cost = (R1+R2+R3+R4)/1000 + (C1+C2)*1000000 +1.3323e4
+cost = (R1+R2+R3+R4)/1000 + (2*220+1+C2*1000000) +1.3323e4
 
 %data from octave ------------------------------------------
 data_oct = fopen('./mat/results_oct.txt','r');
